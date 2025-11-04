@@ -32,6 +32,7 @@ OBJS +=build/queue.o
 OBJS +=build/timers.o
 
 OBJS +=build/heap_1.o
+OBJS += sample/sample.o
 
 kernel8.elf : raspberrypi3.ld $(OBJS)
 	$(CROSS)-gcc -Wl,--build-id=none -std=gnu11 -T raspberrypi3.ld -o $@ -ffreestanding -O2 -nostdlib $(OBJS)
@@ -61,6 +62,10 @@ build/%.o : FreeRTOS/Source/portable/GCC/ARM_CA53_64_RaspberryPi3/%.S
 build/%.o : FreeRTOS/Source/portable/MemMang/%.c
 	$(CROSS)-gcc $(CFLAGS)  -c -o $@ $<
 
+sample/sample.o :
+	@echo "==> Building sample module"
+	$(MAKE) -C sample
+
 $(BUILDPATH):
 	@if [ ! -d $(BUILDPATH) ]; then \
 	  echo " mkdir $(BUILDPATH)"; mkdir $(BUILDPATH); \
@@ -70,6 +75,7 @@ clean :
 	rm -f build/*.o
 	rm -f *.elf
 	rm -f *.list
+	$(MAKE) -C sample clean
 
 run :
 	$(MAKE) kernel8.elf
