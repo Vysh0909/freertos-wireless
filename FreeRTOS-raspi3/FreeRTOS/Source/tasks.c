@@ -40,6 +40,8 @@ task.h is included from an application file. */
 #include "timers.h"
 #include "stack_macros.h"
 
+#include "uart_string.h"
+
 /* Lint e961 and e750 are suppressed as a MISRA exception justified because the
 MPU ports require MPU_WRAPPERS_INCLUDED_FROM_API_FILE to be defined for the
 header files above, but not in this file, in order to generate the correct
@@ -99,7 +101,7 @@ changed then the definition of StaticTask_t must also be updated. */
 
 /* If any of the following are set then task stacks are filled with a known
 value so the high water mark can be determined.  If none of the following are
-set then don't fill the stack so there is no unnecessary dependency on memset. */
+set then don't fill the stack so there is no unnecessary dependency on my_memset. */
 #if( ( configCHECK_FOR_STACK_OVERFLOW > 1 ) || ( configUSE_TRACE_FACILITY == 1 ) || ( INCLUDE_uxTaskGetStackHighWaterMark == 1 ) )
 	#define tskSET_NEW_STACKS_TO_KNOWN_VALUE	1
 #else
@@ -846,11 +848,11 @@ UBaseType_t x;
 		uxPriority &= ~portPRIVILEGE_BIT;
 	#endif /* portUSING_MPU_WRAPPERS == 1 */
 
-	/* Avoid dependency on memset() if it is not required. */
+	/* Avoid dependency on my_memset() if it is not required. */
 	#if( tskSET_NEW_STACKS_TO_KNOWN_VALUE == 1 )
 	{
 		/* Fill the stack with a known value to assist debugging. */
-		( void ) memset( pxNewTCB->pxStack, ( int ) tskSTACK_FILL_BYTE, ( size_t ) ulStackDepth * sizeof( StackType_t ) );
+		( void ) my_memset( pxNewTCB->pxStack, ( int ) tskSTACK_FILL_BYTE, ( size_t ) ulStackDepth * sizeof( StackType_t ) );
 	}
 	#endif /* tskSET_NEW_STACKS_TO_KNOWN_VALUE */
 
@@ -2347,7 +2349,7 @@ TCB_t *pxTCB;
 	TCB_t* pxTCB;
 
 		/* Task names will be truncated to configMAX_TASK_NAME_LEN - 1 bytes. */
-		configASSERT( strlen( pcNameToQuery ) < configMAX_TASK_NAME_LEN );
+		configASSERT( my_strlen( pcNameToQuery ) < configMAX_TASK_NAME_LEN );
 
 		vTaskSuspendAll();
 		{
@@ -4135,11 +4137,11 @@ TCB_t *pxTCB;
 	size_t x;
 
 		/* Start by copying the entire string. */
-		strcpy( pcBuffer, pcTaskName );
+		my_strcpy( pcBuffer, pcTaskName );
 
 		/* Pad the end of the string with spaces to ensure columns line up when
 		printed out. */
-		for( x = strlen( pcBuffer ); x < ( size_t ) ( configMAX_TASK_NAME_LEN - 1 ); x++ )
+		for( x = my_strlen( pcBuffer ); x < ( size_t ) ( configMAX_TASK_NAME_LEN - 1 ); x++ )
 		{
 			pcBuffer[ x ] = ' ';
 		}
@@ -4173,10 +4175,10 @@ TCB_t *pxTCB;
 		 * uxTaskGetSystemState() output into a human readable table that
 		 * displays task names, states and stack usage.
 		 *
-		 * vTaskList() has a dependency on the sprintf() C library function that
+		 * vTaskList() has a dependency on the my_sprintf() C library function that
 		 * might bloat the code size, use a lot of stack, and provide different
 		 * results on different platforms.  An alternative, tiny, third party,
-		 * and limited functionality implementation of sprintf() is provided in
+		 * and limited functionality implementation of my_sprintf() is provided in
 		 * many of the FreeRTOS/Demo sub-directories in a file called
 		 * printf-stdarg.c (note printf-stdarg.c does not provide a full
 		 * snprintf() implementation!).
@@ -4235,8 +4237,8 @@ TCB_t *pxTCB;
 				pcWriteBuffer = prvWriteNameToBuffer( pcWriteBuffer, pxTaskStatusArray[ x ].pcTaskName );
 
 				/* Write the rest of the string. */
-				sprintf( pcWriteBuffer, "\t%c\t%u\t%u\t%u\r\n", cStatus, ( unsigned int ) pxTaskStatusArray[ x ].uxCurrentPriority, ( unsigned int ) pxTaskStatusArray[ x ].usStackHighWaterMark, ( unsigned int ) pxTaskStatusArray[ x ].xTaskNumber );
-				pcWriteBuffer += strlen( pcWriteBuffer );
+				my_sprintf( pcWriteBuffer, "\t%c\t%u\t%u\t%u\r\n", cStatus, ( unsigned int ) pxTaskStatusArray[ x ].uxCurrentPriority, ( unsigned int ) pxTaskStatusArray[ x ].usStackHighWaterMark, ( unsigned int ) pxTaskStatusArray[ x ].xTaskNumber );
+				pcWriteBuffer += my_strlen( pcWriteBuffer );
 			}
 
 			/* Free the array again.  NOTE!  If configSUPPORT_DYNAMIC_ALLOCATION
@@ -4278,11 +4280,11 @@ TCB_t *pxTCB;
 		 * displays the amount of time each task has spent in the Running state
 		 * in both absolute and percentage terms.
 		 *
-		 * vTaskGetRunTimeStats() has a dependency on the sprintf() C library
+		 * vTaskGetRunTimeStats() has a dependency on the my_sprintf() C library
 		 * function that might bloat the code size, use a lot of stack, and
 		 * provide different results on different platforms.  An alternative,
 		 * tiny, third party, and limited functionality implementation of
-		 * sprintf() is provided in many of the FreeRTOS/Demo sub-directories in
+		 * my_sprintf() is provided in many of the FreeRTOS/Demo sub-directories in
 		 * a file called printf-stdarg.c (note printf-stdarg.c does not provide
 		 * a full snprintf() implementation!).
 		 *
@@ -4331,13 +4333,13 @@ TCB_t *pxTCB;
 					{
 						#ifdef portLU_PRINTF_SPECIFIER_REQUIRED
 						{
-							sprintf( pcWriteBuffer, "\t%lu\t\t%lu%%\r\n", pxTaskStatusArray[ x ].ulRunTimeCounter, ulStatsAsPercentage );
+							my_sprintf( pcWriteBuffer, "\t%lu\t\t%lu%%\r\n", pxTaskStatusArray[ x ].ulRunTimeCounter, ulStatsAsPercentage );
 						}
 						#else
 						{
 							/* sizeof( int ) == sizeof( long ) so a smaller
 							printf() library can be used. */
-							sprintf( pcWriteBuffer, "\t%u\t\t%u%%\r\n", ( unsigned int ) pxTaskStatusArray[ x ].ulRunTimeCounter, ( unsigned int ) ulStatsAsPercentage );
+							my_sprintf( pcWriteBuffer, "\t%u\t\t%u%%\r\n", ( unsigned int ) pxTaskStatusArray[ x ].ulRunTimeCounter, ( unsigned int ) ulStatsAsPercentage );
 						}
 						#endif
 					}
@@ -4347,18 +4349,18 @@ TCB_t *pxTCB;
 						consumed less than 1% of the total run time. */
 						#ifdef portLU_PRINTF_SPECIFIER_REQUIRED
 						{
-							sprintf( pcWriteBuffer, "\t%lu\t\t<1%%\r\n", pxTaskStatusArray[ x ].ulRunTimeCounter );
+							my_sprintf( pcWriteBuffer, "\t%lu\t\t<1%%\r\n", pxTaskStatusArray[ x ].ulRunTimeCounter );
 						}
 						#else
 						{
 							/* sizeof( int ) == sizeof( long ) so a smaller
 							printf() library can be used. */
-							sprintf( pcWriteBuffer, "\t%u\t\t<1%%\r\n", ( unsigned int ) pxTaskStatusArray[ x ].ulRunTimeCounter );
+							my_sprintf( pcWriteBuffer, "\t%u\t\t<1%%\r\n", ( unsigned int ) pxTaskStatusArray[ x ].ulRunTimeCounter );
 						}
 						#endif
 					}
 
-					pcWriteBuffer += strlen( pcWriteBuffer );
+					pcWriteBuffer += my_strlen( pcWriteBuffer );
 				}
 			}
 			else
