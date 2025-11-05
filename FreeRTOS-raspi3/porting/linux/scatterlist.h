@@ -1,0 +1,4 @@
+#ifndef __LINUX_SCATTERLIST_H_
+#define __LINUX_SCATTERLIST_H_
+
+#endif /* __LINUX_SCATTERLIST_H_ */
