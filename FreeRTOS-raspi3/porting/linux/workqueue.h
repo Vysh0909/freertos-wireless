@@ -1,6 +1,10 @@
 #ifndef __WORKQUEUE_H__
 #define __WORKQUEUE_H__
 
+#ifndef WQ_MEM_RECLAIM
+#define WQ_MEM_RECLAIM 0x01  // dummy value for compatibility
+#endif
+
 /* Auto-generated stub header: workqueue.h */
 static void *system_unbound_wq = NULL;
 
