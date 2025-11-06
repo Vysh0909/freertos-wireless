@@ -7,4 +7,12 @@
 #define ENOENT 2
 #endif
 
+#ifndef EINVAL
+#define EINVAL 22
+#endif
+
+#ifndef EOPNOTSUPP
+#define EOPNOTSUPP 95
+#endif
+
 #endif /* __ERR_H__ */
