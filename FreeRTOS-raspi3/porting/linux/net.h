@@ -1,17 +1,6 @@
 #ifndef __NET_H__
 #define __NET_H__
 
-#ifndef list_for_each_entry
-#define list_for_each_entry(pos, head, member) \
-    for (pos = (typeof(pos))((head)->next); pos != NULL; pos = NULL)
-#endif
-
-#ifndef _LINUX_LIST_H
-struct list_head {
-    struct list_head *next;
-    struct list_head *prev;
-};
-#endif
 
 #ifndef _LINUX_RCU_HEAD
 struct rcu_head {
