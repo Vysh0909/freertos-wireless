@@ -23,5 +23,11 @@
 #endif
 
 
+struct regulatory_request {
+    int wiphy_idx;
+    int initiator;
+    char alpha2[2];
+};
+
 #endif /* __REGULATORY_H__ */
 
