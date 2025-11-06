@@ -7,6 +7,23 @@
 #define IFF_DONT_BRIDGE 0x8000
 #endif
 
+/* Missing NETDEV notifier events */
+#ifndef NETDEV_POST_INIT
+#define NETDEV_POST_INIT        0
+#define NETDEV_REGISTER         1
+#define NETDEV_UNREGISTER       2
+#define NETDEV_GOING_DOWN       3
+#define NETDEV_DOWN             4
+#define NETDEV_UP               5
+#define NETDEV_PRE_UP           6
+#endif
+
+/* Missing notifier return codes */
+#ifndef NOTIFY_DONE
+#define NOTIFY_DONE 0
+#define NOTIFY_OK   1
+#endif
+
 struct kobject {
     // dummy placeholder to allow compilation
     char dummy;
