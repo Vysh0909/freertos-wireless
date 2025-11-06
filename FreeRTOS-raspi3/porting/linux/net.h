@@ -16,15 +16,6 @@ struct mutex {
 };
 #endif
 
-#ifndef _LINUX_DEVICE_H
-struct device {
-    char name[32];
-    struct device *parent;
-    void *class;         
-    void *platform_data;
-};
-#endif
-
 #ifndef ETHTOOL_FWVERS_LEN
 #define ETHTOOL_FWVERS_LEN 32
 #endif
@@ -37,11 +28,6 @@ struct device {
 typedef int possible_net_t;
 #endif
 
-#ifndef _LINUX_REGULATORY_REQUEST_H
-struct regulatory_request {
-    int dummy;
-};
-#endif
 
 #ifndef dev_name
 static inline const char *dev_name(const struct device *dev)

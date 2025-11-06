@@ -8,7 +8,11 @@ struct kobject {
 };
 
 struct device {
-    struct kobject kobj;
+	char name[32];
+    struct device *parent;
+    void *class;
+    void *platform_data;
+   struct kobject kobj;
 };
 
 struct net_device {

@@ -15,6 +15,7 @@ struct rfkill_ops {
     int (*query)(void *data, int id);
     int (*set)(void *data, int id, bool blocked);
     void (*set_block)(void);
+    void (*poll)(void *data);
 };
 
 #define RFKILL_TYPE_WLAN 0
