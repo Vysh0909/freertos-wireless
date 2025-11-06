@@ -14,4 +14,12 @@
 #define TRACE_EVENT(name, proto, args, struct, assign, print) /* nothing */
 #endif
 
+#ifndef DECLARE_EVENT_CLASS
+#define DECLARE_EVENT_CLASS(name, proto, args, struct__, assign, print) /* nothing */
+#endif
+
+#ifndef DEFINE_EVENT
+#define DEFINE_EVENT(template, name, proto, args) /* nothing */
+#endif
+
 #endif /* __TRACEPOINT_H__ */
