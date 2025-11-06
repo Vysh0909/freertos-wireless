@@ -34,4 +34,9 @@ typedef unsigned char bool;
 #define false 0
 #endif
 
+#ifndef MODULE_ALIAS_GENL_FAMILY
+#define MODULE_ALIAS_GENL_FAMILY(x)
+#endif
+
+
 #endif /* __MODULE_H__ */
