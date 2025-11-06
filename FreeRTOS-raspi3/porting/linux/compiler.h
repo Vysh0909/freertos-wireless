@@ -48,4 +48,8 @@
 #define DEFINE_GUARD(name, type, ...)
 #endif
 
+#ifndef __init
+#define __init
+#endif
+
 #endif /* __LINUX_COMPILER_H_ */
