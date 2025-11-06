@@ -2,6 +2,7 @@
 #define __BUG_H__
 
 #include "compiler.h"
+#include "rfkill_compat.h"
 
 #ifndef WARN_ON
 #define WARN_ON(x) ((x) ? 1 : 0)
