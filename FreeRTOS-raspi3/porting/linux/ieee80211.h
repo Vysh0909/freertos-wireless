@@ -4465,8 +4465,8 @@ static inline u8 *ieee80211_get_SA(struct ieee80211_hdr *hdr)
 	if (ieee80211_has_a4(hdr->frame_control))
 		return hdr->addr4;
 	if (ieee80211_has_fromds(hdr->frame_control))
-		return hdr->addr3;
-	return hdr->addr2;
+		return hdr->addrs.addr3;
+	return hdr->addrs.addr2;
 }
 
 /**
@@ -4483,9 +4483,9 @@ static inline u8 *ieee80211_get_SA(struct ieee80211_hdr *hdr)
 static inline u8 *ieee80211_get_DA(struct ieee80211_hdr *hdr)
 {
 	if (ieee80211_has_tods(hdr->frame_control))
-		return hdr->addr3;
+		return hdr->addrs.addr3;
 	else
-		return hdr->addr1;
+		return hdr->addrs.addr1;
 }
 
 /**
@@ -4635,7 +4635,7 @@ static inline bool _ieee80211_is_group_privacy_action(struct ieee80211_hdr *hdr)
 	struct ieee80211_mgmt *mgmt = (void *)hdr;
 
 	if (!ieee80211_is_action(hdr->frame_control) ||
-	    !is_multicast_ether_addr(hdr->addr1))
+	    !is_multicast_ether_addr(hdr->addrs.addr1))
 		return false;
 
 	return mgmt->u.action.category == WLAN_CATEGORY_MESH_ACTION ||
