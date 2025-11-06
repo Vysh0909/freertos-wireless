@@ -6,6 +6,7 @@
 #include "env_compat.h"
 #include "wait_compat.h"
 #include "time.h"
+#include "jiffies.h"
 
 #ifndef WARN_ON
 #define WARN_ON(x) ((x) ? 1 : 0)
