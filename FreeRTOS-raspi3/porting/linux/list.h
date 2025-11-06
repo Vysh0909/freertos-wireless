@@ -4,6 +4,7 @@
 /* Auto-generated stub header: list.h */
 #include "wiphy.h"
 #include "gfp.h"
+#include "rcupdate.h"
 
 /* Minimal list_head stub for compilation */
 struct list_head {
