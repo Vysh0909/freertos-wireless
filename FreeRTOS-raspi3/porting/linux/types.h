@@ -40,6 +40,7 @@ typedef uint32_t  __be32;
 typedef uint64_t  __be64;
 typedef long ssize_t;
 typedef unsigned int gfp_t;
+typedef int atomic_t;
 
 /* Common macros used by kernel headers */
 
