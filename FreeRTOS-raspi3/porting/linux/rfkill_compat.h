@@ -14,7 +14,16 @@ enum rfkill_hard_block_reasons {
 struct rfkill_ops {
     int (*query)(void *data, int id);
     int (*set)(void *data, int id, bool blocked);
+    void (*set_block)(void);
 };
+
+#define RFKILL_TYPE_WLAN 0
+
+static inline void *rfkill_alloc(const char *name, void *dev, int type,
+                                 struct rfkill_ops *ops, void *data) {
+    return NULL; // Dummy
+}
+
 
 #endif /* __RFKILL_COMPAT_H__ */
 

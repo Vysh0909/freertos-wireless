@@ -8,6 +8,9 @@
 #include <stdbool.h>
 #include <limits.h>   /* for CHAR_BIT */
 
+
+#define U32_MAX 0xFFFFFFFFU
+
 /* Basic kernel-style integer types */
 typedef uint8_t   u8;
 typedef uint16_t  u16;

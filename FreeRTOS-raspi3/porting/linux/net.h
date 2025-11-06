@@ -1,6 +1,7 @@
 #ifndef __NET_H__
 #define __NET_H__
 
+struct net init_net;
 
 #ifndef _LINUX_RCU_HEAD
 struct rcu_head {
