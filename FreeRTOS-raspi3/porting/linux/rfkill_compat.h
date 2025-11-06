@@ -11,5 +11,10 @@ enum rfkill_hard_block_reasons {
 #define RFKILL_HARD_BLOCK_SIGNAL  RFKILL_HARD_BLOCK_SIGNAL
 #endif
 
+struct rfkill_ops {
+    int (*query)(void *data, int id);
+    int (*set)(void *data, int id, bool blocked);
+};
+
 #endif /* __RFKILL_COMPAT_H__ */
 
