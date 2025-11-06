@@ -11,6 +11,10 @@
 #define EINVAL 22
 #endif
 
+#ifndef ERFKILL
+#define ERFKILL 100
+#endif
+
 #ifndef EOPNOTSUPP
 #define EOPNOTSUPP 95
 #endif
