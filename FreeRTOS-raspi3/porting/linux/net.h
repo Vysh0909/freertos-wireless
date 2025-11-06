@@ -59,7 +59,15 @@ struct timer_list { int dummy; };
 #endif
 
 #ifndef _LINUX_WORK_STRUCT_H
-struct work_struct { int dummy; };
+struct work_struct { 
+	int dummy;
+	void *data;  /* placeholder */
+};
+
+struct delayed_work {
+    struct work_struct work;
+    unsigned long delay;  /* placeholder for jiffies */
+};
 #endif
 
 #ifndef spinlock_t
