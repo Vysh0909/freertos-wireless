@@ -41,6 +41,7 @@ typedef uint64_t  __be64;
 typedef long ssize_t;
 typedef unsigned int gfp_t;
 typedef int atomic_t;
+#define ATOMIC_INIT(x) (x)
 
 /* Common macros used by kernel headers */
 
