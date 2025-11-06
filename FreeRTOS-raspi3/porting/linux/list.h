@@ -4,17 +4,22 @@
 /* Auto-generated stub header: list.h */
 #include "wiphy.h"
 
-#ifndef list_for_each_entry
-#define list_for_each_entry(pos, head, member) \
-    for (pos = (typeof(pos))((head)->next); pos != NULL; pos = NULL)
-#endif
-
-#ifndef _LINUX_LIST_H
-
+/* Minimal list_head stub for compilation */
 struct list_head {
     struct list_head *next;
     struct list_head *prev;
 };
-#endif
+
+/* Dummy macros to allow compilation */
+#define LIST_HEAD(name) struct list_head name = { &name, &name }
+
+#define list_for_each_entry_continue_reverse(pos, head, member) \
+    for (pos = NULL; pos != NULL; pos = NULL)
+
+#define list_for_each_entry_safe(pos, n, head, member) \
+    for (pos = NULL, n = NULL; pos != NULL; pos = NULL)
+
+#define list_for_each_entry(pos, head, member) \
+    for (pos = NULL; pos != NULL; pos = NULL)
 
 #endif /* __LIST_H__ */
