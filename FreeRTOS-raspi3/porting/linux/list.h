@@ -2,6 +2,7 @@
 #define __LIST_H__
 
 /* Auto-generated stub header: list.h */
+#include "wiphy.h"
 #include "gfp.h"
 
 /* Minimal list_head stub for compilation */

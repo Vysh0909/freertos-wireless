@@ -19,6 +19,8 @@ struct mutex {
 struct device {
     char name[32];
     struct device *parent;
+    void *class;         
+    void *platform_data;
 };
 #endif
 
