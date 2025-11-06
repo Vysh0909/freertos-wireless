@@ -56,6 +56,30 @@ struct delayed_work {
 typedef int spinlock_t;
 #endif
 
+/* Dummy notifier_block for porting environment */
+#ifndef NOTIFIER_BLOCK
+#define NOTIFIER_BLOCK
+struct notifier_block {
+	 int (*notifier_call)(struct notifier_block *, unsigned long, void *);
+         struct notifier_block *next;
+          int priority;
+};
+#endif
+
+/* Dummy pernet_operations for porting environment */
+#ifndef PERNET_OPERATIONS
+#define PERNET_OPERATIONS
+struct pernet_operations {
+     int (*init)(struct net *);
+    void (*exit)(struct net *);
+    int priority;
+};
+#endif
+
+/* Dummy macros for __net_exit if used */
+#ifndef __net_exit
+#define __net_exit
+#endif
 
 #endif /* __NET_H__ */
 
