@@ -2,6 +2,7 @@
 #define __LIST_H__
 
 /* Auto-generated stub header: list.h */
+#include "wiphy.h"
 
 #ifndef list_for_each_entry
 #define list_for_each_entry(pos, head, member) \
