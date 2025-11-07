@@ -89,7 +89,8 @@ struct ieee80211_reg_rule {
         int max_antenna_gain;
         int max_eirp;
     } power_rule;
-
+ 
+          int psd;
          unsigned int flags;
          unsigned int dfs_cac_ms;
 	 struct ieee80211_wmm_rule wmm_rule;
