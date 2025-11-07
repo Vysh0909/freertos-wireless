@@ -3,6 +3,8 @@
 
 /* Auto-generated stub header: skbuff.h */
 typedef uint16_t __be16;
+typedef uint8_t   u8;
+
 typedef struct page {
     void *addr;
 } page;
@@ -19,7 +21,7 @@ struct skb_shared_info {
 };
 
 struct sk_buff {
-    void *data;
+    u8 *data;
     unsigned int len;
     void *head;
      unsigned int data_len;
