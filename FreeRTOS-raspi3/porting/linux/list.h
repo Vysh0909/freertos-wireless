@@ -14,7 +14,11 @@ struct list_head {
 };
 
 /* Dummy macros to allow compilation */
+#define rb_entry(ptr, type, member) ((type *)((char *)(ptr) - offsetof(type, member)))
+
 #define LIST_HEAD(name) struct list_head name = { &name, &name }
+
+#define INIT_LIST_HEAD(ptr) do { (ptr)->next = (ptr); (ptr)->prev = (ptr); } while (0)
 
 #define list_for_each_entry_continue_reverse(pos, head, member) \
     for (pos = NULL; pos != NULL; pos = NULL)
@@ -33,4 +37,8 @@ struct list_head {
 
 #define list_last_entry(ptr, type, member) \
     ((ptr)->next ? container_of((ptr)->next, type, member) : NULL)
+
+#define list_for_each_entry_rcu(pos, head, member, cond) \
+    for (pos = (typeof(pos))((head)->next); pos != NULL; pos = (typeof(pos))(pos->member.next))
+
 #endif /* __LIST_H__ */
