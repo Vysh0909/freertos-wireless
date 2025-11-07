@@ -63,6 +63,12 @@ struct regulatory_request {
      struct list_head list;
 };
 
+enum ieee80211_regulatory_flags {
+    IEEE80211_REG_DISABLE_BEACON_HINTS = 1 << 0,
+    IEEE80211_REG_DISABLE_11D = 1 << 1,
+    IEEE80211_REG_ENABLE_SPECTRUM_MGMT = 1 << 2,
+    // ... add the rest as needed
+};
 
 enum dfs_region {
     DFS_UNSET = 0,

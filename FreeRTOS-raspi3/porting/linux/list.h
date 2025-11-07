@@ -31,4 +31,6 @@ struct list_head {
 #define list_first_entry(ptr, type, member) \
     ((ptr)->next ? container_of((ptr)->next, type, member) : NULL)
 
+#define list_last_entry(ptr, type, member) \
+    ((ptr)->next ? container_of((ptr)->next, type, member) : NULL)
 #endif /* __LIST_H__ */
