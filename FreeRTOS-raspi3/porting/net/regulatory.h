@@ -57,6 +57,7 @@ struct regulatory_request {
     enum reg_env country_ie_env;
     int user_reg_hint_type;
     int dfs_region;
+     struct list_head list;
 };
 
 

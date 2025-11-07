@@ -28,6 +28,8 @@ static void reg_check_chans(struct work_struct *work)
 
 typedef int spinlock_t;
 static spinlock_t reg_requests_lock;
+extern spinlock_t reg_pending_beacons_lock;
+extern spinlock_t reg_indoor_lock;
 
 static inline void spin_lock(spinlock_t *lock)   { (void)lock; }
 static inline void spin_unlock(spinlock_t *lock) { (void)lock; }
