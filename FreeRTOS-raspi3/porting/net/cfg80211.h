@@ -2246,12 +2246,12 @@ struct cfg80211_sar_capa {
 int cfg80211_get_station(struct net_device *dev, const u8 *mac_addr,
 			 struct station_info *sinfo);
 #else
-static inline int cfg80211_get_station(struct net_device *dev,
+/*static inline int cfg80211_get_station(struct net_device *dev,
 				       const u8 *mac_addr,
 				       struct station_info *sinfo)
 {
 	return -ENOENT;
-}
+}*/
 #endif
 
 /**

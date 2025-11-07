@@ -460,8 +460,8 @@ void cfg80211_process_wiphy_works(struct cfg80211_registered_device *rdev,
 				  struct wiphy_work *end);
 void cfg80211_process_wdev_events(struct wireless_dev *wdev);
 
-bool cfg80211_does_bw_fit_range(const struct ieee80211_freq_range *freq_range,
-				u32 center_freq_khz, u32 bw_khz);
+//bool cfg80211_does_bw_fit_range(const struct ieee80211_freq_range *freq_range,
+//				u32 center_freq_khz, u32 bw_khz);
 
 int cfg80211_scan(struct cfg80211_registered_device *rdev);
 
