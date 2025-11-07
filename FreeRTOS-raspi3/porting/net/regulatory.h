@@ -4,6 +4,11 @@
 #include "../linux/module.h"
 #include "../linux/net.h"
 
+#ifndef max_t
+#define max_t(type, a, b) ({ type __a = (a); type __b = (b); __a > __b ? __a : __b; })
+#endif
+
+
 #ifndef REGULATORY_WIPHY_SELF_MANAGED
 #define REGULATORY_WIPHY_SELF_MANAGED    0x01
 #endif
