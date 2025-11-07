@@ -2,6 +2,7 @@
 #define __REGULATORY_H__
 
 #include "../linux/module.h"
+#include "../linux/net.h"
 
 #ifndef REGULATORY_WIPHY_SELF_MANAGED
 #define REGULATORY_WIPHY_SELF_MANAGED    0x01
@@ -24,6 +25,11 @@
 #endif
 
 #define REG_RULE(start, end, ...) {0}
+
+#define mutex_lock(x)   ((void)0)
+#define mutex_unlock(x) ((void)0)
+
+struct mutex reg_regdb_apply_mutex; // define the mutex
 
 enum reg_env {
     ENVIRON_ANY,
@@ -51,16 +57,14 @@ enum dfs_region {
 };
 
 struct ieee80211_reg_rule {
-    /* Add fields if needed; can be empty for stubs */
     int dummy;
 };
 
-/* Minimal regdomain stub */
 struct ieee80211_regdomain {
 	enum dfs_region dfs_region;
     int n_reg_rules;
     char alpha2[2];
-    struct ieee80211_reg_rule reg_rules[8];
+    struct ieee80211_reg_rule reg_rules[];
 };
 
 #endif /* __REGULATORY_H__ */
