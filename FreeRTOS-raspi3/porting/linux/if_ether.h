@@ -19,6 +19,7 @@
 #define ETH_P_IPV6     0x86DD  /* IPv6 */
 #define ETH_P_MPLS_UC  0x8847
 #define ETH_P_MPLS_MC  0x8848
+#define ETH_P_80221    0x88F7
 #define ETH_ALEN 6
 typedef uint16_t __be16;
 struct ethhdr {
