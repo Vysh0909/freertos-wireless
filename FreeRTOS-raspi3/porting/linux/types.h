@@ -160,18 +160,17 @@ typedef unsigned char bool;
 #define false 0
 #endif
 
-enum dfs_region {
+/*enum dfs_region {
     DFS_UNSET = 0,
     DFS_FCC,
     DFS_ETSI,
     DFS_JP,
 };
 
-/* Minimal stub for porting build */
 struct ieee80211_regdomain {
     enum dfs_region dfs_region;
 };
-
+*/
 struct ieee80211_freq_range {
     u32 start_freq_khz;
     u32 end_freq_khz;

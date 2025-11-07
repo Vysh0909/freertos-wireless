@@ -1,6 +1,7 @@
 #ifndef __REGULATORY_H__
 #define __REGULATORY_H__
 
+#include "../linux/module.h"
 
 #ifndef REGULATORY_WIPHY_SELF_MANAGED
 #define REGULATORY_WIPHY_SELF_MANAGED    0x01
@@ -22,6 +23,8 @@
 #define REGULATORY_COUNTRY_IE_IGNORE     0x10
 #endif
 
+#define REG_RULE(start, end, ...) {0}
+
 enum reg_env {
     ENVIRON_ANY,
     ENVIRON_IND,
@@ -37,6 +40,27 @@ struct regulatory_request {
     bool intersect;
     bool processed;
     enum reg_env country_ie_env;
+};
+
+
+enum dfs_region {
+    DFS_UNSET = 0,
+    DFS_FCC,
+    DFS_ETSI,
+    DFS_JP,
+};
+
+struct ieee80211_reg_rule {
+    /* Add fields if needed; can be empty for stubs */
+    int dummy;
+};
+
+/* Minimal regdomain stub */
+struct ieee80211_regdomain {
+	enum dfs_region dfs_region;
+    int n_reg_rules;
+    char alpha2[2];
+    struct ieee80211_reg_rule reg_rules[8];
 };
 
 #endif /* __REGULATORY_H__ */
