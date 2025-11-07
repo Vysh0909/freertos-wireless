@@ -593,7 +593,7 @@ static inline u16 ieee80211_get_radiotap_len(const char *data)
 {
 	const struct ieee80211_radiotap_header *hdr = (const void *)data;
 
-	return get_unaligned_le16(&hdr->it_len);
+	return get_unaligned_le16(&hdr->hdr.it_len);
 }
 
 #endif /* __RADIOTAP_H */
