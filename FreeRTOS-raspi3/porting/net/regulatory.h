@@ -72,9 +72,22 @@ struct ieee80211_wmm_rule {
 
 
 struct ieee80211_reg_rule {
-	struct ieee80211_wmm_rule wmm_rule;
+	 struct {
+        int start_freq_khz;
+        int end_freq_khz;
+        int max_bandwidth_khz;
+    } freq_range;
+
+    struct {
+        int max_antenna_gain;
+        int max_eirp;
+    } power_rule;
+
+         unsigned int flags;
+         unsigned int dfs_cac_ms;
+	 struct ieee80211_wmm_rule wmm_rule;
 	 bool has_wmm;
-    int dummy;
+         int dummy;
 };
 
 struct ieee80211_regdomain {
