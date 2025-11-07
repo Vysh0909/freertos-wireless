@@ -3,6 +3,7 @@
 
 #include "../linux/module.h"
 #include "../linux/net.h"
+//#include "../linux/env_compat.h"
 
 #ifndef max_t
 #define max_t(type, a, b) ({ type __a = (a); type __b = (b); __a > __b ? __a : __b; })
@@ -45,7 +46,9 @@ enum reg_env {
     ENVIRON_IND,
     ENVIRON_FCC,
     ENVIRON_ETSI,
-    ENVIRON_GLOBAL
+    ENVIRON_GLOBAL,
+    ENVIRON_INDOOR,
+    ENVIRON_OUTDOOR
 };
 
 struct regulatory_request {

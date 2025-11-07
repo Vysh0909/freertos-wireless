@@ -16,6 +16,8 @@
 #define EAGAIN      11
 #define ENOMEM      12
 #define EBUSY       16
+#define EALREADY   114
+#define ENODEV     19
 #define EILSEQ      84
 #define EINVAL      22
 #define ENOSPC      28
