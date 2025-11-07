@@ -2,6 +2,14 @@
 #define _LINUX_SYSFS_ATTRS_H
 
 #include "device.h"  // include only if your project has it
+#include <stddef.h>
+#include <stdint.h>
+
+/* Ensure ssize_t is defined */
+#ifndef _SSIZE_T_DEFINED
+typedef long ssize_t;
+#define _SSIZE_T_DEFINED
+#endif
 
 struct attribute {
     const char *name;
