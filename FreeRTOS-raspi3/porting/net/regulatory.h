@@ -29,6 +29,9 @@
 #define REGULATORY_COUNTRY_IE_IGNORE     0x10
 #endif
 
+#define REGULATORY_DISABLE_BEACON_HINTS  0x03
+
+
 #define REG_RULE(start, end, ...) {0}
 #define NL80211_USER_REG_HINT_USER 0
 #define KHZ_PER_GHZ 1000000
@@ -53,6 +56,7 @@ struct regulatory_request {
     bool processed;
     enum reg_env country_ie_env;
     int user_reg_hint_type;
+    int dfs_region;
 };
 
 
