@@ -24,4 +24,10 @@ struct list_head {
 #define list_for_each_entry(pos, head, member) \
     for (pos = NULL; pos != NULL; pos = NULL)
 
+#define list_first_entry_or_null(ptr, type, member) \
+    ((ptr)->next != (ptr) ? container_of((ptr)->next, type, member) : NULL)
+
+#define list_first_entry(ptr, type, member) \
+    ((ptr)->next ? container_of((ptr)->next, type, member) : NULL)
+
 #endif /* __LIST_H__ */
