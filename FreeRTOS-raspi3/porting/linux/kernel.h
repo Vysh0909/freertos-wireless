@@ -50,4 +50,9 @@ static inline uint32_t get_unaligned_le32(const void *p)
 #define fallthrough do {} while (0)
 #endif
 
+#ifndef min_t
+#define min_t(type, x, y) \
+    ({ type __min1 = (x); type __min2 = (y); __min1 < __min2 ? __min1 : __min2; })
+#endif
+
 #endif /* __KERNEL_H__ */
