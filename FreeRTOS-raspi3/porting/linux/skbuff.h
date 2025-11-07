@@ -2,9 +2,27 @@
 #define __SKBUFF_H__
 
 /* Auto-generated stub header: skbuff.h */
+
+typedef struct page {
+    void *addr;
+} page;
+
+typedef struct skb_frag {
+    struct page *page;
+    unsigned int page_offset;
+    unsigned int size;
+} skb_frag_t;
+
+struct skb_shared_info {
+    unsigned int nr_frags;
+    skb_frag_t frags[16]; /* arbitrary small number */
+};
+
 struct sk_buff {
     void *data;
     unsigned int len;
+    void *head;
+     unsigned int data_len;
 };
 
 struct sk_buff_head {
