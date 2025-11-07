@@ -24,6 +24,8 @@
 #define NOTIFY_OK   1
 #endif
 
+#define ETH_ALEN    6   /* Octets in one ethernet addr */
+
 struct kobject {
     // dummy placeholder to allow compilation
     char dummy;
