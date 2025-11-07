@@ -22,11 +22,21 @@
 #define REGULATORY_COUNTRY_IE_IGNORE     0x10
 #endif
 
+enum reg_env {
+    ENVIRON_ANY,
+    ENVIRON_IND,
+    ENVIRON_FCC,
+    ENVIRON_ETSI,
+    ENVIRON_GLOBAL
+};
 
 struct regulatory_request {
     int wiphy_idx;
     int initiator;
     char alpha2[2];
+    bool intersect;
+    bool processed;
+    enum reg_env country_ie_env;
 };
 
 #endif /* __REGULATORY_H__ */
