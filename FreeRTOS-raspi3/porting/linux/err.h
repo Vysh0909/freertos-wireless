@@ -19,7 +19,7 @@
 #define EILSEQ      84
 #define EINVAL      22
 #define ENOSPC      28
-
+#define ENODATA     61
 
 #ifndef ERFKILL
 #define ERFKILL 100
