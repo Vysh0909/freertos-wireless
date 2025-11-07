@@ -25,6 +25,7 @@
 #endif
 
 #define REG_RULE(start, end, ...) {0}
+#define NL80211_USER_REG_HINT_USER 0
 
 #define mutex_lock(x)   ((void)0)
 #define mutex_unlock(x) ((void)0)
@@ -46,6 +47,7 @@ struct regulatory_request {
     bool intersect;
     bool processed;
     enum reg_env country_ie_env;
+    int user_reg_hint_type;
 };
 
 

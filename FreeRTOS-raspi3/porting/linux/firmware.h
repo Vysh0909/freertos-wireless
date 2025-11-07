@@ -3,6 +3,9 @@
 
 /* Auto-generated stub header: firmware.h */
 
+#define MODULE_FIRMWARE(x)  /* nothing */
+#define THIS_MODULE         NULL
+
 #include <stddef.h>
 
 struct firmware {
