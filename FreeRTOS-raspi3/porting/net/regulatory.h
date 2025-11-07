@@ -56,13 +56,24 @@ enum dfs_region {
     DFS_JP,
 };
 
+struct ieee80211_wmm_ac {
+    uint8_t cw_min;
+    uint8_t cw_max;
+    uint8_t aifsn;
+    uint16_t cot;
+};
+
+
 struct ieee80211_wmm_rule {
-    uint8_t padding[4]; // minimal stub, size depends on usage
+    	 uint8_t padding[4]; // minimal stub, size depends on usage
+	 struct ieee80211_wmm_ac client[4];
+         struct ieee80211_wmm_ac ap[4];
 };
 
 
 struct ieee80211_reg_rule {
 	struct ieee80211_wmm_rule wmm_rule;
+	 bool has_wmm;
     int dummy;
 };
 
