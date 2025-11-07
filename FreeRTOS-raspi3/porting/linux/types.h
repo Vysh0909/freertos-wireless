@@ -8,6 +8,8 @@
 #include <stdbool.h>
 #include <limits.h>   /* for CHAR_BIT */
 #include "skbuff.h"
+#include "kernel.h"
+#include "if_ether.h"
 
 #define U32_MAX 0xFFFFFFFFU
 

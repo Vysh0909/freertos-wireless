@@ -46,4 +46,8 @@ static inline uint32_t get_unaligned_le32(const void *p)
            ((uint32_t)b[2] << 16) | ((uint32_t)b[3] << 24);
 }
 
+#ifndef fallthrough
+#define fallthrough do {} while (0)
+#endif
+
 #endif /* __KERNEL_H__ */
