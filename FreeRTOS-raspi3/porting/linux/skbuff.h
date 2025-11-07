@@ -29,6 +29,7 @@ struct sk_buff {
     int priority;
     bool head_frag;
     __be16 protocol;
+     unsigned char cb[48];
 };
 
 struct sk_buff_head {

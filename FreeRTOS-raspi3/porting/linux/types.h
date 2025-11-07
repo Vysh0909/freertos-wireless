@@ -172,4 +172,9 @@ struct ieee80211_regdomain {
     enum dfs_region dfs_region;
 };
 
+struct ieee80211_freq_range {
+    u32 start_freq_khz;
+    u32 end_freq_khz;
+};
+
 #endif /* __LINUX_TYPES_H_ */
