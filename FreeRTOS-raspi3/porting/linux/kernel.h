@@ -21,6 +21,10 @@
 #endif
 
 
+#define GFP_ATOMIC 0
+#define HZ 1000
+#define MSEC_PER_SEC 1000
+
 /* ---- Struct Group Stub ---- */
 /*
  * The real kernel __struct_group groups related members into a named
