@@ -26,7 +26,7 @@
 
 #define REG_RULE(start, end, ...) {0}
 #define NL80211_USER_REG_HINT_USER 0
-
+#define KHZ_PER_GHZ 1000000
 #define mutex_lock(x)   ((void)0)
 #define mutex_unlock(x) ((void)0)
 
@@ -97,6 +97,18 @@ struct ieee80211_regdomain {
     int n_reg_rules;
     char alpha2[2];
     struct ieee80211_reg_rule reg_rules[];
+};
+
+struct ieee80211_freq_range {
+    int start_freq_khz;
+    int end_freq_khz;
+    int max_bandwidth_khz;  /* add missing member */
+};
+
+/* For power rules */
+struct ieee80211_power_rule {
+    int max_eirp;          /* in dBm * 100 */
+    int max_antenna_gain;  /* in dBi */
 };
 
 #endif /* __REGULATORY_H__ */
