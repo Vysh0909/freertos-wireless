@@ -7,7 +7,7 @@
 #include <stddef.h>   /* for NULL */
 #include <stdbool.h>
 #include <limits.h>   /* for CHAR_BIT */
-
+#include "skbuff.h"
 
 #define U32_MAX 0xFFFFFFFFU
 
