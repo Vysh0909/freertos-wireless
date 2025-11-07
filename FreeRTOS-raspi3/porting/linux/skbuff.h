@@ -2,7 +2,7 @@
 #define __SKBUFF_H__
 
 /* Auto-generated stub header: skbuff.h */
-
+typedef uint16_t __be16;
 typedef struct page {
     void *addr;
 } page;
@@ -26,6 +26,7 @@ struct sk_buff {
      struct net_device *dev;
     int priority;
     bool head_frag;
+    __be16 protocol;
 };
 
 struct sk_buff_head {
