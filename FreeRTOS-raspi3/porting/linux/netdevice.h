@@ -5,6 +5,7 @@
 
 #include "err.h"
 #include "sysfs_attrs.h"
+#include "class.h"
 
 #ifndef IFF_DONT_BRIDGE
 #define IFF_DONT_BRIDGE 0x8000
