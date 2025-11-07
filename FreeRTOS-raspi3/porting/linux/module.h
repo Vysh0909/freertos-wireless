@@ -27,13 +27,6 @@
 #define module_param(name, type, perm)
 #endif
 
-/* Kernel bool type if not defined */
-#ifndef bool
-typedef unsigned char bool;
-#define true 1
-#define false 0
-#endif
-
 #ifndef MODULE_ALIAS_GENL_FAMILY
 #define MODULE_ALIAS_GENL_FAMILY(x)
 #endif

@@ -7,6 +7,7 @@
 #include "sysfs_attrs.h"
 #include "class.h"
 #include "sysfs_stubs.h"
+#include "types.h"
 
 #ifndef IFF_DONT_BRIDGE
 #define IFF_DONT_BRIDGE 0x8000

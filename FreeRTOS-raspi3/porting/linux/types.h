@@ -151,5 +151,11 @@ static inline unsigned int hweight8(unsigned int w)
 #define offsetofend(TYPE, MEMBER) (offsetof(TYPE, MEMBER) + sizeof(((TYPE *)0)->MEMBER))
 #endif
 
+/* Kernel bool type if not defined */
+#ifndef bool
+typedef unsigned char bool;
+#define true 1
+#define false 0
+#endif
 
 #endif /* __LINUX_TYPES_H_ */
