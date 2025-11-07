@@ -601,7 +601,7 @@ static void cfg80211_mgmt_registrations_update(struct wireless_dev *wdev)
 	}
 
 	rcu_read_lock();
-	list_for_each_entry_rcu(tmp, &rdev->wiphy.wdev_list, list) {
+	list_for_each_entry_rcu(tmp, &rdev->wiphy.wdev_list, list, true) {
 		list_for_each_entry(reg, &tmp->mgmt_registrations, list) {
 			u32 mask = BIT(le16_to_cpu(reg->frame_type) >> 4);
 			u32 mcast_mask = 0;
