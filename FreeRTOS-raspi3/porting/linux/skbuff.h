@@ -23,6 +23,9 @@ struct sk_buff {
     unsigned int len;
     void *head;
      unsigned int data_len;
+     struct net_device *dev;
+    int priority;
+    bool head_frag;
 };
 
 struct sk_buff_head {
