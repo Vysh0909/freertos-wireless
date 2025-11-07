@@ -4,6 +4,7 @@
 /* Auto-generated stub header: netdevice.h */
 
 #include "err.h"
+#include "sysfs_attrs.h"
 
 #ifndef IFF_DONT_BRIDGE
 #define IFF_DONT_BRIDGE 0x8000
