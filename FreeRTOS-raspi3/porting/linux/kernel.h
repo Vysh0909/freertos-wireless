@@ -16,6 +16,11 @@
 #define __packed __attribute__((__packed__))
 #endif
 
+#ifndef struct_size
+#define struct_size(p, member, n) (sizeof(*(p)) + (n) * sizeof((p)->member[0]))
+#endif
+
+
 /* ---- Struct Group Stub ---- */
 /*
  * The real kernel __struct_group groups related members into a named
