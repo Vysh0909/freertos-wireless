@@ -10,6 +10,7 @@
  * Copyright (C) 2018-2024 Intel Corporation
  */
 
+#include "../linux/genetlink.h"
 #include <linux/ethtool.h>
 #include <uapi/linux/rfkill.h>
 #include <linux/netdevice.h>
