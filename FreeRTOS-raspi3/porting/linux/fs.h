@@ -5,6 +5,10 @@
 #include <stdint.h>
 #include <sys/types.h> 
 
+#ifndef __user
+#define __user
+#endif
+
 typedef long long loff_t;
 
 struct file {
