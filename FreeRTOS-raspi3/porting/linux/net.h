@@ -35,7 +35,7 @@ typedef int possible_net_t;
 #ifndef dev_name
 static inline const char *dev_name(const struct device *dev)
 {
-    return dev ? dev->name : "unknown";
+    //return dev ? dev->name : "unknown";
 }
 #endif
 

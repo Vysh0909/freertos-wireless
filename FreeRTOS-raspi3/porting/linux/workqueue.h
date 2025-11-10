@@ -1,6 +1,7 @@
 #ifndef __WORKQUEUE_H__
 #define __WORKQUEUE_H__
 
+#include <stddef.h>
 #include "net.h"
 
 #ifndef WQ_MEM_RECLAIM
