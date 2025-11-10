@@ -6353,10 +6353,36 @@ struct iw_point {
     uint16_t flags;
 };
 
+struct iw_quality {
+    __u8 qual;
+    __u8 level;
+    __u8 noise;
+    __u8 updated;
+};
+
+struct iw_param {
+    int32_t value;     /* The value itself (e.g., threshold, timeout, etc.) */
+    uint8_t fixed;     /* If true, the value is fixed (not auto) */
+    uint8_t disabled;  /* If true, the parameter is disabled */
+    uint16_t flags;    /* Optional flags for the parameter */
+};
+
+struct iw_request_info {
+    uint16_t cmd;
+    uint16_t flags;
+};
+
 union iwreq_data {
     struct iw_point data;
     char name[16];
     __u32 mode;
+     struct iw_point essid;
+    struct iw_param rts;
+    struct iw_param frag;
+    struct iw_param retry;
+    struct iw_param txpower;
+    struct iw_freq freq;
+    struct iw_quality qual;
 };
 
 struct sockaddr {
@@ -6368,13 +6394,6 @@ struct iw_mlme {
     unsigned short cmd;
     unsigned short reason_code;
     struct sockaddr addr;
-};
-
-struct iw_quality {
-    __u8 qual;
-    __u8 level;
-    __u8 noise;
-    __u8 updated;
 };
 
 struct iw_range {

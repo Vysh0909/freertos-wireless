@@ -33,9 +33,9 @@ int cfg80211_wext_giwscan(struct net_device *dev,
 /*int cfg80211_wext_giwrange(struct net_device *dev,
 			   struct iw_request_info *info,
 			   union iwreq_data *wrqu, char *extra);*/
-int cfg80211_wext_siwrts(struct net_device *dev,
+/*int cfg80211_wext_siwrts(struct net_device *dev,
 			 struct iw_request_info *info,
-			 union iwreq_data *wrqu, char *extra);
+			 union iwreq_data *wrqu, char *extra);*/
 /*int cfg80211_wext_giwrts(struct net_device *dev,
 			 struct iw_request_info *info,
 			 union iwreq_data *wrqu, char *extra);
