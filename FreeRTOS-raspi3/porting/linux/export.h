@@ -3,4 +3,6 @@
 
 /* Auto-generated stub header: export.h */
 
+#include "bitops.h"
+
 #endif /* __EXPORT_H__ */
