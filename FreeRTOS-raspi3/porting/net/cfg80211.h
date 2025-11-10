@@ -6313,6 +6313,8 @@ struct wext_connect_info {
     bool privacy;
     int ssid_len;
     int channel;
+    u8 *ssid;
+    u8 *bssid;
 };
 
 struct wext_keys {
@@ -6327,7 +6329,28 @@ struct wext_state {
     u8 prev_bssid[6];
     void *ie;
     size_t ie_len;
+    u8 ssid[32];                       /* Used directly */
+    u8 bssid[6];
 };
+
+struct iw_freq {
+    int m;      /* Mantissa */
+    short e;    /* Exponent */
+    char i;     /* List index (not used) */
+    char flags;
+};
+
+struct iw_point {
+    void *pointer;
+    uint16_t length;
+    uint16_t flags;
+};
+
+struct wext_crypto_info {
+    bool control_port;
+    uint16_t control_port_ethertype;
+};
+
 struct wireless_dev {
 	struct wext_state wext;
 	struct wiphy *wiphy;
