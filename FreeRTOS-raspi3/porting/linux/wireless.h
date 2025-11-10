@@ -43,4 +43,36 @@
 #define IW_EVENT_CAPA_SET_KERNEL(x)  memset(x, 0, sizeof(x))
 #define IW_EVENT_CAPA_SET(x, y)      do { } while (0)
 
+#define IW_RETRY_LIFETIME 0x1000
+#define IW_RETRY_LIMIT    0x2000
+#define IW_RETRY_TYPE     0x4000
+#define IW_RETRY_LONG     0x8000
+#define IW_RETRY_SHORT    0x0800
+
+/* ---------- Encoding flag constants ---------- */
+#define IW_ENCODE_INDEX        0x00FF
+#define IW_ENCODE_FLAGS        0xFF00
+#define IW_ENCODE_MODE         0xF000
+#define IW_ENCODE_DISABLED     0x8000
+#define IW_ENCODE_ENABLED      0x0000
+#define IW_ENCODE_NOKEY        0x4000
+
+/* ---------- Encryption algorithm constants ---------- */
+#define IW_ENCODE_ALG_NONE     0
+#define IW_ENCODE_ALG_WEP      1
+#define IW_ENCODE_ALG_TKIP     2
+#define IW_ENCODE_ALG_CCMP     3
+#define IW_ENCODE_ALG_AES_CMAC 4
+
+#define IW_ENCODE_EXT_TX_SEQ_VALID     0x00000001
+#define IW_ENCODE_EXT_RX_SEQ_VALID     0x00000002
+#define IW_ENCODE_EXT_GROUP_KEY        0x00000004
+#define IW_ENCODE_EXT_SET_TX_KEY       0x00000008
+
+/* ---------- TX power flags ---------- */
+#define IW_TXPOW_TYPE   0x00FF
+#define IW_TXPOW_DBM    0x0000
+#define IW_TXPOW_MWATT  0x0001
+#define IW_TXPOW_RANGE  0x1000
+
 #endif /* __WIRELESS_H__ */

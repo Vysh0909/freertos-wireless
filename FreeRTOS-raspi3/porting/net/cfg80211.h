@@ -6372,6 +6372,16 @@ struct iw_request_info {
     uint16_t flags;
 };
 
+struct iw_encode_ext {
+    uint32_t ext_flags;
+    uint8_t tx_seq[8];
+    uint8_t rx_seq[8];
+    uint8_t addr[6];
+    uint16_t alg;
+    uint16_t key_len;
+    uint8_t key[32];
+};
+
 union iwreq_data {
     struct iw_point data;
     char name[16];
