@@ -37,12 +37,17 @@ struct kobject {
     char dummy;
 };
 
+struct device_driver {
+    const char *name;
+};
+
 struct device {
 	char name[32];
     struct device *parent;
     void *class;
     void *platform_data;
    struct kobject kobj;
+   struct device_driver *driver;
 };
 
 struct net_device {

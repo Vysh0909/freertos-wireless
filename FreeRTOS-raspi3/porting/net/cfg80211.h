@@ -9502,7 +9502,7 @@ void cfg80211_nan_func_terminated(struct wireless_dev *wdev,
 				  u64 cookie, gfp_t gfp);
 
 /* ethtool helper */
-void cfg80211_get_drvinfo(struct net_device *dev, struct ethtool_drvinfo *info);
+//void cfg80211_get_drvinfo(struct net_device *dev, struct ethtool_drvinfo *info);
 
 /**
  * cfg80211_external_auth_request - userspace request for authentication
