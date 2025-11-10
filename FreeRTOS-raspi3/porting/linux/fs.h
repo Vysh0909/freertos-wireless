@@ -36,5 +36,12 @@ static inline loff_t generic_file_llseek(struct file *file, loff_t offset, int w
     return offset;
 }
 
+static inline loff_t default_llseek(struct file *file, loff_t offset, int whence)
+{
+    (void)file; (void)whence;
+    return offset;
+}
+
+
 #endif /* __PORTING_FS_H */
 
