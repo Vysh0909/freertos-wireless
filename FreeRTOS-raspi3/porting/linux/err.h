@@ -25,6 +25,7 @@
 #define ERANGE      34
 #define ENODATA     61
 #define ENOLINK      67
+#define ENETDOWN 100  /* Network is down */
 #define ENOTCONN 107
 
 #ifndef ERFKILL
