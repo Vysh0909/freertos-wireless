@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "netlink.h"   /* Include nlattr definition */
+#include "types.h"
 
 struct netlink_ext_ack {
     const char *msg;
@@ -13,6 +14,7 @@ struct genl_info {
     void *user_ptr[2];
     struct nlattr **attrs;          /* FIXED: was void*, now array of nlattr pointers */
     struct netlink_ext_ack *extack;
+    u32 snd_portid;
 };
 
 /* Safe no-op versions of the macros */

@@ -4,6 +4,10 @@
 #include <stddef.h>
 #include <stdint.h>
 
+#ifndef NLMSG_DEFAULT_SIZE
+#define NLMSG_DEFAULT_SIZE 4096
+#endif
+
 struct nlattr {
     uint16_t nla_len;
     uint16_t nla_type;
