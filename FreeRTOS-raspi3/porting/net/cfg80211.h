@@ -6369,6 +6369,12 @@ struct iw_mlme {
     struct sockaddr addr;
 };
 
+struct iw_range {
+    int we_version_compiled;
+    int we_version_source;
+    int throughput;
+};
+
 struct wireless_dev {
 	struct wext_state wext;
 	struct wiphy *wiphy;

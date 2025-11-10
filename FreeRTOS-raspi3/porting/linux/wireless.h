@@ -15,4 +15,8 @@
 #define IW_MODE_MONITOR    6   /* Passive monitor mode */
 #define IW_MODE_MESH       7   /* Mesh mode (if needed) */
 
+#ifndef WIRELESS_EXT
+#define WIRELESS_EXT 22
+#endif
+
 #endif /* __WIRELESS_H__ */
