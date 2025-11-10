@@ -6352,6 +6352,21 @@ struct iw_point {
     uint16_t flags;
 };
 
+union iwreq_data {
+    struct iw_point data;
+};
+
+struct sockaddr {
+    unsigned short sa_family;   /* address family, e.g. AF_INET */
+    char sa_data[14];           /* protocol address */
+};
+
+struct iw_mlme {
+    unsigned short cmd;
+    unsigned short reason_code;
+    struct sockaddr addr;
+};
+
 struct wireless_dev {
 	struct wext_state wext;
 	struct wiphy *wiphy;

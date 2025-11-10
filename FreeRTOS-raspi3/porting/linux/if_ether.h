@@ -15,6 +15,11 @@
 #ifndef ETH_P_IPX
 #define ETH_P_IPX  0x8137 /* IPX over DIX */
 #endif
+
+#ifndef ETH_P_PAE
+#define ETH_P_PAE 0x888E  /* EAP over LAN (IEEE 802.1X) */
+#endif
+
 #define ETH_P_IP       0x0800  /* IPv4 */
 #define ETH_P_IPV6     0x86DD  /* IPv6 */
 #define ETH_P_MPLS_UC  0x8847
