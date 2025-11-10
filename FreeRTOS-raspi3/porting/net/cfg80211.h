@@ -6324,8 +6324,18 @@ struct wext_connect_info {
     u8 *bssid;
 };
 
+#define WEXT_MAX_KEYS 6
+
+struct wext_key_params {
+    u8 key[32];          /* encryption key material */
+    int key_len;         /* key length */
+    u32 cipher;          /* cipher type (e.g., WLAN_CIPHER_SUITE_WEP40, etc.) */
+};
+
 struct wext_keys {
     int def;
+    struct wext_key_params params[WEXT_MAX_KEYS];  /* key metadata */
+    u8 data[WEXT_MAX_KEYS][32];
 };
 
 struct wext_state {
@@ -6338,6 +6348,7 @@ struct wext_state {
     size_t ie_len;
     u8 ssid[32];                       /* Used directly */
     u8 bssid[6];
+    int default_mgmt_key;
 };
 
 struct iw_freq {
@@ -6393,6 +6404,7 @@ union iwreq_data {
     struct iw_param txpower;
     struct iw_freq freq;
     struct iw_quality qual;
+    struct iw_point encoding;
 };
 
 struct sockaddr {
