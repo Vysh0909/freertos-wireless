@@ -12,7 +12,7 @@
 #include "debugfs.h"
 
 #define DEBUGFS_READONLY_FILE(name, buflen, fmt, value...)		\
-static ssize_t name## _read(struct file *file, char __user *userbuf,	\
+ssize_t name## _read(struct file *file, char __user *userbuf,	\
 			    size_t count, loff_t *ppos)			\
 {									\
 	struct wiphy *wiphy = file->private_data;			\
@@ -23,7 +23,7 @@ static ssize_t name## _read(struct file *file, char __user *userbuf,	\
 	return simple_read_from_buffer(userbuf, count, ppos, buf, res);	\
 }									\
 									\
-static const struct file_operations name## _ops = {			\
+const struct file_operations name## _ops = {			\
 	.read = name## _read,						\
 	.open = simple_open,						\
 	.llseek = generic_file_llseek,					\
