@@ -6306,7 +6306,13 @@ enum ieee80211_ap_reg_power {
  * @valid_links: bitmap describing what elements of @links are valid
  * @radio_mask: Bitmask of radios that this interface is allowed to operate on.
  */
+struct wext_crypto_info {
+    bool control_port;
+    u16 control_port_ethertype;
+};
+
 struct wext_connect_info {
+	struct wext_crypto_info crypto;
     void *ie;
     int ie_len;
     int bg_scan_period;
@@ -6344,11 +6350,6 @@ struct iw_point {
     void *pointer;
     uint16_t length;
     uint16_t flags;
-};
-
-struct wext_crypto_info {
-    bool control_port;
-    uint16_t control_port_ethertype;
 };
 
 struct wireless_dev {
