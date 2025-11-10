@@ -6325,6 +6325,8 @@ struct wext_state {
     int default_key;
     bool prev_bssid_valid;
     u8 prev_bssid[6];
+    void *ie;
+    size_t ie_len;
 };
 struct wireless_dev {
 	struct wext_state wext;
