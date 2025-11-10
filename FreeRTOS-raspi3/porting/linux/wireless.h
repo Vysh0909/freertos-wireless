@@ -3,6 +3,10 @@
 
 /* Auto-generated stub header: wireless.h */
 
+#ifndef BIT_ULL
+#define BIT_ULL(x) (1ULL << (x))
+#endif
+
 #define IW_MLME_DEAUTH     0
 #define IW_MLME_DISASSOC   1
 #define IW_ESSID_MAX_SIZE 32
@@ -35,6 +39,41 @@
 
 #define SIOCGIWAP                 0x8B15
 #define SIOCGIWSCAN               0x8B19
+
+#ifndef SIOCGIWNAME
+#define SIOCSIWFREQ        0x8B04
+#define SIOCGIWFREQ        0x8B05
+#define SIOCSIWMODE        0x8B06
+#define SIOCGIWMODE        0x8B07
+#define SIOCGIWRANGE       0x8B0B
+#define SIOCSIWAP          0x8B14
+#define SIOCGIWAP          0x8B15
+#define SIOCSIWMLME        0x8B16
+#define SIOCSIWESSID       0x8B1A
+#define SIOCGIWESSID       0x8B1B
+#define SIOCSIWRATE        0x8B20
+#define SIOCGIWRATE        0x8B21
+#define SIOCSIWRTS         0x8B22
+#define SIOCGIWRTS         0x8B23
+#define SIOCSIWFRAG        0x8B24
+#define SIOCGIWFRAG        0x8B25
+#define SIOCSIWTXPOW       0x8B26
+#define SIOCGIWTXPOW       0x8B27
+#define SIOCSIWRETRY       0x8B28
+#define SIOCGIWRETRY       0x8B29
+#define SIOCSIWENCODE      0x8B2A
+#define SIOCGIWENCODE      0x8B2B
+#define SIOCSIWPOWER       0x8B2C
+#define SIOCGIWPOWER       0x8B2D
+#define SIOCSIWGENIE       0x8B30
+#define SIOCSIWAUTH        0x8B32
+#define SIOCGIWAUTH        0x8B33
+#define SIOCSIWENCODEEXT   0x8B34
+#define SIOCSIWPMKSA       0x8B36
+#define SIOCGIWSCAN        0x8B19
+#define SIOCSIWSCAN        0x8B18
+#define SIOCGIWNAME        0x8B01
+#endif
 
 #define IW_EVENT_CAPA_SIZE        8
 #define IW_EVENT_CAPA_K_0         0
@@ -74,5 +113,65 @@
 #define IW_TXPOW_DBM    0x0000
 #define IW_TXPOW_MWATT  0x0001
 #define IW_TXPOW_RANGE  0x1000
+
+/* === Legacy WEXT definitions (removed from modern kernels) === */
+#ifndef IW_AUTH_ALG_OPEN_SYSTEM
+#define IW_AUTH_ALG_OPEN_SYSTEM        0x00000001
+#define IW_AUTH_ALG_SHARED_KEY         0x00000002
+#define IW_AUTH_ALG_LEAP               0x00000004
+#endif
+
+#ifndef IW_AUTH_WPA_VERSION_WPA
+#define IW_AUTH_WPA_VERSION_WPA        0x00000002
+#define IW_AUTH_WPA_VERSION_WPA2       0x00000004
+#define IW_AUTH_WPA_VERSION_DISABLED   0x00000001
+#endif
+
+#ifndef IW_AUTH_CIPHER_WEP40
+#define IW_AUTH_CIPHER_WEP40           0x00000001
+#define IW_AUTH_CIPHER_TKIP            0x00000002
+#define IW_AUTH_CIPHER_CCMP            0x00000008
+#define IW_AUTH_CIPHER_WEP104          0x00000010
+#define IW_AUTH_CIPHER_AES_CMAC        0x00000020
+#define IW_AUTH_CIPHER_NONE            0x00000040
+#endif
+
+#ifndef IW_AUTH_KEY_MGMT_802_1X
+#define IW_AUTH_KEY_MGMT_802_1X        1
+#define IW_AUTH_KEY_MGMT_PSK           2
+#endif
+
+#ifndef IW_AUTH_INDEX
+#define IW_AUTH_INDEX                  0x0FFF
+#define IW_AUTH_PRIVACY_INVOKED        1
+#define IW_AUTH_WPA_VERSION            2
+#define IW_AUTH_CIPHER_GROUP           3
+#define IW_AUTH_KEY_MGMT               4
+#define IW_AUTH_CIPHER_PAIRWISE        5
+#define IW_AUTH_80211_AUTH_ALG         6
+#define IW_AUTH_WPA_ENABLED            7
+#define IW_AUTH_RX_UNENCRYPTED_EAPOL   8
+#define IW_AUTH_DROP_UNENCRYPTED       9
+#define IW_AUTH_MFP                   10
+#endif
+
+#ifndef IW_POWER_MODE
+#define IW_POWER_MODE                  0x000F
+#define IW_POWER_ON                    0
+#define IW_POWER_ALL_R                 1
+#define IW_POWER_TIMEOUT               2
+#endif
+
+#ifndef IW_QUAL_LEVEL_INVALID
+#define IW_QUAL_LEVEL_INVALID          0x10
+#define IW_QUAL_QUAL_INVALID           0x20
+#define IW_QUAL_NOISE_INVALID          0x40
+#endif
+
+#ifndef IW_PMKSA_ADD
+#define IW_PMKSA_ADD                   1
+#define IW_PMKSA_REMOVE                2
+#define IW_PMKSA_FLUSH                 3
+#endif
 
 #endif /* __WIRELESS_H__ */

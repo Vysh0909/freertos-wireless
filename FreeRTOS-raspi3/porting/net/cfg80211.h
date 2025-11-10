@@ -6310,9 +6310,16 @@ enum ieee80211_ap_reg_power {
 struct wext_crypto_info {
     bool control_port;
     u16 control_port_ethertype;
+    u32 wpa_versions;
+    u32 cipher_group;
+    u32 ciphers_pairwise[5];
+    int n_ciphers_pairwise;
+    u32 akm_suites[5];
+    int n_akm_suites;
 };
 
 struct wext_connect_info {
+	int auth_type;
 	struct wext_crypto_info crypto;
     void *ie;
     int ie_len;
@@ -6325,9 +6332,10 @@ struct wext_connect_info {
 };
 
 #define WEXT_MAX_KEYS 6
+#define WEXT_MAX_KEY_SIZE 32
 
 struct wext_key_params {
-    u8 key[32];          /* encryption key material */
+	const u8 *key;
     int key_len;         /* key length */
     u32 cipher;          /* cipher type (e.g., WLAN_CIPHER_SUITE_WEP40, etc.) */
 };
@@ -6335,7 +6343,7 @@ struct wext_key_params {
 struct wext_keys {
     int def;
     struct wext_key_params params[WEXT_MAX_KEYS];  /* key metadata */
-    u8 data[WEXT_MAX_KEYS][32];
+    u8 data[WEXT_MAX_KEYS][WEXT_MAX_KEY_SIZE];
 };
 
 struct wext_state {
@@ -6393,6 +6401,11 @@ struct iw_encode_ext {
     uint8_t key[32];
 };
 
+struct sockaddr {
+    unsigned short sa_family;   /* address family, e.g. AF_INET */
+    char sa_data[14];           /* protocol address */
+};
+
 union iwreq_data {
     struct iw_point data;
     char name[16];
@@ -6405,11 +6418,30 @@ union iwreq_data {
     struct iw_freq freq;
     struct iw_quality qual;
     struct iw_point encoding;
+    struct iw_param param;
+    struct iw_param power;
+    struct iw_param bitrate;
+    struct sockaddr ap_addr;
 };
 
-struct sockaddr {
-    unsigned short sa_family;   /* address family, e.g. AF_INET */
-    char sa_data[14];           /* protocol address */
+struct iw_discarded {
+    __u32 misc;
+    __u32 nwid;
+    __u32 code;
+    __u32 fragmentation;
+    __u32 retries;
+};
+
+struct iw_statistics {
+    int status; /* dummy */
+    struct iw_quality qual;
+    struct iw_discarded discard;
+};
+
+struct iw_pmksa {
+    struct sockaddr bssid;
+    u8 pmkid[16];
+    int cmd;
 };
 
 struct iw_mlme {
