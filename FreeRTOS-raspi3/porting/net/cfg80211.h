@@ -6306,7 +6306,28 @@ enum ieee80211_ap_reg_power {
  * @valid_links: bitmap describing what elements of @links are valid
  * @radio_mask: Bitmask of radios that this interface is allowed to operate on.
  */
+struct wext_connect_info {
+    void *ie;
+    int ie_len;
+    int bg_scan_period;
+    bool privacy;
+    int ssid_len;
+    int channel;
+};
+
+struct wext_keys {
+    int def;
+};
+
+struct wext_state {
+    struct wext_connect_info connect;
+    struct wext_keys *keys;
+    int default_key;
+    bool prev_bssid_valid;
+    u8 prev_bssid[6];
+};
 struct wireless_dev {
+	struct wext_state wext;
 	struct wiphy *wiphy;
 	enum nl80211_iftype iftype;
 
