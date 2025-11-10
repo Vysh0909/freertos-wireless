@@ -67,7 +67,7 @@ enum ieee80211_regulatory_flags {
     IEEE80211_REG_DISABLE_BEACON_HINTS = 1 << 0,
     IEEE80211_REG_DISABLE_11D = 1 << 1,
     IEEE80211_REG_ENABLE_SPECTRUM_MGMT = 1 << 2,
-    // ... add the rest as needed
+     REGULATORY_ENABLE_RELAX_NO_IR = 1 << 3,
 };
 
 enum dfs_region {
