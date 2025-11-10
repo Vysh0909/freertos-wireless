@@ -24,6 +24,7 @@
 #define ENOSPC      28
 #define ERANGE      34
 #define ENODATA     61
+#define ENOLINK      67
 #define ENOTCONN 107
 
 #ifndef ERFKILL
