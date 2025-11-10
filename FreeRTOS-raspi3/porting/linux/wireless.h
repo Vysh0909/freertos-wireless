@@ -19,4 +19,28 @@
 #define WIRELESS_EXT 22
 #endif
 
+#define IW_RETRY_LIMIT            0x0001
+#define IW_QUAL_NOISE_INVALID     0x02
+#define IW_QUAL_DBM               0x08
+#define IW_QUAL_QUAL_UPDATED      0x10
+#define IW_QUAL_LEVEL_UPDATED     0x20
+
+#define IW_ENC_CAPA_CIPHER_TKIP   0x0001
+#define IW_ENC_CAPA_WPA           0x0002
+#define IW_ENC_CAPA_CIPHER_CCMP   0x0004
+#define IW_ENC_CAPA_WPA2          0x0008
+
+#define IW_MAX_FREQUENCIES        32
+#define IW_SCAN_CAPA_ESSID        0x01
+
+#define SIOCGIWAP                 0x8B15
+#define SIOCGIWSCAN               0x8B19
+
+#define IW_EVENT_CAPA_SIZE        8
+#define IW_EVENT_CAPA_K_0         0
+#define IW_EVENT_CAPA_K_1         1
+
+#define IW_EVENT_CAPA_SET_KERNEL(x)  memset(x, 0, sizeof(x))
+#define IW_EVENT_CAPA_SET(x, y)      do { } while (0)
+
 #endif /* __WIRELESS_H__ */

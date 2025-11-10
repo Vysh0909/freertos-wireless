@@ -11,6 +11,7 @@
  */
 
 #include "../linux/genetlink.h"
+#include "../linux/wireless.h"
 #include <linux/ethtool.h>
 #include <uapi/linux/rfkill.h>
 #include <linux/netdevice.h>
@@ -6369,10 +6370,41 @@ struct iw_mlme {
     struct sockaddr addr;
 };
 
+struct iw_quality {
+    __u8 qual;
+    __u8 level;
+    __u8 noise;
+    __u8 updated;
+};
+
 struct iw_range {
     int we_version_compiled;
     int we_version_source;
     int throughput;
+
+    int retry_capa;
+    int retry_flags;
+    int min_retry;
+    int max_retry;
+    int min_rts;
+    int max_rts;
+    int min_frag;
+    int max_frag;
+
+    int max_encoding_tokens;
+    int encoding_size[8];
+    int num_encoding_sizes;
+
+    struct iw_quality max_qual;
+    struct iw_quality avg_qual;
+
+    int num_channels;
+    int num_frequency;
+    struct iw_freq freq[IW_MAX_FREQUENCIES];
+
+    __u32 event_capa[IW_EVENT_CAPA_SIZE];
+    __u32 enc_capa;
+    __u32 scan_capa;
 };
 
 struct wireless_dev {
