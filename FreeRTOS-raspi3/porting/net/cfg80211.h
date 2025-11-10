@@ -6354,6 +6354,8 @@ struct iw_point {
 
 union iwreq_data {
     struct iw_point data;
+    char name[16];
+    __u32 mode;
 };
 
 struct sockaddr {
