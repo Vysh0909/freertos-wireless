@@ -18,6 +18,24 @@
     (((const unsigned char *)(p))[0] << 8 | ((const unsigned char *)(p))[1])
 #endif
 
+#ifndef ether_addr_to_u64
+static inline unsigned long long ether_addr_to_u64(const unsigned char *addr) {
+    unsigned long long val = 0;
+    for (int i = 0; i < 6; i++)
+        val = (val << 8) | addr[i];
+    return val;
+}
+#endif
+
+#ifndef u64_to_ether_addr
+static inline void u64_to_ether_addr(unsigned long long val, unsigned char *addr) {
+    for (int i = 5; i >= 0; i--) {
+        addr[i] = val & 0xFF;
+        val >>= 8;
+    }
+}
+#endif
+
 /* Bitfield helpers */
 #ifndef u16_get_bits
 #define u16_get_bits(val, mask) ((val & (mask)) >> __builtin_ctz(mask))

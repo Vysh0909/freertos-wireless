@@ -1,6 +1,10 @@
 #ifndef __NET_H__
 #define __NET_H__
 
+#ifndef netif_running
+#define netif_running(dev) 1
+#endif
+
 #ifndef init_net
 struct net { int dummy; };
 struct net init_net;
@@ -32,12 +36,10 @@ typedef int possible_net_t;
 #endif
 
 
-#ifndef dev_name
 static inline const char *dev_name(const struct device *dev)
 {
-    //return dev ? dev->name : "unknown";
+	return 0;
 }
-#endif
 
 #ifndef _LINUX_TIMER_LIST_H
 struct timer_list { int dummy; };

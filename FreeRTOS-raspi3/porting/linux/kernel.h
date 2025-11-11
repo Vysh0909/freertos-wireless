@@ -69,4 +69,21 @@ static inline uint32_t get_unaligned_le32(const void *p)
     ({ type __min1 = (x); type __min2 = (y); __min1 < __min2 ? __min1 : __min2; })
 #endif
 
+#ifndef get_random_bytes
+#include <stdlib.h>
+static inline void get_random_bytes(void *buf, size_t len) {
+    unsigned char *b = (unsigned char *)buf;
+    for (size_t i = 0; i < len; i++)
+        b[i] = rand() & 0xFF;
+}
+#endif
+
+#ifndef read_pnet
+#define read_pnet(x) NULL
+#endif
+
+#ifndef write_pnet
+#define write_pnet(x,y) ((void)0)
+#endif
+
 #endif /* __KERNEL_H__ */

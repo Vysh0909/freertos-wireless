@@ -6,6 +6,10 @@
 #include "types.h"
 #include "skbuff.h"
 
+#ifndef GENMASK_ULL
+#define GENMASK_ULL(h, l) (((1ULL << ((h)-(l)+1)) - 1) << (l))
+#endif
+
 #ifndef U8_MAX
 #define U8_MAX 255
 #endif
