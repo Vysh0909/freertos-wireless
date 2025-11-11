@@ -92,6 +92,8 @@ struct genl_ops {
     int (*doit)(void *info);
     int (*dumpit)(void *cb);
     int validate;
+    int (*done)(struct netlink_callback *cb);
+    unsigned int internal_flags;
 };
 
 struct genl_split_ops {
