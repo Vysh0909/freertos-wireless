@@ -16,6 +16,10 @@ struct genl_info {
     struct netlink_ext_ack *extack;
     u32 snd_portid;
 };
+struct genl_multicast_group {
+    const char *name;
+    int id;
+};
 
 /* Safe no-op versions of the macros */
 #define NL_SET_ERR_MSG(_extack, _msg) \
