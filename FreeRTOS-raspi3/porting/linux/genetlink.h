@@ -90,6 +90,17 @@
 #define __ro_after_init  /* no-op for user-space/porting */
 #endif
 
+#define GENL_DONT_VALIDATE_STRICT 0x01
+#define GENL_DONT_VALIDATE_DUMP   0x02
+
+#ifndef THIS_MODULE
+#define THIS_MODULE ((void *)0)
+#endif
+
+struct genl_info;
+struct sk_buff;
+struct netlink_callback;
+
 struct genl_ops {
     int cmd;
     int flags;
@@ -113,6 +124,8 @@ struct genl_small_ops {
     int (*doit)(struct sk_buff *skb, struct genl_info *info);
     unsigned int internal_flags;
     unsigned int flags;
+    int (*dumpit)(struct sk_buff *skb, struct netlink_callback *cb);
+    unsigned int validate;
 };
 
 /*struct genl_small_ops {
@@ -146,6 +159,29 @@ struct netlink_notify {
 struct genl_family {
     int hdrsize;        /* header size (GENL_HDRLEN + hdrsize) */
     int maxattr;        /* maximum attribute index */
+    const char *name;
+    unsigned int id;
+    unsigned int version;
+    /* new fields in recent kernels */
+    const struct genl_ops *ops;
+    unsigned int n_ops;
+
+    const struct genl_small_ops *small_ops;
+    unsigned int n_small_ops;
+
+    const void *mcgrps;
+    unsigned int n_mcgrps;
+
+    unsigned int resv_start_op;
+    bool parallel_ops;
+
+    const void *policy;   /* originally: const struct nla_policy * */
+    bool netnsok;
+    int (*pre_doit)(const void *ops, struct sk_buff *skb, struct genl_info *info);
+    void (*post_doit)(const void *ops, struct sk_buff *skb, struct genl_info *info);
+    void *module;
+
+
 };
 
 
