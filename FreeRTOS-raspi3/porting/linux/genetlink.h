@@ -38,16 +38,27 @@
 #define NETLINK_CB(skb) (*(skb))   /* Returns skb itself as a placeholder */
 #endif
 
+#ifndef NLM_F_MULTI
+#define NLM_F_MULTI 0x02
+#endif
+
+struct nlmsghdr {
+    int nlmsg_seq;
+};
+
 struct netlink_callback {
     long args[6];       /* placeholder for callback arguments */
-    void *nlh;          /* placeholder for netlink header */
+    //void *nlh;        
     struct sk_buff *skb;/* optional: can be NULL */
+     int min_dump_alloc;
+     struct nlmsghdr *nlh;
 };
 
 struct genl_family {
     int hdrsize;        /* header size (GENL_HDRLEN + hdrsize) */
     int maxattr;        /* maximum attribute index */
 };
+
 
 struct nla_policy {
     u16 type;
@@ -106,6 +117,7 @@ struct genl_info {
     struct nlattr **attrs;          /* FIXED: was void*, now array of nlattr pointers */
     struct netlink_ext_ack *extack;
     u32 snd_portid;
+     u32 snd_seq;
 };
 struct genl_multicast_group {
     const char *name;
