@@ -77,6 +77,15 @@
 #ifndef NETLINK_GENERIC
 #define NETLINK_GENERIC 16
 #endif
+
+#ifndef S32_MIN
+#define S32_MIN    (-2147483647 - 1)
+#endif
+
+#ifndef S32_MAX
+#define S32_MAX    (2147483647)
+#endif
+
 struct genl_ops {
     int cmd;
     int flags;
