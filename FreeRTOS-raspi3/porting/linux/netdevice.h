@@ -56,6 +56,8 @@ struct net_device {
       struct device dev;
       unsigned long priv_flags;      /* for priv_flags usage */
     struct wireless_dev *ieee80211_ptr; /* for ieee80211_ptr usage */
+     int ifindex;          /* interface index */
+    char name[16];
 };
 
 

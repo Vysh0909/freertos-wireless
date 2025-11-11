@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "netlink.h"   /* Include nlattr definition */
 #include "types.h"
+#include "skbuff.h"
+
 #ifndef U8_MAX
 #define U8_MAX 255
 #endif
