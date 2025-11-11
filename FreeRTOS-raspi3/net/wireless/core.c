@@ -334,6 +334,7 @@ static void cfg80211_event_work(struct work_struct *work)
 void cfg80211_destroy_ifaces(struct cfg80211_registered_device *rdev)
 {
 	struct wireless_dev *wdev, *tmp;
+	UNUSED(tmp);
 
 	ASSERT_RTNL();
 
@@ -367,6 +368,7 @@ static void cfg80211_sched_scan_stop_wk(struct wiphy *wiphy,
 {
 	struct cfg80211_registered_device *rdev;
 	struct cfg80211_sched_scan_request *req, *tmp;
+	UNUSED(tmp);
 
 	rdev = container_of(work, struct cfg80211_registered_device,
 			   sched_scan_stop_wk);
