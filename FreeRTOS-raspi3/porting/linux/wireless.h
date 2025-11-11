@@ -174,4 +174,21 @@
 #define IW_PMKSA_FLUSH                 3
 #endif
 
+typedef int (*iw_handler)(struct net_device *dev,
+                          struct iw_request_info *info,
+                          union iwreq_data *wrqu,
+                          char *extra);
+
+/* IW_HANDLER macro stub */
+#ifndef IW_HANDLER
+#define IW_HANDLER(cmd, func) (func)
+#endif
+
+/* Define iw_handler_def struct */
+struct iw_handler_def {
+    int num_standard;
+    iw_handler *standard;
+    int (*get_wireless_stats)(struct net_device *dev);
+};
+
 #endif /* __WIRELESS_H__ */
