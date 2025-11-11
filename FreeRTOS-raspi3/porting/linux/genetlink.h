@@ -94,6 +94,12 @@ struct genl_ops {
     int validate;
 };
 
+struct genl_split_ops {
+    unsigned int cmd;
+    unsigned int internal_flags;
+    unsigned int maxattr;
+    unsigned int policy;
+};
 /*struct genl_small_ops {
     int cmd;
     int flags;
