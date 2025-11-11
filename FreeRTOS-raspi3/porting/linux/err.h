@@ -17,6 +17,7 @@
 #define ENOMEM      12
 #define EFAULT     14
 #define EBUSY       16
+#define EEXIST 17
 #define EALREADY   114
 #define EINPROGRESS   115
 #define ENODEV     19
@@ -26,7 +27,10 @@
 #define ERANGE      34
 #define ENODATA     61
 #define ENOLINK      67
+#define EMSGSIZE 90  /* Message too long */
+#define EPROTO   71  /* Protocol error */
 #define ENETDOWN 100  /* Network is down */
+#define ENOBUFS 105
 #define ENOTCONN 107
 
 #ifndef ERFKILL
