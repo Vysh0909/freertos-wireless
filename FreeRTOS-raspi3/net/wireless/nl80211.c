@@ -11128,7 +11128,7 @@ static int nl80211_process_links(struct cfg80211_registered_device *rdev,
 				 struct genl_info *info)
 {
 	unsigned int attrsize = NUM_NL80211_ATTR * sizeof(struct nlattr *);
-	struct nlattr **attrs __free(kfree) = kzalloc(attrsize, GFP_KERNEL);
+	struct nlattr **attrs = kzalloc(attrsize, GFP_KERNEL);
 	struct nlattr *link;
 	unsigned int link_id;
 	int rem, err;
