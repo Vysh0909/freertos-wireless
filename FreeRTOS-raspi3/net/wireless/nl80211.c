@@ -13132,8 +13132,7 @@ static int nl80211_set_cqm_rssi(struct genl_info *info,
 		cqm_config->rssi_hyst = hysteresis;
 		cqm_config->n_rssi_thresholds = n_thresholds;
 		memcpy(cqm_config->rssi_thresholds, thresholds,
-		       flex_array_size(cqm_config, rssi_thresholds,
-				       n_thresholds));
+		       sizeof(s32) * n_thresholds);
 		cqm_config->use_range_api = n_thresholds > 1 ||
 					    !rdev->ops->set_cqm_rssi_config;
 
