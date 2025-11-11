@@ -121,6 +121,11 @@ struct netlink_callback {
      int min_dump_alloc;
      struct nlmsghdr *nlh;
      unsigned int seq;
+     void *extack;
+};
+
+struct netlink_notify {
+    int protocol;
 };
 
 struct genl_family {
