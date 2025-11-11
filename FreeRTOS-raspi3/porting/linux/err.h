@@ -41,6 +41,10 @@
 #define EOPNOTSUPP 95
 #endif
 
+#ifndef EADDRNOTAVAIL
+#define EADDRNOTAVAIL 99
+#endif
+
 #ifndef __exit
 #define __exit
 #endif

@@ -42,6 +42,55 @@
 #define NLM_F_MULTI 0x02
 #endif
 
+#ifndef NET_NAME_USER
+#define NET_NAME_USER 1
+#endif
+
+#ifndef NLA_HDRLEN
+#define NLA_HDRLEN 4
+#endif
+
+#ifndef NLMSG_GOODSIZE
+#define NLMSG_GOODSIZE 4096
+#endif
+
+#ifndef GENL_DONT_VALIDATE_STRICT
+#define GENL_DONT_VALIDATE_STRICT 0x01
+#endif
+
+#ifndef GENL_DONT_VALIDATE_DUMP
+#define GENL_DONT_VALIDATE_DUMP 0x02
+#endif
+
+#ifndef GENL_UNS_ADMIN_PERM
+#define GENL_UNS_ADMIN_PERM 0x04
+#endif
+
+#ifndef GENL_ADMIN_PERM
+#define GENL_ADMIN_PERM 0x08
+#endif
+
+#ifndef NETLINK_URELEASE
+#define NETLINK_URELEASE 0x10
+#endif
+
+#ifndef NETLINK_GENERIC
+#define NETLINK_GENERIC 16
+#endif
+struct genl_ops {
+    int cmd;
+    int flags;
+    int (*doit)(void *info);
+    int (*dumpit)(void *cb);
+    int validate;
+};
+
+/*struct genl_small_ops {
+    int cmd;
+    int flags;
+    int (*doit)(void *info);
+};
+*/
 struct nlmsghdr {
     int nlmsg_seq;
 };
