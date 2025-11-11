@@ -37,6 +37,42 @@ static inline int dev_set_name(void *dev, const char *fmt, ...) {
 }
 #endif
 
+#ifndef mutex_destroy
+#define mutex_destroy(mtx)            ((void)0)
+#endif
+
+#ifndef is_zero_ether_addr
+#define is_zero_ether_addr(addr)      (0)   /* always false */
+#endif
+
+#ifndef wait_event
+#define wait_event(queue, condition)  ((void)0)
+#endif
+
+#ifndef spin_lock_irqsave
+#define spin_lock_irqsave(lock, flags) ((void)0)
+#endif
+
+#ifndef spin_unlock_irqrestore
+#define spin_unlock_irqrestore(lock, flags) ((void)0)
+#endif
+
+#ifndef synchronize_rcu
+#define synchronize_rcu()             ((void)0)
+#endif
+
+#ifndef cancel_work_sync
+#define cancel_work_sync(work)        ((void)0)
+#endif
+
+#ifndef flush_work
+#define flush_work(work)              ((void)0)
+#endif
+
+#ifndef cancel_delayed_work_sync
+#define cancel_delayed_work_sync(work) ((void)0)
+#endif
+
 #ifndef INIT_DELAYED_WORK
 #define INIT_DELAYED_WORK(work, fn) ((void)0)
 #endif

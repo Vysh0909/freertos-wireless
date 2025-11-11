@@ -17,6 +17,22 @@
 #define list_empty(head)          (1)   /* always empty for stub */
 #endif
 
+#ifndef list_add_rcu
+#define list_add_rcu(entry, head)     ((void)0)
+#endif
+
+#ifndef list_del_rcu
+#define list_del_rcu(entry)           ((void)0)
+#endif
+
+#ifndef list_del
+#define list_del(entry)               ((void)0)
+#endif
+
+#ifndef list_add_tail
+#define list_add_tail(entry, head) ((void)0)
+#endif
+
 /* Minimal list_head stub for compilation */
 struct list_head {
     struct list_head *next;

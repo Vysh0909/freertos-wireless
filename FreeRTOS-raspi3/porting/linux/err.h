@@ -45,6 +45,10 @@
 #define EADDRNOTAVAIL 99
 #endif
 
+#ifndef pr_err
+#define pr_err(fmt, ...) ((void)0)
+#endif
+
 #ifndef __exit
 #define __exit
 #endif

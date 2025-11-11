@@ -171,6 +171,11 @@
 #define IW_PMKSA_REMOVE                2
 #define IW_PMKSA_FLUSH                 3
 #endif
+
+#ifndef wireless_nlevent_flush
+#define wireless_nlevent_flush() ((void)0)
+#endif
+
 struct iw_request_info;
 union iwreq_data;
 

@@ -17,6 +17,22 @@ static inline int device_rename(void *dev, const char *newname) {
 }
 #endif
 
+#ifndef device_add
+#define device_add(dev)               (0)   /* return success */
+#endif
+
+#ifndef device_del
+#define device_del(dev)               ((void)0)
+#endif
+
+#ifndef debugfs_create_dir
+#define debugfs_create_dir(name, parent) ((void *)0)
+#endif
+
+#ifndef debugfs_remove_recursive
+#define debugfs_remove_recursive(dir) ((void)0)
+#endif
+
 #ifndef debugfs_change_name
 #define debugfs_change_name(dir, fmt, ...) ((void)0)
 #endif
@@ -27,6 +43,38 @@ static inline int device_rename(void *dev, const char *newname) {
 
 #ifndef dev_close
 #define dev_close(dev)                     ((void)0)
+#endif
+
+#ifndef put_device
+#define put_device(dev) ((void)0)
+#endif
+
+#ifndef trace_cfg80211_stop_iface
+#define trace_cfg80211_stop_iface(wiphy, wdev) ((void)0)
+#endif
+
+#ifndef register_netdevice
+#define register_netdevice(dev) (0)  /* return 0 success */
+#endif
+
+#ifndef netdev_notifier_info_to_dev
+#define netdev_notifier_info_to_dev(ptr) ((void *)0)
+#endif
+
+#ifndef SET_NETDEV_DEVTYPE
+#define SET_NETDEV_DEVTYPE(dev, type) ((void)0)
+#endif
+
+#ifndef wake_up
+#define wake_up(wait_queue) ((void)0)
+#endif
+
+#ifndef notifier_from_errno
+#define notifier_from_errno(err) (0)
+#endif
+
+#ifndef net_eq
+#define net_eq(a, b) (0)
 #endif
 
 #ifndef IFF_DONT_BRIDGE

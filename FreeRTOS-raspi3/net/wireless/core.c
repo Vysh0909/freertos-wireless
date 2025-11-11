@@ -1096,6 +1096,7 @@ void cfg80211_process_wiphy_works(struct cfg80211_registered_device *rdev,
 {
 	unsigned int runaway_limit = 100;
 	unsigned long flags;
+	UNUSED(flags);
 
 	lockdep_assert_held(&rdev->wiphy.mtx);
 
@@ -1192,8 +1193,11 @@ EXPORT_SYMBOL(wiphy_unregister);
 void cfg80211_dev_free(struct cfg80211_registered_device *rdev)
 {
 	struct cfg80211_internal_bss *scan, *tmp;
+	UNUSED(tmp);
 	struct cfg80211_beacon_registration *reg, *treg;
+	UNUSED(treg);
 	unsigned long flags;
+	UNUSED(flags);
 
 	spin_lock_irqsave(&rdev->wiphy_work_lock, flags);
 	WARN_ON(!list_empty(&rdev->wiphy_work_list));
@@ -1231,6 +1235,7 @@ void wiphy_rfkill_set_hw_state_reason(struct wiphy *wiphy, bool blocked,
 				      enum rfkill_hard_block_reasons reason)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
+	UNUSED(rdev);
 
 	if (rfkill_set_hw_state_reason(wiphy->rfkill, blocked, reason))
 		schedule_work(&rdev->rfkill_block);
@@ -1333,6 +1338,7 @@ void cfg80211_leave(struct cfg80211_registered_device *rdev,
 {
 	struct net_device *dev = wdev->netdev;
 	struct cfg80211_sched_scan_request *pos, *tmp;
+	UNUSED(tmp);
 
 	lockdep_assert_held(&rdev->wiphy.mtx);
 
@@ -1391,8 +1397,10 @@ void cfg80211_stop_iface(struct wiphy *wiphy, struct wireless_dev *wdev,
 			 gfp_t gfp)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
+	UNUSED(rdev);
 	struct cfg80211_event *ev;
 	unsigned long flags;
+	UNUSED(flags);
 
 	trace_cfg80211_stop_iface(wiphy, wdev);
 
@@ -1509,6 +1517,7 @@ static int cfg80211_netdev_notifier_call(struct notifier_block *nb,
 	struct wireless_dev *wdev = dev->ieee80211_ptr;
 	struct cfg80211_registered_device *rdev;
 	struct cfg80211_sched_scan_request *pos, *tmp;
+	UNUSED(tmp);
 
 	if (!wdev)
 		return NOTIFY_DONE;
@@ -1663,6 +1672,7 @@ void wiphy_work_queue(struct wiphy *wiphy, struct wiphy_work *work)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
 	unsigned long flags;
+	UNUSED(flags);
 
 	trace_wiphy_work_queue(wiphy, work);
 
@@ -1678,7 +1688,9 @@ EXPORT_SYMBOL_GPL(wiphy_work_queue);
 void wiphy_work_cancel(struct wiphy *wiphy, struct wiphy_work *work)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
+	UNUSED(rdev);
 	unsigned long flags;
+	UNUSED(flags);
 
 	lockdep_assert_held(&wiphy->mtx);
 
@@ -1695,6 +1707,7 @@ void wiphy_work_flush(struct wiphy *wiphy, struct wiphy_work *work)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
 	unsigned long flags;
+	UNUSED(flags);
 	bool run;
 
 	trace_wiphy_work_flush(wiphy, work);

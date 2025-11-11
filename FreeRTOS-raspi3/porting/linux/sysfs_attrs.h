@@ -8,6 +8,10 @@
 struct device;
 struct device_attribute;
 
+#ifndef sysfs_create_link
+#define sysfs_create_link(kobj, kobj2, name) ((void *)(0))  /* return NULL */
+#endif
+
 /* Ensure ssize_t is defined */
 #ifndef _SSIZE_T_DEFINED
 typedef long ssize_t;
