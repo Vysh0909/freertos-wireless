@@ -41,4 +41,7 @@ struct list_head {
 #define list_for_each_entry_rcu(pos, head, member, cond) \
     for (pos = (typeof(pos))((head)->next); pos != NULL; pos = (typeof(pos))(pos->member.next))
 
+#define list_first_or_null_rcu(ptr, type, member) \
+    ((ptr)->next != (ptr) ? container_of((ptr)->next, type, member) : NULL)
+
 #endif /* __LIST_H__ */
