@@ -28,6 +28,17 @@
 #define GENL_HDRLEN 4   // typical netlink family header size in Linux
 #endif
 
+struct netlink_callback {
+    long args[6];       /* placeholder for callback arguments */
+    void *nlh;          /* placeholder for netlink header */
+    struct sk_buff *skb;/* optional: can be NULL */
+};
+
+struct genl_family {
+    int hdrsize;        /* header size (GENL_HDRLEN + hdrsize) */
+    int maxattr;        /* maximum attribute index */
+};
+
 struct nla_policy {
     u16 type;
     u16 len;   /* optional: used for binary or max value validation */
