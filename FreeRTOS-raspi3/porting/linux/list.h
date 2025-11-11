@@ -7,6 +7,15 @@
 #include "rcupdate.h"
 #include "timer.h"
 #include "export.h"
+#include "spinlock.h"
+
+#ifndef list_del_init
+#define list_del_init(entry)      ((void)0)
+#endif
+
+#ifndef list_empty
+#define list_empty(head)          (1)   /* always empty for stub */
+#endif
 
 /* Minimal list_head stub for compilation */
 struct list_head {
