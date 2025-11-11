@@ -20223,12 +20223,12 @@ static int nl80211_netlink_notify(struct notifier_block * nb,
 
 	rcu_read_lock();
 
-	list_for_each_entry_rcu(rdev, &cfg80211_rdev_list, list) {
+	list_for_each_entry_rcu(rdev, &cfg80211_rdev_list, list,1) {
 		struct cfg80211_sched_scan_request *sched_scan_req;
 
 		list_for_each_entry_rcu(sched_scan_req,
 					&rdev->sched_scan_req_list,
-					list) {
+					list,1) {
 			if (sched_scan_req->owner_nlportid == notify->portid) {
 				sched_scan_req->nl_owner_dead = true;
 				wiphy_work_queue(&rdev->wiphy,
@@ -20236,7 +20236,7 @@ static int nl80211_netlink_notify(struct notifier_block * nb,
 			}
 		}
 
-		list_for_each_entry_rcu(wdev, &rdev->wiphy.wdev_list, list) {
+		list_for_each_entry_rcu(wdev, &rdev->wiphy.wdev_list, list,1) {
 			cfg80211_mlme_unregister_socket(wdev, notify->portid);
 
 			if (wdev->owner_nlportid == notify->portid) {

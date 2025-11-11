@@ -154,6 +154,7 @@ struct netlink_callback {
 
 struct netlink_notify {
     int protocol;
+    int portid;
 };
 
 struct genl_family {
