@@ -30,6 +30,8 @@ struct sk_buff {
     bool head_frag;
     __be16 protocol;
      unsigned char cb[48];
+     void *sk;
+    int portid;
 };
 
 struct sk_buff_head {

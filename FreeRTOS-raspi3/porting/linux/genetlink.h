@@ -34,6 +34,10 @@
 #define NLA_F_NESTED NLA_NESTED
 #endif
 
+#ifndef NETLINK_CB
+#define NETLINK_CB(skb) (*(skb))   /* Returns skb itself as a placeholder */
+#endif
+
 struct netlink_callback {
     long args[6];       /* placeholder for callback arguments */
     void *nlh;          /* placeholder for netlink header */
