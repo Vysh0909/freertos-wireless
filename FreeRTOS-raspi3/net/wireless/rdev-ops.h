@@ -7,6 +7,7 @@
 #ifndef __CFG80211_RDEV_OPS
 #define __CFG80211_RDEV_OPS
 
+#include "../../porting/linux/tracepoint.h"
 #include <linux/rtnetlink.h>
 #include <net/cfg80211.h>
 #include "core.h"
@@ -1207,7 +1208,7 @@ rdev_start_radar_detection(struct cfg80211_registered_device *rdev,
 	int ret = -EOPNOTSUPP;
 
 	trace_rdev_start_radar_detection(&rdev->wiphy, dev, chandef,
-					 cac_time_ms, link_id);
+					 cac_time_ms, link_id,0);
 	if (rdev->ops->start_radar_detection)
 		ret = rdev->ops->start_radar_detection(&rdev->wiphy, dev,
 						       chandef, cac_time_ms,
