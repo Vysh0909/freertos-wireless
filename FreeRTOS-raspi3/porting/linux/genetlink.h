@@ -24,6 +24,10 @@
 #define IFNAMSIZ 16
 #endif
 
+#ifndef GENL_HDRLEN
+#define GENL_HDRLEN 4   // typical netlink family header size in Linux
+#endif
+
 struct nla_policy {
     u16 type;
     u16 len;   /* optional: used for binary or max value validation */
