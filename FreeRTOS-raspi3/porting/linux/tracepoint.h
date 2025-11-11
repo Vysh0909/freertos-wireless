@@ -135,6 +135,24 @@
 #define trace_rdev_set_epcs(...)                do {} while (0)
 
 
+#define trace_rdev_tdls_mgmt(...)                 do {} while (0)
+#define trace_wiphy_work_worker_start(...)        do {} while (0)
+#define trace_wiphy_work_run(...)                 do {} while (0)
+#define trace_cfg80211_get_bss(...)               do {} while (0)
+#define trace_cfg80211_return_bss(...)            do {} while (0)
+#define trace_cfg80211_send_rx_assoc(...)         do {} while (0)
+#define trace_cfg80211_rx_mlme_mgmt(...)          do {} while (0)
+#define trace_cfg80211_send_auth_timeout(...)     do {} while (0)
+#define trace_cfg80211_send_assoc_failure(...)    do {} while (0)
+#define trace_cfg80211_tx_mlme_mgmt(...)          do {} while (0)
+#define trace_cfg80211_michael_mic_failure(...)   do {} while (0)
+#define trace_cfg80211_rx_mgmt(...)               do {} while (0)
+#define trace_cfg80211_return_bool(...)           do {} while (0)
+#define trace_cfg80211_radar_event(...)           do {} while (0)
+#define trace_cfg80211_cac_event(...)             do {} while (0)
+#define trace_cfg80211_mlo_reconf_add_done(...)   do {} while (0)
+#define trace_cfg80211_ibss_joined(...)           do {} while (0)
+
 #ifndef trace_rdev_get_station
 #define trace_rdev_get_station(wiphy, dev, mac)                do {} while (0)
 #endif
