@@ -511,7 +511,8 @@ static int cfg80211_set_encryption(struct cfg80211_registered_device *rdev,
 	 */
 	if (!addr && (params->cipher == WLAN_CIPHER_SUITE_WEP40 ||
 		      params->cipher == WLAN_CIPHER_SUITE_WEP104)) {
-		wdev->wext.keys->params[idx] = *params;
+		wdev->wext.keys->params[idx].key_len = params->key_len;
+		wdev->wext.keys->params[idx].cipher  = params->cipher;
 		memcpy(wdev->wext.keys->data[idx],
 			params->key, params->key_len);
 		wdev->wext.keys->params[idx].key =
@@ -699,7 +700,7 @@ static int cfg80211_wext_siwencodeext(struct net_device *dev,
 			idx--;
 	}
 
-	addr = ext->addr.sa_data;
+	addr = ext->addr;
 	if (is_broadcast_ether_addr(addr))
 		addr = NULL;
 
