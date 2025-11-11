@@ -91,7 +91,7 @@ __cfg80211_wdev_from_attrs(struct cfg80211_registered_device *rdev,
 
 		list_for_each_entry(wdev, &rdev->wiphy.wdev_list, list) {
 			if (have_ifidx && wdev->netdev &&
-			    wdev->netdev->ifindex == ifidx) {
+			    dev_get_ifindex(wdev->netdev) == ifidx) {
 				result = wdev;
 				break;
 			}
@@ -117,7 +117,7 @@ __cfg80211_wdev_from_attrs(struct cfg80211_registered_device *rdev,
 
 		list_for_each_entry(wdev, &rdev->wiphy.wdev_list, list) {
 			if (have_ifidx && wdev->netdev &&
-			    wdev->netdev->ifindex == ifidx) {
+			    dev_get_ifindex(wdev->netdev) == ifidx) {
 				result = wdev;
 				break;
 			}
