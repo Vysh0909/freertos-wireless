@@ -86,6 +86,10 @@
 #define S32_MAX    (2147483647)
 #endif
 
+#ifndef __ro_after_init
+#define __ro_after_init  /* no-op for user-space/porting */
+#endif
+
 struct genl_ops {
     int cmd;
     int flags;
@@ -102,6 +106,15 @@ struct genl_split_ops {
     unsigned int maxattr;
     unsigned int policy;
 };
+
+/* Stub definition for genl_small_ops */
+struct genl_small_ops {
+    int cmd;
+    int (*doit)(struct sk_buff *skb, struct genl_info *info);
+    unsigned int internal_flags;
+    unsigned int flags;
+};
+
 /*struct genl_small_ops {
     int cmd;
     int flags;
