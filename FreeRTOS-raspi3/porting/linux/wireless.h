@@ -83,7 +83,6 @@
 #define IW_EVENT_CAPA_SET(x, y)      do { } while (0)
 
 #define IW_RETRY_LIFETIME 0x1000
-#define IW_RETRY_LIMIT    0x2000
 #define IW_RETRY_TYPE     0x4000
 #define IW_RETRY_LONG     0x8000
 #define IW_RETRY_SHORT    0x0800
@@ -165,7 +164,6 @@
 #ifndef IW_QUAL_LEVEL_INVALID
 #define IW_QUAL_LEVEL_INVALID          0x10
 #define IW_QUAL_QUAL_INVALID           0x20
-#define IW_QUAL_NOISE_INVALID          0x40
 #endif
 
 #ifndef IW_PMKSA_ADD
@@ -173,6 +171,8 @@
 #define IW_PMKSA_REMOVE                2
 #define IW_PMKSA_FLUSH                 3
 #endif
+struct iw_request_info;
+union iwreq_data;
 
 typedef int (*iw_handler)(struct net_device *dev,
                           struct iw_request_info *info,

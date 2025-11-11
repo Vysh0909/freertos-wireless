@@ -5,6 +5,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
+struct device;
+struct device_attribute;
+
 /* Ensure ssize_t is defined */
 #ifndef _SSIZE_T_DEFINED
 typedef long ssize_t;
