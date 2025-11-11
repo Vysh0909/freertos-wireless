@@ -1,6 +1,15 @@
 #ifndef __RFKILL_COMPAT_H__
 #define __RFKILL_COMPAT_H__
 
+
+#ifndef rfkill_pause_polling
+#define rfkill_pause_polling(rfkill) ((void)0)
+#endif
+
+#ifndef ASSERT_RTNL
+#define ASSERT_RTNL() ((void)0)
+#endif
+
 /* Ensure RFKILL_HARD_BLOCK_SIGNAL is defined */
 #ifndef RFKILL_HARD_BLOCK_SIGNAL
 enum rfkill_hard_block_reasons {

@@ -76,7 +76,6 @@
 #define trace_rdev_auth(...)                         do {} while (0)
 #define trace_rdev_assoc(...)                        do {} while (0)
 #define trace_rdev_return_int_station_info(...)       do {} while (0)
-#define trace_rdev_return_int(...)                   do {} while (0)
 #define trace_rdev_return_int_cookie(...)            do {} while (0)
 
 #define trace_rdev_start_p2p_device(...)        do {} while (0)
@@ -92,9 +91,6 @@
 #define trace_rdev_crit_proto_stop(...)         do {} while (0)
 #define trace_rdev_sched_scan_start(...)        do {} while (0)
 #define trace_rdev_sched_scan_stop(...)         do {} while (0)
-#define trace_rdev_start_radar_detection(...)   do {} while (0)
-#define trace_rdev_return_int(...)              do {} while (0)
-#define trace_rdev_return_void(...)             do {} while (0)
 
 #define trace_rdev_get_station(...)             do {} while (0)
 #define trace_rdev_dump_station(...)            do {} while (0)
