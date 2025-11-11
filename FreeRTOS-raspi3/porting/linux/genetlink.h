@@ -48,6 +48,10 @@ enum nla_type {
 #define NLA_POLICY_NESTED_ARRAY(array)          ((struct nla_policy){ .type = NLA_BINARY })
 #define NLA_POLICY_ETH_ADDR                      ((struct nla_policy){ .len = 6 })
 
+struct netlink_range_validation {
+    u32 min;
+    u32 max;
+};
 
 struct netlink_ext_ack {
     const char *msg;
