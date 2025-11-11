@@ -8,9 +8,14 @@
 #include "time.h"
 #include "jiffies.h"
 
-#ifndef WARN_ON
-#define WARN_ON(x) ((x) ? 1 : 0)
-#endif
+#include <stdio.h>
+
+#define WARN_ON(x) ({ \
+    int __ret_warn_on = !!(x); \
+    if (__ret_warn_on) \
+        fprintf(stderr, "WARN_ON triggered: %s:%d\n", __FILE__, __LINE__); \
+    __ret_warn_on; \
+})
 
 #endif /* __BUG_H__ */
 
