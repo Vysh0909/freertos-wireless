@@ -93,6 +93,10 @@ struct genl_ops {
 */
 struct nlmsghdr {
     int nlmsg_seq;
+    __u32 nlmsg_len;
+    __u16 nlmsg_type;
+    __u16 nlmsg_flags;
+    __u32 nlmsg_pid;
 };
 
 struct netlink_callback {
@@ -101,6 +105,7 @@ struct netlink_callback {
     struct sk_buff *skb;/* optional: can be NULL */
      int min_dump_alloc;
      struct nlmsghdr *nlh;
+     unsigned int seq;
 };
 
 struct genl_family {
