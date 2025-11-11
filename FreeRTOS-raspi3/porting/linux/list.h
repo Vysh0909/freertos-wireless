@@ -6,6 +6,7 @@
 #include "gfp.h"
 #include "rcupdate.h"
 #include "timer.h"
+#include "export.h"
 
 /* Minimal list_head stub for compilation */
 struct list_head {

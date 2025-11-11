@@ -9,6 +9,26 @@
 #include "sysfs_stubs.h"
 #include "types.h"
 
+#ifndef device_rename
+static inline int device_rename(void *dev, const char *newname) {
+    (void)dev;
+    (void)newname;
+    return 0;  /* indicate success */
+}
+#endif
+
+#ifndef debugfs_change_name
+#define debugfs_change_name(dir, fmt, ...) ((void)0)
+#endif
+
+#ifndef dev_change_net_namespace
+#define dev_change_net_namespace(dev, net, fmt) (0)
+#endif
+
+#ifndef dev_close
+#define dev_close(dev)                     ((void)0)
+#endif
+
 #ifndef IFF_DONT_BRIDGE
 #define IFF_DONT_BRIDGE 0x8000
 #endif
