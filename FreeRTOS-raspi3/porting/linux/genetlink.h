@@ -30,6 +30,10 @@
 #define GENL_HDRLEN 4   // typical netlink family header size in Linux
 #endif
 
+#ifndef NLA_F_NESTED
+#define NLA_F_NESTED NLA_NESTED
+#endif
+
 struct netlink_callback {
     long args[6];       /* placeholder for callback arguments */
     void *nlh;          /* placeholder for netlink header */
