@@ -66,7 +66,7 @@ static inline void u64_to_ether_addr(unsigned long long val, unsigned char *addr
 typedef long ssize_t;
 #define _SSIZE_T_DEFINED
 #endif
-
+#define ATTRIBUTE_GROUPS(name)
 /* Stub for ieee80211 sysfs attribute groups */
 //static const void *ieee80211_groups[] = { NULL };
 static const void *ieee80211_groups[] __attribute__((unused)) = { NULL };

@@ -90,7 +90,7 @@ int cfg80211_mgd_wext_siwfreq(struct net_device *dev,
 	if (wdev->conn) {
 		bool event = true;
 
-		if (wdev->wext.connect.channel == chan)
+		if (wdev->wext.connect.channel == chan->hw_value)
 			return 0;
 
 		/* if SSID set, we'll try right again, avoid event */

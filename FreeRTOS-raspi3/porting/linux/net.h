@@ -35,7 +35,7 @@ struct mutex {
 typedef int possible_net_t;
 #endif
 
-
+struct device; 
 static inline const char *dev_name(const struct device *dev)
 {
 	return 0;

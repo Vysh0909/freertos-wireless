@@ -9,13 +9,20 @@
 #define UNUSED_POLICY_ARRAY __attribute__((unused))
 #endif
 
-#define DEVICE_ATTR_RO(name)   /* nothing */
+/*#define DEVICE_ATTR_RO(name)
 #define ATTRIBUTE_GROUPS(x)
 #define DEFINE_MUTEX(x)
 #define DECLARE_WORK(a, b)
 #define DECLARE_DELAYED_WORK(a,b)
 #define DEFINE_SPINLOCK(x) 
-
+*/
+/* Safe macro stubs for non-Linux builds */
+#define DEFINE_SPINLOCK(x)     struct {} __dummy_spinlock_##x
+#define DEFINE_MUTEX(x)        struct {} __dummy_mutex_##x
+#define DECLARE_WORK(name, fn) struct {} __dummy_work_##name
+#define DECLARE_DELAYED_WORK(name, fn) struct {} __dummy_delayed_work_##name
+#define DEVICE_ATTR_RO(name)   struct {} __dummy_dev_attr_##name
+#define late_initcall(fn)      static void *__dummy_##fn = fn
 
 /* genetlink family registration stubs */
 static inline int genl_register_family(void *fam)
