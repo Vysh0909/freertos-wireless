@@ -39,7 +39,7 @@
 #define mutex_lock(x)   ((void)0)
 #define mutex_unlock(x) ((void)0)
 
-struct mutex reg_regdb_apply_mutex; // define the mutex
+extern struct mutex reg_regdb_apply_mutex; // define the mutex
 
 enum reg_env {
     ENVIRON_ANY,

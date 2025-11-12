@@ -43,8 +43,8 @@ struct workqueue_struct {
     int dummy;
 };
 
-struct workqueue_struct system_power_efficient_wq;
-struct work_struct reg_work;
+extern struct workqueue_struct *system_power_efficient_wq;
+extern struct work_struct reg_work;
 
 static void reg_check_chans(struct work_struct *work) __attribute__((unused));
 static void reg_check_chans(struct work_struct *work)

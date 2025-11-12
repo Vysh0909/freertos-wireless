@@ -7,7 +7,7 @@
 
 #ifndef init_net
 struct net { int dummy; };
-struct net init_net;
+extern struct net init_net;
 #endif
 
 #ifndef _LINUX_RCU_HEAD

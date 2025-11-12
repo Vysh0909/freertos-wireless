@@ -3,13 +3,13 @@
 #include <errno.h>
 #include <stdio.h>
 #include <stdbool.h>
-
+#include "../linux/workqueue.h"
 typedef unsigned int gfp_t;
 typedef unsigned int mode_t;
 typedef long long loff_t;
 typedef int pid_t;
 
-
+struct workqueue_struct *system_power_efficient_wq = NULL;
 // --- 0. Memory Allocation ---
 // kcalloc is the kernel's calloc. It must be implemented to use your heap functions.
 void *kcalloc(size_t n, size_t size, gfp_t flags) { panic(); }
@@ -347,7 +347,7 @@ void release_firmware(const void *fw) { panic(); }
 int request_firmware_nowait(void *a, int b, const char *c, void *d, gfp_t e, void *f, void *g) { panic(); }
 
 // --- NEW Locking/List/Logging Stubs (from reg.o) ---
-void reg_pending_beacons_lock(void) { panic(); } // Likely a spinlock/mutex
+spinlock_t reg_pending_beacons_lock = { 0 };
 void list_splice_tail_init(void *list, void *head) { panic(); }
 void pr_info(const char *fmt, ...) { panic(); } // General info logging
 

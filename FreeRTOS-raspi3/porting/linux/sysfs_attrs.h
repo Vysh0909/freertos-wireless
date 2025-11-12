@@ -32,11 +32,11 @@ struct device_attribute {
 
 #ifndef DECLARE_SYSFS_ATTRS
 #define DECLARE_SYSFS_ATTRS()                     \
-    struct device_attribute dev_attr_index;       \
-    struct device_attribute dev_attr_macaddress;  \
-    struct device_attribute dev_attr_address_mask;\
-    struct device_attribute dev_attr_addresses;   \
-    struct device_attribute dev_attr_name;
+    extern struct device_attribute dev_attr_index;       \
+    extern struct device_attribute dev_attr_macaddress;  \
+    extern struct device_attribute dev_attr_address_mask;\
+    extern struct device_attribute dev_attr_addresses;   \
+    extern struct device_attribute dev_attr_name;
 #endif
 
 /* Declare them globally */
