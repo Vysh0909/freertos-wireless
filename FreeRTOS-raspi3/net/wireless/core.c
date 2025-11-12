@@ -1673,6 +1673,7 @@ static struct pernet_operations cfg80211_pernet_ops __attribute__((unused)) = {
 void wiphy_work_queue(struct wiphy *wiphy, struct wiphy_work *work)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
+	UNUSED(rdev);
 	unsigned long flags;
 	UNUSED(flags);
 

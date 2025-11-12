@@ -26,7 +26,7 @@
 #include <linux/net.h>
 #include <linux/rfkill.h>
 #include <net/regulatory.h>
-
+#include <string.h>
 /**
  * DOC: Introduction
  *

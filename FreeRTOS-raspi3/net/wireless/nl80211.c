@@ -1007,7 +1007,7 @@ static int nl80211_prepare_wdev_dump(struct netlink_callback *cb,
 	int err;
 
 	if (!cb->args[0]) {
-		struct nlattr **attrbuf_free = NULL;
+		struct nlattr **attrbuf_free __attribute__((unused)) = NULL;
 
 		if (!attrbuf) {
 			attrbuf = kcalloc(NUM_NL80211_ATTR, sizeof(*attrbuf),
@@ -3168,7 +3168,7 @@ static int nl80211_dump_wiphy_parse(struct sk_buff *skb,
 	if (tb[NL80211_ATTR_WIPHY])
 		state->filter_wiphy = nla_get_u32(tb[NL80211_ATTR_WIPHY]);
 	if (tb[NL80211_ATTR_WDEV])
-		state->filter_wiphy = nla_get_u64(tb[NL80211_ATTR_WDEV]) >> 32;
+		state->filter_wiphy = (uint64_t)nla_get_u64(tb[NL80211_ATTR_WDEV]) >> 32;
 	if (tb[NL80211_ATTR_IFINDEX]) {
 		struct net_device *netdev;
 		struct cfg80211_registered_device *rdev;

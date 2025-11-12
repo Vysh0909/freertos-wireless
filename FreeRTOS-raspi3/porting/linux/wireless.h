@@ -178,7 +178,7 @@
 
 struct iw_request_info;
 union iwreq_data;
-
+struct net_device;
 typedef int (*iw_handler)(struct net_device *dev,
                           struct iw_request_info *info,
                           union iwreq_data *wrqu,

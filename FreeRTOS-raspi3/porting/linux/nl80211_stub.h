@@ -9,6 +9,14 @@
 #define UNUSED_POLICY_ARRAY __attribute__((unused))
 #endif
 
+#define DEVICE_ATTR_RO(name)   /* nothing */
+#define ATTRIBUTE_GROUPS(x)
+#define DEFINE_MUTEX(x)
+#define DECLARE_WORK(a, b)
+#define DECLARE_DELAYED_WORK(a,b)
+#define DEFINE_SPINLOCK(x) 
+
+
 /* genetlink family registration stubs */
 static inline int genl_register_family(void *fam)
 {
@@ -60,7 +68,7 @@ static inline int skb_copy_bits(struct sk_buff *skb, int offset, void *to, size_
 
 /* RCU / concurrency stubs */
 #define READ_ONCE(x) (x)
-static inline void *rcu_dereference(void *p) { return p; }
+//static inline void *rcu_dereference(void *p) { return p; }
 static inline void *wiphy_dereference(void *w, void *p) { return p; }
 
 /* bit helpers */

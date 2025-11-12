@@ -191,8 +191,8 @@ struct genl_family {
 
 
 struct nla_policy {
-    u16 type;
-    u16 len;   /* optional: used for binary or max value validation */
+    u8 type;
+    u32 len;   /* optional: used for binary or max value validation */
     u16 strict_start_type;
      void *validate_fn;
 };
