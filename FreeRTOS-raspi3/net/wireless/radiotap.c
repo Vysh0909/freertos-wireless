@@ -117,7 +117,10 @@ int ieee80211_radiotap_iterator_init(
 	iterator->_bitmap_shifter = get_unaligned_le32(&radiotap_header->hdr.it_present);
 	iterator->_arg = (uint8_t *)radiotap_header->it_optional;
 	iterator->_reset_on_ext = 0;
-	iterator->_next_bitmap = radiotap_header->it_optional;
+	//iterator->_next_bitmap = radiotap_header->it_optional;
+	memcpy(&iterator->_next_bitmap,
+       &radiotap_header->it_optional,
+       sizeof(iterator->_next_bitmap));
 	iterator->_vns = vns;
 	iterator->current_namespace = &radiotap_ns;
 	iterator->is_radiotap_ns = 1;

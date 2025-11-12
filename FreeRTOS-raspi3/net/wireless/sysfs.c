@@ -166,7 +166,7 @@ struct class ieee80211_class = {
 	.dev_release = wiphy_dev_release,
 	.dev_groups = ieee80211_groups,
 	.pm = WIPHY_PM_OPS,
-	.ns_type = &net_ns_type_operations,
+	.ns_type = (struct ns_type_operations *)&net_ns_type_operations,
 	.namespace = wiphy_namespace,
 };
 

@@ -558,7 +558,7 @@ int ieee80211_strip_8023_mesh_hdr(struct sk_buff *skb)
 	struct {
 		struct ethhdr eth;
 		u8 flags;
-	} payload;
+	} payload = {0};
 	int hdrlen;
 	int ret;
 
@@ -798,7 +798,7 @@ bool ieee80211_is_valid_amsdu(struct sk_buff *skb, u8 mesh_hdr)
 		struct {
 		    __be16 len;
 		    u8 mesh_flags;
-		} hdr;
+		} hdr = {0};
 		u16 len;
 
 		if (sizeof(hdr) > remaining)
