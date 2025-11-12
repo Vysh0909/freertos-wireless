@@ -68,7 +68,8 @@ typedef long ssize_t;
 #endif
 
 /* Stub for ieee80211 sysfs attribute groups */
-static const void *ieee80211_groups[] = { NULL };
+//static const void *ieee80211_groups[] = { NULL };
+static const void *ieee80211_groups[] __attribute__((unused)) = { NULL };
 
 /* Stub for net namespace type operations */
 struct kobj_ns_type_operations {

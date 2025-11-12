@@ -37,8 +37,8 @@ extern struct work_struct reg_regdb_work;
 #endif
 
 /* Auto-generated stub header: workqueue.h */
-static void *system_unbound_wq = NULL;
-
+//static void *system_unbound_wq = NULL;
+static void *system_unbound_wq __attribute__((unused)) = NULL;
 struct workqueue_struct {
     int dummy;
 };
@@ -46,13 +46,15 @@ struct workqueue_struct {
 struct workqueue_struct system_power_efficient_wq;
 struct work_struct reg_work;
 
+static void reg_check_chans(struct work_struct *work) __attribute__((unused));
 static void reg_check_chans(struct work_struct *work)
 {
-    (void)work;
+    
 }
 
 typedef int spinlock_t;
-static spinlock_t reg_requests_lock;
+//static spinlock_t reg_requests_lock;
+static spinlock_t reg_requests_lock __attribute__((unused));
 extern spinlock_t reg_pending_beacons_lock;
 extern spinlock_t reg_indoor_lock;
 
