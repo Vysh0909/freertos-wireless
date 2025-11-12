@@ -309,7 +309,8 @@ static int cfg80211_rfkill_set_block(void *data, bool blocked)
 
 	return 0;
 }
-
+static void cfg80211_rfkill_block_work(struct work_struct *work)
+    __attribute__((unused));
 static void cfg80211_rfkill_block_work(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
@@ -318,7 +319,7 @@ static void cfg80211_rfkill_block_work(struct work_struct *work)
 			    rfkill_block);
 	cfg80211_rfkill_set_block(rdev, true);
 }
-
+static void cfg80211_event_work(struct work_struct *work) __attribute__((unused));
 static void cfg80211_event_work(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
@@ -330,6 +331,7 @@ static void cfg80211_event_work(struct work_struct *work)
 
 	cfg80211_process_rdev_events(rdev);
 }
+
 
 void cfg80211_destroy_ifaces(struct cfg80211_registered_device *rdev)
 {
@@ -350,7 +352,7 @@ void cfg80211_destroy_ifaces(struct cfg80211_registered_device *rdev)
 		}
 	}
 }
-
+static void cfg80211_destroy_iface_wk(struct work_struct *work) __attribute__((unused));
 static void cfg80211_destroy_iface_wk(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
@@ -378,7 +380,7 @@ static void cfg80211_sched_scan_stop_wk(struct wiphy *wiphy,
 			cfg80211_stop_sched_scan_req(rdev, req, false);
 	}
 }
-
+static void cfg80211_propagate_radar_detect_wk(struct work_struct *work) __attribute__((unused));
 static void cfg80211_propagate_radar_detect_wk(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
@@ -394,7 +396,7 @@ static void cfg80211_propagate_radar_detect_wk(struct work_struct *work)
 
 	rtnl_unlock();
 }
-
+static void cfg80211_propagate_cac_done_wk(struct work_struct *work) __attribute__((unused));
 static void cfg80211_propagate_cac_done_wk(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
@@ -410,7 +412,7 @@ static void cfg80211_propagate_cac_done_wk(struct work_struct *work)
 
 	rtnl_unlock();
 }
-
+static void cfg80211_wiphy_work(struct work_struct *work) __attribute__((unused));
 static void cfg80211_wiphy_work(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
@@ -1319,7 +1321,7 @@ void cfg80211_unregister_wdev(struct wireless_dev *wdev)
 }
 EXPORT_SYMBOL(cfg80211_unregister_wdev);
 
-static const struct device_type wiphy_type = {
+static const struct device_type wiphy_type __attribute__((unused)) =  {
 	.name	= "wlan",
 };
 
@@ -1648,7 +1650,7 @@ static int cfg80211_netdev_notifier_call(struct notifier_block *nb,
 	return NOTIFY_OK;
 }
 
-static struct notifier_block cfg80211_netdev_notifier = {
+static struct notifier_block cfg80211_netdev_notifier __attribute__((unused)) = {
 	.notifier_call = cfg80211_netdev_notifier_call,
 };
 
@@ -1664,7 +1666,7 @@ static void __net_exit cfg80211_pernet_exit(struct net *net)
 	rtnl_unlock();
 }
 
-static struct pernet_operations cfg80211_pernet_ops = {
+static struct pernet_operations cfg80211_pernet_ops __attribute__((unused)) = {
 	.exit = cfg80211_pernet_exit,
 };
 
@@ -1773,6 +1775,7 @@ bool wiphy_delayed_work_pending(struct wiphy *wiphy,
 }
 EXPORT_SYMBOL_GPL(wiphy_delayed_work_pending);
 
+static int __init cfg80211_init(void) __attribute__((unused));
 static int __init cfg80211_init(void)
 {
 	int err;
@@ -1822,7 +1825,7 @@ out_fail_pernet:
 	return err;
 }
 fs_initcall(cfg80211_init);
-
+static void __exit cfg80211_exit(void) __attribute__((unused));
 static void __exit cfg80211_exit(void)
 {
 	debugfs_remove(ieee80211_debugfs_dir);

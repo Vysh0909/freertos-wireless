@@ -20217,6 +20217,7 @@ static int nl80211_netlink_notify(struct notifier_block * nb,
 	struct cfg80211_registered_device *rdev;
 	struct wireless_dev *wdev;
 	struct cfg80211_beacon_registration *reg, *tmp;
+	UNUSED(tmp);
 
 	if (state != NETLINK_URELEASE || notify->protocol != NETLINK_GENERIC)
 		return NOTIFY_DONE;
