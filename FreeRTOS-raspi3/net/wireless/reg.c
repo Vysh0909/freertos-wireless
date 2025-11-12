@@ -3139,6 +3139,7 @@ static void reg_process_pending_beacon_hints(void)
 {
 	struct cfg80211_registered_device *rdev;
 	struct reg_beacon *pending_beacon, *tmp;
+	UNUSED(tmp);
 
 	/* This goes through the _pending_ beacon list */
 	spin_lock_bh(&reg_pending_beacons_lock);
@@ -3494,6 +3495,7 @@ static void restore_regulatory_settings(bool reset_user, bool cached)
 	char alpha2[2];
 	char world_alpha2[2];
 	struct reg_beacon *reg_beacon, *btmp;
+	UNUSED(btmp);
 	LIST_HEAD(tmp_reg_req_list);
 	struct cfg80211_registered_device *rdev;
 
@@ -3618,6 +3620,7 @@ void regulatory_hint_disconnect(void)
 	 */
 	if (is_wiphy_all_set_reg_flag(REGULATORY_COUNTRY_IE_IGNORE)) {
 		struct reg_beacon *reg_beacon, *btmp;
+		UNUSED(btmp);
 
 		if (is_wiphy_all_set_reg_flag(REGULATORY_DISABLE_BEACON_HINTS))
 			return;
@@ -4031,6 +4034,7 @@ static int __regulatory_set_wiphy_regd(struct wiphy *wiphy,
 {
 	const struct ieee80211_regdomain *regd;
 	const struct ieee80211_regdomain *prev_regd;
+	UNUSED(prev_regd);
 	struct cfg80211_registered_device *rdev;
 
 	if (WARN_ON(!wiphy || !rd))
@@ -4360,6 +4364,8 @@ void regulatory_exit(void)
 {
 	struct regulatory_request *reg_request, *tmp;
 	struct reg_beacon *reg_beacon, *btmp;
+	UNUSED(tmp);
+	UNUSED(btmp);
 
 	cancel_work_sync(&reg_work);
 	cancel_crda_timeout_sync();

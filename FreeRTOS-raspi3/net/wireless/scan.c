@@ -469,6 +469,7 @@ static void __cfg80211_bss_expire(struct cfg80211_registered_device *rdev,
 				  unsigned long expire_time)
 {
 	struct cfg80211_internal_bss *bss, *tmp;
+	UNUSED(tmp);
 	bool expired = false;
 
 	lockdep_assert_held(&rdev->bss_lock);
@@ -556,6 +557,7 @@ VISIBLE_IF_CFG80211_KUNIT void
 cfg80211_free_coloc_ap_list(struct list_head *coloc_ap_list)
 {
 	struct cfg80211_colocated_ap *ap, *tmp_ap;
+	UNUSED(tmp_ap);
 
 	list_for_each_entry_safe(ap, tmp_ap, coloc_ap_list, list) {
 		list_del(&ap->list);
@@ -1267,6 +1269,7 @@ void cfg80211_sched_scan_results_wk(struct work_struct *work)
 {
 	struct cfg80211_registered_device *rdev;
 	struct cfg80211_sched_scan_request *req, *tmp;
+	UNUSED(tmp);
 
 	rdev = container_of(work, struct cfg80211_registered_device,
 			   sched_scan_res_wk);
@@ -3352,6 +3355,7 @@ void cfg80211_unlink_bss(struct wiphy *wiphy, struct cfg80211_bss *pub)
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wiphy);
 	struct cfg80211_internal_bss *bss, *tmp1;
 	struct cfg80211_bss *nontrans_bss, *tmp;
+	UNUSED(tmp);
 
 	if (WARN_ON(!pub))
 		return;
@@ -3410,6 +3414,7 @@ void cfg80211_update_assoc_bss_entry(struct wireless_dev *wdev,
 	struct cfg80211_internal_bss *bss;
 	struct cfg80211_bss *nontrans_bss;
 	struct cfg80211_bss *tmp;
+	UNUSED(tmp);
 
 	spin_lock_bh(&rdev->bss_lock);
 

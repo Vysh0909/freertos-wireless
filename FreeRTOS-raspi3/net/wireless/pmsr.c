@@ -352,6 +352,8 @@ void cfg80211_pmsr_complete(struct wireless_dev *wdev,
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wdev->wiphy);
 	struct cfg80211_pmsr_request *tmp, *prev, *to_free = NULL;
+	UNUSED(prev);
+	UNUSED(to_free);
 	struct sk_buff *msg;
 	void *hdr;
 
@@ -606,6 +608,7 @@ static void cfg80211_pmsr_process_abort(struct wireless_dev *wdev)
 {
 	struct cfg80211_registered_device *rdev = wiphy_to_rdev(wdev->wiphy);
 	struct cfg80211_pmsr_request *req, *tmp;
+	UNUSED(tmp);
 	LIST_HEAD(free_list);
 
 	lockdep_assert_wiphy(wdev->wiphy);
