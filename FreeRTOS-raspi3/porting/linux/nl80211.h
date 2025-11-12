@@ -41,7 +41,7 @@
  */
 
 #include <linux/types.h>
-
+#include "nl80211_stub.h"
 #define NL80211_GENL_NAME "nl80211"
 
 #define NL80211_MULTICAST_GROUP_CONFIG		"config"

@@ -313,7 +313,7 @@ static int validate_supported_selectors(const struct nlattr *attr,
 static const struct nla_policy nl80211_policy[NUM_NL80211_ATTR];
 
 static const struct nla_policy
-nl80211_ftm_responder_policy[NL80211_FTM_RESP_ATTR_MAX + 1] = {
+nl80211_ftm_responder_policy[NL80211_FTM_RESP_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_FTM_RESP_ATTR_ENABLED] = { .type = NLA_FLAG, },
 	[NL80211_FTM_RESP_ATTR_LCI] = { .type = NLA_BINARY,
 					.len = U8_MAX },
@@ -322,7 +322,7 @@ nl80211_ftm_responder_policy[NL80211_FTM_RESP_ATTR_MAX + 1] = {
 };
 
 static const struct nla_policy
-nl80211_pmsr_ftm_req_attr_policy[NL80211_PMSR_FTM_REQ_ATTR_MAX + 1] = {
+nl80211_pmsr_ftm_req_attr_policy[NL80211_PMSR_FTM_REQ_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_PMSR_FTM_REQ_ATTR_ASAP] = { .type = NLA_FLAG },
 	[NL80211_PMSR_FTM_REQ_ATTR_PREAMBLE] = { .type = NLA_U32 },
 	[NL80211_PMSR_FTM_REQ_ATTR_NUM_BURSTS_EXP] =
@@ -341,20 +341,20 @@ nl80211_pmsr_ftm_req_attr_policy[NL80211_PMSR_FTM_REQ_ATTR_MAX + 1] = {
 };
 
 static const struct nla_policy
-nl80211_pmsr_req_data_policy[NL80211_PMSR_TYPE_MAX + 1] = {
+nl80211_pmsr_req_data_policy[NL80211_PMSR_TYPE_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_PMSR_TYPE_FTM] =
 		NLA_POLICY_NESTED(nl80211_pmsr_ftm_req_attr_policy),
 };
 
 static const struct nla_policy
-nl80211_pmsr_req_attr_policy[NL80211_PMSR_REQ_ATTR_MAX + 1] = {
+nl80211_pmsr_req_attr_policy[NL80211_PMSR_REQ_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_PMSR_REQ_ATTR_DATA] =
 		NLA_POLICY_NESTED(nl80211_pmsr_req_data_policy),
 	[NL80211_PMSR_REQ_ATTR_GET_AP_TSF] = { .type = NLA_FLAG },
 };
 
 static const struct nla_policy
-nl80211_pmsr_peer_attr_policy[NL80211_PMSR_PEER_ATTR_MAX + 1] = {
+nl80211_pmsr_peer_attr_policy[NL80211_PMSR_PEER_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_PMSR_PEER_ATTR_ADDR] = NLA_POLICY_ETH_ADDR,
 	[NL80211_PMSR_PEER_ATTR_CHAN] = NLA_POLICY_NESTED(nl80211_policy),
 	[NL80211_PMSR_PEER_ATTR_REQ] =
@@ -363,7 +363,7 @@ nl80211_pmsr_peer_attr_policy[NL80211_PMSR_PEER_ATTR_MAX + 1] = {
 };
 
 static const struct nla_policy
-nl80211_pmsr_attr_policy[NL80211_PMSR_ATTR_MAX + 1] = {
+nl80211_pmsr_attr_policy[NL80211_PMSR_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_PMSR_ATTR_MAX_PEERS] = { .type = NLA_REJECT },
 	[NL80211_PMSR_ATTR_REPORT_AP_TSF] = { .type = NLA_REJECT },
 	[NL80211_PMSR_ATTR_RANDOMIZE_MAC_ADDR] = { .type = NLA_REJECT },
@@ -411,7 +411,7 @@ static const struct nla_policy nl80211_txattr_policy[NL80211_TXRATE_MAX + 1] = {
 };
 
 static const struct nla_policy
-nl80211_tid_config_attr_policy[NL80211_TID_CONFIG_ATTR_MAX + 1] = {
+nl80211_tid_config_attr_policy[NL80211_TID_CONFIG_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_TID_CONFIG_ATTR_VIF_SUPP] = { .type = NLA_U64 },
 	[NL80211_TID_CONFIG_ATTR_PEER_SUPP] = { .type = NLA_U64 },
 	[NL80211_TID_CONFIG_ATTR_OVERRIDE] = { .type = NLA_FLAG },
@@ -433,7 +433,7 @@ nl80211_tid_config_attr_policy[NL80211_TID_CONFIG_ATTR_MAX + 1] = {
 };
 
 static const struct nla_policy
-nl80211_fils_discovery_policy[NL80211_FILS_DISCOVERY_ATTR_MAX + 1] = {
+nl80211_fils_discovery_policy[NL80211_FILS_DISCOVERY_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_FILS_DISCOVERY_ATTR_INT_MIN] = NLA_POLICY_MAX(NLA_U32, 10000),
 	[NL80211_FILS_DISCOVERY_ATTR_INT_MAX] = NLA_POLICY_MAX(NLA_U32, 10000),
 	[NL80211_FILS_DISCOVERY_ATTR_TMPL] =
@@ -443,26 +443,26 @@ nl80211_fils_discovery_policy[NL80211_FILS_DISCOVERY_ATTR_MAX + 1] = {
 };
 
 static const struct nla_policy
-nl80211_unsol_bcast_probe_resp_policy[NL80211_UNSOL_BCAST_PROBE_RESP_ATTR_MAX + 1] = {
+nl80211_unsol_bcast_probe_resp_policy[NL80211_UNSOL_BCAST_PROBE_RESP_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_UNSOL_BCAST_PROBE_RESP_ATTR_INT] = NLA_POLICY_MAX(NLA_U32, 20),
 	[NL80211_UNSOL_BCAST_PROBE_RESP_ATTR_TMPL] = { .type = NLA_BINARY,
 						       .len = IEEE80211_MAX_DATA_LEN }
 };
 
 static const struct nla_policy
-sar_specs_policy[NL80211_SAR_ATTR_SPECS_MAX + 1] = {
+sar_specs_policy[NL80211_SAR_ATTR_SPECS_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_SAR_ATTR_SPECS_POWER] = { .type = NLA_S32 },
 	[NL80211_SAR_ATTR_SPECS_RANGE_INDEX] = {.type = NLA_U32 },
 };
 
 static const struct nla_policy
-sar_policy[NL80211_SAR_ATTR_MAX + 1] = {
+sar_policy[NL80211_SAR_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_SAR_ATTR_TYPE] = NLA_POLICY_MAX(NLA_U32, NUM_NL80211_SAR_TYPE),
 	[NL80211_SAR_ATTR_SPECS] = NLA_POLICY_NESTED_ARRAY(sar_specs_policy),
 };
 
 static const struct nla_policy
-nl80211_mbssid_config_policy[NL80211_MBSSID_CONFIG_ATTR_MAX + 1] = {
+nl80211_mbssid_config_policy[NL80211_MBSSID_CONFIG_ATTR_MAX + 1] UNUSED_POLICY_ARRAY = {
 	[NL80211_MBSSID_CONFIG_ATTR_MAX_INTERFACES] = NLA_POLICY_MIN(NLA_U8, 2),
 	[NL80211_MBSSID_CONFIG_ATTR_MAX_EMA_PROFILE_PERIODICITY] =
 						NLA_POLICY_MIN(NLA_U8, 1),
@@ -477,12 +477,12 @@ nl80211_sta_wme_policy[NL80211_STA_WME_MAX + 1] = {
 	[NL80211_STA_WME_MAX_SP] = { .type = NLA_U8 },
 };
 
-static const struct netlink_range_validation nl80211_punct_bitmap_range = {
+static const struct netlink_range_validation nl80211_punct_bitmap_range UNUSED_POLICY_ARRAY = {
 	.min = 0,
 	.max = 0xffff,
 };
 
-static const struct netlink_range_validation q_range = {
+static const struct netlink_range_validation q_range UNUSED_POLICY_ARRAY = {
 	.max = INT_MAX,
 };
 
