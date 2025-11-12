@@ -4,6 +4,30 @@
 #include <stddef.h>
 #include "net.h"
 
+#ifndef alloc_ordered_workqueue
+#define alloc_ordered_workqueue(name, flags)   ((void *)0)
+#endif
+
+#ifndef destroy_workqueue
+#define destroy_workqueue(wq)     ((void)0)
+#endif
+
+#ifndef register_pernet_device
+#define register_pernet_device(ops)   (0)
+#endif
+
+#ifndef unregister_pernet_device
+#define unregister_pernet_device(ops) ((void)0)
+#endif
+
+#ifndef register_netdevice_notifier
+#define register_netdevice_notifier(notifier)  (0)
+#endif
+
+#ifndef unregister_netdevice_notifier
+#define unregister_netdevice_notifier(notifier) ((void)0)
+#endif
+
 #ifndef WQ_MEM_RECLAIM
 #define WQ_MEM_RECLAIM 0x01  // dummy value for compatibility
 #endif

@@ -9,6 +9,18 @@
 #define __user
 #endif
 
+#ifndef fs_initcall
+#define fs_initcall(fn)    /* nothing */
+#endif
+
+#ifndef module_exit
+#define module_exit(fn)    static void fn(void)
+#endif
+
+#if 0
+static void __exit cfg80211_exit(void) { }
+#endif
+
 typedef long long loff_t;
 
 struct file {
