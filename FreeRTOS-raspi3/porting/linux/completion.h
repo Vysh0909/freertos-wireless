@@ -2,6 +2,8 @@
 #define __COMPLETION_H__
 
 /* Auto-generated stub header: completion.h */
+#define COMPLETION_INITIALIZER_ONSTACK(x) { .done = 0 }
+
 #include <pthread.h>
 
 int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
