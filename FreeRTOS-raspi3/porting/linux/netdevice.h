@@ -110,6 +110,12 @@ static inline int device_rename(void *dev, const char *newname) {
 #define BITS_PER_BYTE 8
 #endif
 
+/* Simple bitmap implementation for 256 bits */
+#ifndef DECLARE_BITMAP
+#define DECLARE_BITMAP(name, bits) \
+    unsigned long name[((bits) + (sizeof(unsigned long)*8 - 1)) / (sizeof(unsigned long)*8)]
+#endif
+
 /* ---- SKB flags and checksum ---- */
 #ifndef CHECKSUM_PARTIAL
 #define CHECKSUM_PARTIAL 1
