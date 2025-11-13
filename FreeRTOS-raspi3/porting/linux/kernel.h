@@ -93,4 +93,15 @@ struct net_device_path_ctx;
 struct napi_struct;
 enum tc_setup_type;
 
+struct ewma_mesh_fail_avg { int dummy; };
+struct ewma_mesh_tx_rate_avg { int dummy; };
+struct u64_stats_sync { int dummy; };
+struct rhlist_head { int dummy; };
+struct codel_params { int dummy; };
+
+/* --- Kernel annotations simplified --- */
+#ifndef __percpu
+#define __percpu
+#endif
+
 #endif /* __KERNEL_H__ */
