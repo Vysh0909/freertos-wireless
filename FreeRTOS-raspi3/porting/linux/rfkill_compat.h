@@ -1,6 +1,7 @@
 #ifndef __RFKILL_COMPAT_H__
 #define __RFKILL_COMPAT_H__
 
+#include "types.h"
 
 #ifndef rfkill_pause_polling
 #define rfkill_pause_polling(rfkill) ((void)0)

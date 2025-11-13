@@ -6,7 +6,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <assert.h>
-
+#include "crypto.h"
 /* ---- Basic Macros ---- */
 #ifndef ARRAY_SIZE
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
@@ -85,5 +85,12 @@ static inline void get_random_bytes(void *buf, size_t len) {
 #ifndef write_pnet
 #define write_pnet(x,y) ((void)0)
 #endif
+
+struct netdev_hw_addr_list;
+struct ethtool_stats;
+struct net_device_path;
+struct net_device_path_ctx;
+struct napi_struct;
+enum tc_setup_type;
 
 #endif /* __KERNEL_H__ */
