@@ -60,11 +60,13 @@ struct ethtool_ops {
 };
 
 /* ---- Stub function definitions for cfg80211 + ethtool ops ---- */
-
-static inline void cfg80211_get_drvinfo(void)
+#ifndef CONFIG_CFG80211
+static inline void cfg80211_get_drvinfo(struct net_device *dev,
+                                        struct ethtool_drvinfo *info)
 {
     /* not implemented in this port */
 }
+#endif
 
 static inline int ethtool_op_get_link(void)
 {
