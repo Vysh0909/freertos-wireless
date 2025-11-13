@@ -5,7 +5,7 @@
 #include "net.h"
 
 #ifndef alloc_ordered_workqueue
-#define alloc_ordered_workqueue(name, flags)   ((void *)0)
+#define alloc_ordered_workqueue(name, flags, ...)   ((void *)0)
 #endif
 
 #ifndef destroy_workqueue

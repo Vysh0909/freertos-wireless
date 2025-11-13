@@ -8,6 +8,7 @@
 #include "class.h"
 #include "sysfs_stubs.h"
 #include "types.h"
+#include "drop_reason.h"
 
 #ifndef device_rename
 static inline int device_rename(void *dev, const char *newname) {
@@ -90,6 +91,14 @@ static inline int device_rename(void *dev, const char *newname) {
 #define NETDEV_DOWN             4
 #define NETDEV_UP               5
 #define NETDEV_PRE_UP           6
+#endif
+
+#ifndef NETIF_F_RXCSUM
+#define NETIF_F_RXCSUM  0x00000020
+#endif
+
+#ifndef NET_NAME_ENUM
+#define NET_NAME_ENUM 0
 #endif
 
 #ifndef IFF_ALLMULTI

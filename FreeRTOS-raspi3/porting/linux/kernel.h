@@ -135,7 +135,6 @@ struct fq {
 };
 
 struct netdev_hw_addr_list { int count; };
-struct tasklet_struct { int dummy; };
 struct rhltable { int dummy; };
 struct arc4_ctx { int dummy; };
 
