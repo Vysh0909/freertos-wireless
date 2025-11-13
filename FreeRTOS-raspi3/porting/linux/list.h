@@ -64,17 +64,23 @@ struct list_head {
 #define list_last_entry(ptr, type, member) \
     ((ptr)->next ? container_of((ptr)->next, type, member) : NULL)
 
-#define list_for_each_entry_rcu(pos, head, member, cond) \
+/*#define list_for_each_entry_rcu(pos, head, member, cond) \
     for (pos = (typeof(pos))((head)->next); pos != NULL; pos = (typeof(pos))(pos->member.next))
+*/
+#undef list_for_each_entry_rcu
+#define list_for_each_entry_rcu(pos, head, member, ...) \
+    for (pos = (typeof(pos))((head)->next); \
+         pos != NULL; \
+         pos = (typeof(pos))(pos->member.next))
 
 #define list_first_or_null_rcu(ptr, type, member) \
     ((ptr)->next != (ptr) ? container_of((ptr)->next, type, member) : NULL)
 
-// In ../../porting/linux/list.h
 
-#undef list_for_each_entry_rcu // Good practice before redefining
+/*#undef list_for_each_entry_rcu // Good practice before redefining
 #define list_for_each_entry_rcu(pos, head, member) \
     for (pos = (typeof(pos))((head)->next); \
          pos != NULL; \
          pos = (typeof(pos))(pos->member.next))
+*/
 #endif /* __LIST_H__ */
