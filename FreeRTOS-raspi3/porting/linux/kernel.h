@@ -109,7 +109,11 @@ struct idr { int dummy; };
 struct ewma_beacon_signal { int dummy; };
 
 /* --- New kernel struct stubs --- */
-struct fq { int dummy; };
+struct spinlock { int dummy; }; 
+struct fq { 
+	struct spinlock lock;
+    int backlog_packets;
+};
 struct netdev_hw_addr_list { int count; };
 struct tasklet_struct { int dummy; };
 struct rhltable { int dummy; };
