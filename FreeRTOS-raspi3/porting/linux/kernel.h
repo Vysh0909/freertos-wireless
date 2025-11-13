@@ -185,4 +185,8 @@ struct rhash_head {
 #define __maybe_unused
 #endif
 
+#ifndef KERN_DEBUG
+#define KERN_DEBUG 0
+#endif
+
 #endif /* __KERNEL_H__ */
