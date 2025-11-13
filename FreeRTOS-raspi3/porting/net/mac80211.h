@@ -1410,7 +1410,7 @@ ieee80211_tx_info_clear_status(struct ieee80211_tx_info *info)
 	/* clear the rate counts */
 	for (i = 0; i < IEEE80211_TX_MAX_RATES; i++)
 		info->status.rates[i].count = 0;
-	memset_after(&info->status, 0, rates);
+	memset_after(&info->status, 0, info->status.rates);
 }
 
 
@@ -3042,12 +3042,13 @@ enum ieee80211_hw_flags {
  *
  * @max_txpwr_levels_idx: the maximum valid idx of 'tx_power_levels' list.
  */
+#define IEEE80211_HW_FLAG_SIZE 1
 struct ieee80211_hw {
 	struct ieee80211_conf conf;
 	struct wiphy *wiphy;
 	const char *rate_control_algorithm;
 	void *priv;
-	unsigned long flags[BITS_TO_LONGS(NUM_IEEE80211_HW_FLAGS)];
+	unsigned long flags[IEEE80211_HW_FLAG_SIZE];
 	unsigned int extra_tx_headroom;
 	unsigned int extra_beacon_tailroom;
 	int vif_data_size;

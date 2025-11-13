@@ -48,6 +48,8 @@ typedef unsigned int gfp_t;
 typedef int atomic_t;
 #define ATOMIC_INIT(x) (x)
 
+typedef unsigned long long netdev_features_t;
+
 #ifndef UNUSED
 #define UNUSED(x) (void)(x)
 #endif
