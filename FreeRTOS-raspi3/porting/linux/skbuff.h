@@ -2,6 +2,7 @@
 #define __SKBUFF_H__
 
 /* Auto-generated stub header: skbuff.h */
+#include <stdbool.h> 
 typedef uint16_t __be16;
 typedef uint8_t   u8;
 
