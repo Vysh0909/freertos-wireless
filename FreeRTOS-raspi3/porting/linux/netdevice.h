@@ -122,6 +122,7 @@ struct device {
    struct device_driver *driver;
 };
 
+struct net_device_ops;
 struct net_device {
       unsigned char dev_addr[ETH_ALEN];
       bool netns_local;
@@ -135,6 +136,19 @@ struct net_device {
     struct {
         void *list;
     } mc;
+    const struct net_device_ops *netdev_ops;
+    unsigned int features;
+    unsigned int hw_features;
+    unsigned int min_mtu;
+    unsigned int max_mtu;
+    unsigned int needed_headroom;
+    unsigned int needed_tailroom;
+    unsigned char perm_addr[6];
+    bool needs_free_netdev;
+    unsigned int pcpu_stat_type;
+
+    unsigned short type;
+
 };
 
 
