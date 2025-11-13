@@ -322,11 +322,9 @@ static inline u16 ieee80211_sn_sub(u16 sn1, u16 sn2)
 struct ieee80211_hdr {
 	__le16 frame_control;
 	__le16 duration_id;
-	struct_group(addrs,
 		u8 addr1[ETH_ALEN];
 		u8 addr2[ETH_ALEN];
 		u8 addr3[ETH_ALEN];
-	);
 	__le16 seq_ctrl;
 	u8 addr4[ETH_ALEN];
 } __packed __aligned(2);
@@ -4465,8 +4463,8 @@ static inline u8 *ieee80211_get_SA(struct ieee80211_hdr *hdr)
 	if (ieee80211_has_a4(hdr->frame_control))
 		return hdr->addr4;
 	if (ieee80211_has_fromds(hdr->frame_control))
-		return hdr->addrs.addr3;
-	return hdr->addrs.addr2;
+		return hdr->addr3;
+	return hdr->addr2;
 }
 
 /**
@@ -4483,9 +4481,9 @@ static inline u8 *ieee80211_get_SA(struct ieee80211_hdr *hdr)
 static inline u8 *ieee80211_get_DA(struct ieee80211_hdr *hdr)
 {
 	if (ieee80211_has_tods(hdr->frame_control))
-		return hdr->addrs.addr3;
+		return hdr->addr3;
 	else
-		return hdr->addrs.addr1;
+		return hdr->addr1;
 }
 
 /**
@@ -4635,7 +4633,7 @@ static inline bool _ieee80211_is_group_privacy_action(struct ieee80211_hdr *hdr)
 	struct ieee80211_mgmt *mgmt = (void *)hdr;
 
 	if (!ieee80211_is_action(hdr->frame_control) ||
-	    !is_multicast_ether_addr(hdr->addrs.addr1))
+	    !is_multicast_ether_addr(hdr->addr1))
 		return false;
 
 	return mgmt->u.action.category == WLAN_CATEGORY_MESH_ACTION ||
