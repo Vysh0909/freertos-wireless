@@ -159,6 +159,10 @@ static inline unsigned int hweight8(unsigned int w)
 #define offsetofend(TYPE, MEMBER) (offsetof(TYPE, MEMBER) + sizeof(((TYPE *)0)->MEMBER))
 #endif
 
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 4096
+#endif
+
 /* Kernel bool type if not defined */
 #ifndef bool
 typedef unsigned char bool;

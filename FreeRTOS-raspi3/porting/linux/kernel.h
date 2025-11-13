@@ -8,6 +8,7 @@
 #include <assert.h>
 #include "crypto.h"
 #include "types.h"
+#include "codel.h"
 
 /* ---- Basic Macros ---- */
 #ifndef ARRAY_SIZE
@@ -99,7 +100,6 @@ struct ewma_mesh_fail_avg { int dummy; };
 struct ewma_mesh_tx_rate_avg { int dummy; };
 struct u64_stats_sync { int dummy; };
 struct rhlist_head { int dummy; };
-struct codel_params { int dummy; };
 struct ewma_signal { int dummy; };
 struct ewma_avg_signal { int dummy; };
 struct hlist_head { int dummy; };
@@ -112,11 +112,6 @@ struct fq_tin {
     unsigned long tx_bytes;
     unsigned long tx_packets;
     unsigned long backlog_bytes;
-};
-struct codel_vars { int dummy; };
-struct codel_stats {
-	unsigned long drop_count;
-        unsigned long ecn_mark;
 };
 struct idr { int dummy; };
 struct ewma_beacon_signal { int dummy; };
