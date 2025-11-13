@@ -28,5 +28,16 @@ struct ethtool_drvinfo {
     char    reserved2[12];
 };
 
+struct ethtool_ringparam {
+    u32 rx_max_pending;
+    u32 rx_mini_max_pending;
+    u32 rx_jumbo_max_pending;
+    u32 tx_max_pending;
+    u32 rx_pending;
+    u32 rx_mini_pending;
+    u32 rx_jumbo_pending;
+    u32 tx_pending;
+};
+
 #endif /* __ETHTOOL_H__ */
 
