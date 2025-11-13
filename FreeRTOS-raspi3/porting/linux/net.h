@@ -41,10 +41,6 @@ static inline const char *dev_name(const struct device *dev)
 	return 0;
 }
 
-#ifndef _LINUX_TIMER_LIST_H
-struct timer_list { int dummy; };
-#endif
-
 #ifndef _LINUX_WORK_STRUCT_H
 struct work_struct { 
 	int dummy;
