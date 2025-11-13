@@ -46,6 +46,10 @@
 #define EADDRNOTAVAIL 99
 #endif
 
+#ifndef EHOSTUNREACH
+#define EHOSTUNREACH 113
+#endif
+
 #ifndef pr_err
 #define pr_err(fmt, ...) ((void)0)
 #endif

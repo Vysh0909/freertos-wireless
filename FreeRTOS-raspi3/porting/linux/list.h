@@ -79,6 +79,9 @@ struct list_head {
 #define hlist_for_each_entry_safe(pos, n, head, member) \
     for (pos = NULL, n = NULL; pos != NULL; pos = NULL)
 
+#define hlist_for_each_entry_rcu(pos, head, member) \
+    for ((pos) = NULL; (pos) != NULL; (pos) = NULL)
+
 /*#undef list_for_each_entry_rcu // Good practice before redefining
 #define list_for_each_entry_rcu(pos, head, member) \
     for (pos = (typeof(pos))((head)->next); \

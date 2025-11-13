@@ -103,7 +103,6 @@ struct rhlist_head { int dummy; };
 struct ewma_signal { int dummy; };
 struct ewma_avg_signal { int dummy; };
 struct hlist_head { int dummy; };
-struct rhashtable { int dummy; };
 struct fq_tin { 
 	int backlog_packets; 
 	unsigned long flows;

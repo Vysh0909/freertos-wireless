@@ -56,4 +56,8 @@
 #define __must_check __attribute__((warn_unused_result))
 #endif
 
+#ifndef sizeof_field
+#define sizeof_field(TYPE, MEMBER) sizeof(((TYPE *)0)->MEMBER)
+#endif
+
 #endif /* __LINUX_COMPILER_H_ */

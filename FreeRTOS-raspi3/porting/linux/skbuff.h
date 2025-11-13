@@ -6,6 +6,8 @@
 #define skb_queue_walk_safe(queue, skb, tmp) while (0)
 #endif
 
+#define skb_queue_walk(queue, skb) for ((skb) = NULL; (skb) != NULL; (skb) = NULL)
+
 #ifndef SKBTX_WIFI_STATUS
 #define SKBTX_WIFI_STATUS 0x08
 #endif

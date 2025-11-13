@@ -12,4 +12,6 @@ typedef struct {
 #define rcu_access_pointer(p) ((void *)(p))  /* return pointer as-is */
 #endif
 
+#define rcu_dereference(ptr) (ptr)
+
 #endif /* __LINUX_RCUPDATE_H_ */
