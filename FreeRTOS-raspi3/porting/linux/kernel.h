@@ -110,7 +110,7 @@ struct ewma_beacon_signal { int dummy; };
 
 /* --- New kernel struct stubs --- */
 struct fq { int dummy; };
-struct netdev_hw_addr_list { int dummy; };
+struct netdev_hw_addr_list { int count; };
 struct tasklet_struct { int dummy; };
 struct rhltable { int dummy; };
 struct arc4_ctx { int dummy; };
@@ -118,6 +118,11 @@ struct arc4_ctx { int dummy; };
 
 /* --- Stub typedefs --- */
 typedef int netdev_tx_t;
+
+enum tc_setup_type {
+    TC_SETUP_TYPE_DUMMY = 0
+};
+
 
 /* --- Kernel annotations simplified --- */
 #ifndef __percpu
