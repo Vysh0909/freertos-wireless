@@ -8,7 +8,7 @@
 #include "timer.h"
 #include "export.h"
 #include "spinlock.h"
-
+#include "ewma.h"
 #ifndef list_del_init
 #define list_del_init(entry)      ((void)0)
 #endif
