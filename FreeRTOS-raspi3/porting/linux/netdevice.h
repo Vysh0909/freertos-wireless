@@ -116,6 +116,10 @@ static inline int device_rename(void *dev, const char *newname) {
     unsigned long name[((bits) + (sizeof(unsigned long)*8 - 1)) / (sizeof(unsigned long)*8)]
 #endif
 
+#ifndef CONFIG_MAC80211_RC_DEFAULT
+#define CONFIG_MAC80211_RC_DEFAULT "minstrel_ht"
+#endif
+
 /* ---- SKB flags and checksum ---- */
 #ifndef CHECKSUM_PARTIAL
 #define CHECKSUM_PARTIAL 1
