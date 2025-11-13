@@ -16,8 +16,11 @@ struct debugfs_cancellation {
 
 /* Dummy struct to allow compilation */
 struct debugfs_short_fops {
-    void *read;
-    void *llseek;
+    //void *read;
+    //void *llseek;
+    ssize_t (*read)(void *file, char __user *buf, size_t count, loff_t *ppos);
+    ssize_t (*write)(void *file, const char __user *buf, size_t count, loff_t *ppos);
+    loff_t (*llseek)(void *file, loff_t offset, int whence);
 };
 
 #define DEBUGFS_READONLY_FILE_FN(name, fmt, value) \

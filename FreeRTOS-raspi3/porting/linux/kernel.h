@@ -130,7 +130,13 @@ struct fq {
     unsigned long overmemory;
     unsigned long collisions;
     unsigned long flows_cnt;
+    unsigned int limit;
+    unsigned int memory_limit;
+    unsigned int quantum;
+    unsigned int tx_bytes;
+    unsigned int tx_packets;
 };
+
 struct netdev_hw_addr_list { int count; };
 struct tasklet_struct { int dummy; };
 struct rhltable { int dummy; };
