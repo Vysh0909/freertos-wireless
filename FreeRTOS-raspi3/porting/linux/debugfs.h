@@ -12,7 +12,13 @@ struct debugfs_cancellation {
 #define debugfs_remove(entry) ((void)0)
 #endif
 
+#ifndef __printf
+#define __printf(a, b)
+#endif
+
+#ifndef __user
 #define __user
+#endif
 
 /* Dummy struct to allow compilation */
 struct debugfs_short_fops {
