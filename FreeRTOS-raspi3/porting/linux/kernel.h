@@ -148,8 +148,9 @@ enum tc_setup_type {
 
 struct hlist_node {
     struct hlist_node *next;
-    struct hlist_node *prev;
+    struct hlist_node **pprev;
 };
+
 
 /* Stub for rhash_head */
 struct rhash_head {

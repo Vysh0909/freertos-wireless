@@ -76,6 +76,8 @@ struct list_head {
 #define list_first_or_null_rcu(ptr, type, member) \
     ((ptr)->next != (ptr) ? container_of((ptr)->next, type, member) : NULL)
 
+#define hlist_for_each_entry_safe(pos, n, head, member) \
+    for (pos = NULL, n = NULL; pos != NULL; pos = NULL)
 
 /*#undef list_for_each_entry_rcu // Good practice before redefining
 #define list_for_each_entry_rcu(pos, head, member) \

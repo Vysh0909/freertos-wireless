@@ -101,6 +101,20 @@ static inline int device_rename(void *dev, const char *newname) {
 #define NET_NAME_ENUM 0
 #endif
 
+#ifndef ETH_P_802_3_MIN
+#define ETH_P_802_3_MIN 0x0600  /* Minimum valid Ethernet type */
+#endif
+
+/* ---- BITS ---- */
+#ifndef BITS_PER_BYTE
+#define BITS_PER_BYTE 8
+#endif
+
+/* ---- SKB flags and checksum ---- */
+#ifndef CHECKSUM_PARTIAL
+#define CHECKSUM_PARTIAL 1
+#endif
+
 #ifndef IFF_ALLMULTI
 #define IFF_ALLMULTI 0x200
 #endif

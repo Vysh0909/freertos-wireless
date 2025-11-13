@@ -6,6 +6,10 @@
 #define skb_queue_walk_safe(queue, skb, tmp) while (0)
 #endif
 
+#ifndef SKBTX_WIFI_STATUS
+#define SKBTX_WIFI_STATUS 0x08
+#endif
+
 #include <stdbool.h> 
 typedef uint16_t __be16;
 typedef uint8_t   u8;
@@ -20,11 +24,6 @@ typedef struct skb_frag {
     unsigned int size;
 } skb_frag_t;
 
-struct skb_shared_info {
-    unsigned int nr_frags;
-    skb_frag_t frags[16]; /* arbitrary small number */
-};
-
 struct sk_buff {
     u8 *data;
     unsigned int len;
@@ -38,8 +37,20 @@ struct sk_buff {
      void *sk;
     int portid;
     unsigned int pkt_type;
+     int ip_summed;
 };
 
+struct skb_shared_info {
+    unsigned int nr_frags;
+    skb_frag_t frags[16]; /* arbitrary small number */
+     unsigned int tx_flags;
+};
+
+static inline struct skb_shared_info *skb_shinfo(struct sk_buff *skb)
+{
+    static struct skb_shared_info dummy_info = {0};
+    return &dummy_info;
+}
 struct sk_buff_head {
     struct sk_buff *next;
     struct sk_buff *prev;
