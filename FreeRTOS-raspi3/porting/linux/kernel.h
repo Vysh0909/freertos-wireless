@@ -7,6 +7,8 @@
 #include <stdint.h>
 #include <assert.h>
 #include "crypto.h"
+#include "types.h"
+
 /* ---- Basic Macros ---- */
 #ifndef ARRAY_SIZE
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
@@ -174,7 +176,7 @@ struct rhash_head {
 #define SKB_DROP_REASON_SUBSYS_MAC80211_MONITOR 0
 #define SKB_DROP_REASON_SUBSYS_MAC80211_UNUSABLE 0
 #define SKB_DROP_REASON_SUBSYS_SHIFT 0
-#define DECLARE_STATIC_KEY_FALSE(x) int x = 0
+//#define DECLARE_STATIC_KEY_FALSE(x) int x = 0
 #ifndef BITS_PER_LONG
 #define BITS_PER_LONG 64
 #endif
@@ -194,5 +196,20 @@ struct rhash_head {
 #ifndef KERN_DEBUG
 #define KERN_DEBUG 0
 #endif
+
+
+struct static_key_stub {
+    int enabled;
+};
+
+#define DECLARE_STATIC_KEY_FALSE(name) \
+    struct { struct static_key_stub key; } name = { { 0 } }
+
+static inline bool static_key_false(struct static_key_stub *key)
+{
+    (void)key;
+    return false;
+}
+
 
 #endif /* __KERNEL_H__ */

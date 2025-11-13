@@ -29,15 +29,15 @@ struct debugfs_short_fops {
     loff_t (*llseek)(void *file, loff_t offset, int whence);
 };
 
-#define DEBUGFS_READONLY_FILE_FN(name, fmt, value) \
+/*#define DEBUGFS_READONLY_FILE_FN(name, fmt, value) \
     static ssize_t name##_read(void *file, char *userbuf, size_t count) { return 0; }
 
 #define DEBUGFS_READONLY_FILE_OPS(name) \
     static const struct debugfs_short_fops name##_ops = { NULL, NULL }
-
-#define DEBUGFS_READONLY_FILE(name, fmt, value) \
+*/
+/*#define DEBUGFS_READONLY_FILE(name, fmt, value) \
     DEBUGFS_READONLY_FILE_FN(name, fmt, value); \
     DEBUGFS_READONLY_FILE_OPS(name)
-
+*/
 #endif /* __LINUX_DEBUGFS_H_ */
 
