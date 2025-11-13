@@ -10,6 +10,10 @@ struct led_trigger {
     void (*deactivate)(struct led_trigger *t);
 };
 
+struct led_classdev {
+    struct led_trigger *trigger;
+    const char *name;
+};
 /* Stub macros and functions (no-ops) */
 static inline int led_trigger_register(struct led_trigger *t)
 {
