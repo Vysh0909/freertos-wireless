@@ -9,6 +9,7 @@ struct scatterlist {
     unsigned int    length;     /* middle 24 bits */
     dma_addr_t      dma_address;/* high 32 bits (if not 64 bit) */
     __u32           dma_length;
+    void *address;
 };
 
 #endif /* __LINUX_SCATTERLIST_H_ */
