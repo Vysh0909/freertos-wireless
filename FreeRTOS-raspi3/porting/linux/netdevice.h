@@ -103,6 +103,23 @@ static inline int device_rename(void *dev, const char *newname) {
 #endif
 
 #define ETH_ALEN    6   /* Octets in one ethernet addr */
+#define IFF_TX_SKB_SHARING      0x10000
+#define IFF_NO_QUEUE            0x20000
+#define IFF_LIVE_ADDR_CHANGE    0x40000
+#define ARPHRD_IEEE80211_RADIOTAP 803  /* from linux/if_arp.h */
+#define NETDEV_PCPU_STAT_TSTATS  1
+
+#define ETH_HLEN   14  /* Ethernet header length */
+
+#define NETIF_F_IP_CSUM          (1 << 0)
+#define NETIF_F_IPV6_CSUM        (1 << 1)
+#define NETIF_F_HW_CSUM          (1 << 2)
+#define NETIF_F_SG               (1 << 3)
+#define NETIF_F_HIGHDMA          (1 << 4)
+#define NETIF_F_GSO_SOFTWARE     (1 << 5)
+#define NETIF_F_HW_TC            (1 << 6)
+
+#define NETDEV_CHANGENAME        0x0019
 
 struct kobject {
     // dummy placeholder to allow compilation
