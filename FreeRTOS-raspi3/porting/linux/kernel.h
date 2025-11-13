@@ -155,4 +155,8 @@ enum tc_setup_type {
 #define BITS_TO_LONGS(x) (((x) + BITS_PER_LONG - 1) / BITS_PER_LONG)
 #endif
 
+#ifndef __maybe_unused
+#define __maybe_unused
+#endif
+
 #endif /* __KERNEL_H__ */
