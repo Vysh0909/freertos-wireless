@@ -150,6 +150,16 @@ struct net_device {
     unsigned short type;
 
 };
-
+struct net_device_ops {
+    int (*ndo_open)(struct net_device *dev);
+    int (*ndo_stop)(struct net_device *dev);
+    void (*ndo_uninit)(struct net_device *dev);
+    int (*ndo_start_xmit)(void *skb, struct net_device *dev);
+    void (*ndo_set_rx_mode)(struct net_device *dev);
+    int (*ndo_set_mac_address)(struct net_device *dev, void *addr);
+    int (*ndo_setup_tc)(struct net_device *dev, int type, void *type_data);
+    int (*ndo_fill_forward_path)(struct net_device *dev, void *path, void *dst);
+    int (*ndo_select_queue)(struct net_device *dev, void *skb, void *accel_priv, void *select_queue_fallback);
+};
 
 #endif /* __NETDEVICE_H__ */
