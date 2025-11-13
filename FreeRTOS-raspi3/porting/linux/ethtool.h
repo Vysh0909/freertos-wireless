@@ -29,7 +29,7 @@ struct ethtool_drvinfo {
     char    reserved1[32];
     char    reserved2[12];
 };
-
+struct kernel_ethtool_ringparam;
 struct ethtool_ringparam {
     u32 rx_max_pending;
     u32 rx_mini_max_pending;
@@ -45,6 +45,32 @@ struct ethtool_regs {
     unsigned int version;
     unsigned int len;
 };
+
+/* Minimal stub for ethtool_ops */
+struct ethtool_ops {
+    void (*get_drvinfo)(void);
+    int  (*get_regs_len)(void);
+    void (*get_regs)(void);
+    int  (*get_link)(void);
+    void (*get_ringparam)(void);
+    void (*set_ringparam)(void);
+    void (*get_strings)(void);
+    void (*get_ethtool_stats)(void);
+    int  (*get_sset_count)(void);
+};
+
+/* ---- Stub function definitions for cfg80211 + ethtool ops ---- */
+
+static inline void cfg80211_get_drvinfo(void)
+{
+    /* not implemented in this port */
+}
+
+static inline int ethtool_op_get_link(void)
+{
+    /* always return link up (1) or just 0 to compile */
+    return 0;
+}
 
 #endif /* __ETHTOOL_H__ */
 
