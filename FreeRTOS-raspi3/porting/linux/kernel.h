@@ -102,9 +102,20 @@ struct ewma_signal { int dummy; };
 struct ewma_avg_signal { int dummy; };
 struct hlist_head { int dummy; };
 struct rhashtable { int dummy; };
-struct fq_tin { int backlog_packets; };
+struct fq_tin { 
+	int backlog_packets; 
+	unsigned long flows;
+    unsigned long overlimit;
+    unsigned long collisions;
+    unsigned long tx_bytes;
+    unsigned long tx_packets;
+    unsigned long backlog_bytes;
+};
 struct codel_vars { int dummy; };
-struct codel_stats { int dummy; };
+struct codel_stats {
+	unsigned long drop_count;
+        unsigned long ecn_mark;
+};
 struct idr { int dummy; };
 struct ewma_beacon_signal { int dummy; };
 
@@ -113,6 +124,12 @@ struct spinlock { int dummy; };
 struct fq { 
 	struct spinlock lock;
     int backlog_packets;
+    unsigned long backlog;
+    unsigned long memory_usage;
+    unsigned long overlimit;
+    unsigned long overmemory;
+    unsigned long collisions;
+    unsigned long flows_cnt;
 };
 struct netdev_hw_addr_list { int count; };
 struct tasklet_struct { int dummy; };
@@ -127,6 +144,15 @@ enum tc_setup_type {
     TC_SETUP_TYPE_DUMMY = 0
 };
 
+struct hlist_node {
+    struct hlist_node *next;
+    struct hlist_node *prev;
+};
+
+/* Stub for rhash_head */
+struct rhash_head {
+    struct rhash_head *next;
+};
 
 /* --- Kernel annotations simplified --- */
 #ifndef __percpu
