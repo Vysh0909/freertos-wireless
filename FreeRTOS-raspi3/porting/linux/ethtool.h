@@ -17,6 +17,8 @@
 
 /* Basic ethtool command IDs (optional minimal set) */
 #define ETHTOOL_GDRVINFO 0x00000003
+#define ETH_GSTRING_LEN 32
+#define ETH_SS_STATS    1
 
 struct ethtool_drvinfo {
     __u32   cmd;
@@ -37,6 +39,11 @@ struct ethtool_ringparam {
     u32 rx_mini_pending;
     u32 rx_jumbo_pending;
     u32 tx_pending;
+};
+
+struct ethtool_regs {
+    unsigned int version;
+    unsigned int len;
 };
 
 #endif /* __ETHTOOL_H__ */
