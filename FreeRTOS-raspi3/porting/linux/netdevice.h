@@ -162,4 +162,15 @@ struct net_device_ops {
     int (*ndo_select_queue)(struct net_device *dev, void *skb, void *accel_priv, void *select_queue_fallback);
 };
 
+struct net_device_path_ctx {
+    struct net_device *dev;   /* device pointer */
+    unsigned char daddr[6];   /* destination MAC address */
+};
+
+struct net_device_path {
+    struct net_device *dev;
+    int type;
+};
+
+
 #endif /* __NETDEVICE_H__ */
