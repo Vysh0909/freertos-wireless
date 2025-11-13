@@ -102,11 +102,22 @@ struct ewma_signal { int dummy; };
 struct ewma_avg_signal { int dummy; };
 struct hlist_head { int dummy; };
 struct rhashtable { int dummy; };
-struct fq_tin { int dummy; };
+struct fq_tin { int backlog_packets; };
 struct codel_vars { int dummy; };
 struct codel_stats { int dummy; };
 struct idr { int dummy; };
 struct ewma_beacon_signal { int dummy; };
+
+/* --- New kernel struct stubs --- */
+struct fq { int dummy; };
+struct netdev_hw_addr_list { int dummy; };
+struct tasklet_struct { int dummy; };
+struct rhltable { int dummy; };
+struct arc4_ctx { int dummy; };
+
+
+/* --- Stub typedefs --- */
+typedef int netdev_tx_t;
 
 /* --- Kernel annotations simplified --- */
 #ifndef __percpu
@@ -122,7 +133,7 @@ struct ewma_beacon_signal { int dummy; };
 #define SKB_DROP_REASON_SUBSYS_MAC80211_MONITOR 0
 #define SKB_DROP_REASON_SUBSYS_MAC80211_UNUSABLE 0
 #define SKB_DROP_REASON_SUBSYS_SHIFT 0
-
+#define DECLARE_STATIC_KEY_FALSE(x) int x = 0
 #ifndef BITS_PER_LONG
 #define BITS_PER_LONG 64
 #endif
