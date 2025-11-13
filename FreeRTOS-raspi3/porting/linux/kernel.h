@@ -98,10 +98,41 @@ struct ewma_mesh_tx_rate_avg { int dummy; };
 struct u64_stats_sync { int dummy; };
 struct rhlist_head { int dummy; };
 struct codel_params { int dummy; };
+struct ewma_signal { int dummy; };
+struct ewma_avg_signal { int dummy; };
+struct hlist_head { int dummy; };
+struct rhashtable { int dummy; };
+struct fq_tin { int dummy; };
+struct codel_vars { int dummy; };
+struct codel_stats { int dummy; };
+struct idr { int dummy; };
+struct ewma_beacon_signal { int dummy; };
 
 /* --- Kernel annotations simplified --- */
 #ifndef __percpu
 #define __percpu
+#endif
+
+#ifndef IEEE80211_MAX_CHAINS
+#define IEEE80211_MAX_CHAINS 4
+#endif
+
+#define SKB_CONSUMED 0
+#define SKB_NOT_DROPPED_YET 1
+#define SKB_DROP_REASON_SUBSYS_MAC80211_MONITOR 0
+#define SKB_DROP_REASON_SUBSYS_MAC80211_UNUSABLE 0
+#define SKB_DROP_REASON_SUBSYS_SHIFT 0
+
+#ifndef BITS_PER_LONG
+#define BITS_PER_LONG 64
+#endif
+
+#ifndef IEEE80211_MAX_AID
+#define IEEE80211_MAX_AID 2007
+#endif
+
+#ifndef BITS_TO_LONGS
+#define BITS_TO_LONGS(x) (((x) + BITS_PER_LONG - 1) / BITS_PER_LONG)
 #endif
 
 #endif /* __KERNEL_H__ */
