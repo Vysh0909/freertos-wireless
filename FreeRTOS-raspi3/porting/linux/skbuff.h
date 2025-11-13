@@ -37,6 +37,7 @@ struct sk_buff {
      unsigned char cb[48];
      void *sk;
     int portid;
+    unsigned int pkt_type;
 };
 
 struct sk_buff_head {
