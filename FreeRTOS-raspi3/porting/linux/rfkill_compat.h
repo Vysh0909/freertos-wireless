@@ -2,6 +2,7 @@
 #define __RFKILL_COMPAT_H__
 
 #include "types.h"
+#include "slab.h"
 
 #ifndef rfkill_pause_polling
 #define rfkill_pause_polling(rfkill) ((void)0)
@@ -31,10 +32,10 @@
 #define rcu_dereference_raw(p) (p)
 #endif
 
-#ifndef kfree
+/*#ifndef kfree
 #define kfree(ptr) ((void)0)
 #endif
-
+*/
 #ifndef rfkill_set_hw_state_reason
 #define rfkill_set_hw_state_reason(rfkill, blocked, reason) (0)  /* returns 0 for success */
 #endif
