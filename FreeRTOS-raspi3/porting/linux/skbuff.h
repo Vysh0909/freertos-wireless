@@ -2,6 +2,10 @@
 #define __SKBUFF_H__
 
 /* Auto-generated stub header: skbuff.h */
+#ifndef skb_queue_walk_safe
+#define skb_queue_walk_safe(queue, skb, tmp) while (0)
+#endif
+
 #include <stdbool.h> 
 typedef uint16_t __be16;
 typedef uint8_t   u8;

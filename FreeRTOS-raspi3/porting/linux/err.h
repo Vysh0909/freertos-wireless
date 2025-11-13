@@ -29,6 +29,7 @@
 #define ENOLINK      67
 #define EMSGSIZE 90  /* Message too long */
 #define EPROTO   71  /* Protocol error */
+#define ENOTUNIQ 76
 #define ENETDOWN 100  /* Network is down */
 #define ENOBUFS 105
 #define ENOTCONN 107

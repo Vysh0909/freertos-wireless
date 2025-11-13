@@ -92,6 +92,10 @@ static inline int device_rename(void *dev, const char *newname) {
 #define NETDEV_PRE_UP           6
 #endif
 
+#ifndef IFF_ALLMULTI
+#define IFF_ALLMULTI 0x200
+#endif
+
 /* Missing notifier return codes */
 #ifndef NOTIFY_DONE
 #define NOTIFY_DONE 0
@@ -126,6 +130,11 @@ struct net_device {
     struct wireless_dev *ieee80211_ptr; /* for ieee80211_ptr usage */
      int ifindex;          /* interface index */
     char name[16];
+    unsigned int flags;
+    unsigned char addr_len;
+    struct {
+        void *list;
+    } mc;
 };
 
 
