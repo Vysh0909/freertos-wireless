@@ -114,6 +114,11 @@ static inline u8 *skb_tail_pointer(const struct sk_buff *skb)
     return skb->data + skb->len;
 }
 
+static inline u8 *skb_mac_header(const struct sk_buff *skb)
+{
+    return skb->data;   // or skb->data + mac_offset if you maintain one
+}
+
 struct sk_buff_head {
     struct sk_buff *next;
     struct sk_buff *prev;

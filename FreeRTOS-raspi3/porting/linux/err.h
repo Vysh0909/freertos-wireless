@@ -46,6 +46,8 @@
 #define EADDRNOTAVAIL 99
 #endif
 
+#define ETIMEDOUT 110
+
 #ifndef EHOSTUNREACH
 #define EHOSTUNREACH 113
 #endif

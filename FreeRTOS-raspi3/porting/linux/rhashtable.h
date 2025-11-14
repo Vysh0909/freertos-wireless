@@ -42,4 +42,14 @@ static inline void rhashtable_remove_fast(struct rhashtable *tbl,
     (void)tbl; (void)node; (void)params;
 }
 
+#ifndef rhl_for_each_entry_rcu
+#define rhl_for_each_entry_rcu(_pos, _tmp, _head, node) \
+    for ((_pos) = (_head); (_pos) != NULL; (_pos) = NULL)
+#endif
+
+#ifndef rhl_for_each_entry
+#define rhl_for_each_entry(_pos, _head, node) \
+    for ((_pos) = (_head); (_pos) != NULL; (_pos) = NULL)
+#endif
+
 #endif /* __LINUX_RHASHTABLE_H_ */

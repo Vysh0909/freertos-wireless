@@ -10,7 +10,7 @@
 #endif
 
 #ifndef is_multicast_ether_addr
-#define is_multicast_ether_addr(addr) ((addr)[0] & 0x01)
+#define is_multicast_ether_addr(addr) (((const u8 *)(addr))[0] & 0x01)
 #endif
 
 #ifndef get_unaligned_be16
