@@ -12,6 +12,38 @@
 #define SKBTX_WIFI_STATUS 0x08
 #endif
 
+#ifndef NET_SKB_PAD
+#define NET_SKB_PAD 0
+#endif
+
+#ifndef CHECKSUM_UNNECESSARY
+#define CHECKSUM_UNNECESSARY 0
+#endif
+
+#ifndef PACKET_OTHERHOST
+#define PACKET_OTHERHOST 1
+#endif
+
+#ifndef ETH_P_802_2
+#define ETH_P_802_2 0x0003
+#endif
+
+#ifndef ETH_P_802_3
+#define ETH_P_802_3 0x0001
+#endif
+
+#ifndef ETH_P_PREAUTH
+#define ETH_P_PREAUTH 0x88C7
+#endif
+
+#ifndef EACCES
+#define EACCES 13
+#endif
+
+#ifndef SKB_DROP_REASON_SUBSYS_MASK
+#define SKB_DROP_REASON_SUBSYS_MASK 0xFFFF
+#endif
+
 #include <stdbool.h> 
 typedef uint16_t __be16;
 typedef uint8_t   u8;
@@ -26,6 +58,15 @@ typedef struct skb_frag {
     unsigned int size;
 } skb_frag_t;
 
+struct skb_shared_hwtstamps {
+    int hwtstamp;
+};
+
+static inline struct skb_shared_hwtstamps *skb_hwtstamps(void *skb)
+{
+    static struct skb_shared_hwtstamps stub;
+    return &stub;
+}
 struct sk_buff {
     u8 *data;
     unsigned int len;
