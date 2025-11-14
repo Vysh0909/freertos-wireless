@@ -60,4 +60,13 @@
 #define sizeof_field(TYPE, MEMBER) sizeof(((TYPE *)0)->MEMBER)
 #endif
 
+#ifndef __read_mostly
+#define __read_mostly
+#endif
+
+/* You might need to stub out other common kernel attributes here as well */
+#ifndef __always_inline
+#define __always_inline inline
+#endif
+
 #endif /* __LINUX_COMPILER_H_ */

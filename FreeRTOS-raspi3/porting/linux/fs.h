@@ -20,11 +20,14 @@
 #if 0
 static void __exit cfg80211_exit(void) { }
 #endif
-
 typedef long long loff_t;
+struct inode {
+    void *i_private;
+};
 
 struct file {
     void *private_data;
+    void *dummy;
 };
 
 typedef ssize_t (*read_fn_t)(struct file *file, char *userbuf, size_t count, loff_t *ppos);
@@ -33,6 +36,8 @@ struct file_operations {
     read_fn_t read;
     int (*open)(struct file *file);
     loff_t (*llseek)(struct file *file, loff_t offset, int whence);
+    void *owner;                        /* Dummy for .owner = THIS_MODULE */
+    int (*release)(struct inode *, struct file *);
 };
 
 static inline int simple_open(struct file *file)

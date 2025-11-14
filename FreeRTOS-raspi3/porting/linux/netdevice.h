@@ -120,6 +120,14 @@ static inline int device_rename(void *dev, const char *newname) {
 #define CONFIG_MAC80211_RC_DEFAULT "minstrel_ht"
 #endif
 
+#ifndef S_IRUGO
+#define S_IRUGO 0
+#endif
+
+#ifndef S_IWUGO
+#define S_IWUGO 0
+#endif
+
 /* ---- SKB flags and checksum ---- */
 #ifndef CHECKSUM_PARTIAL
 #define CHECKSUM_PARTIAL 1
