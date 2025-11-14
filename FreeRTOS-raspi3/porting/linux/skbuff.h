@@ -108,6 +108,12 @@ static inline struct skb_shared_info *skb_shinfo(struct sk_buff *skb)
     static struct skb_shared_info dummy_info = {0};
     return &dummy_info;
 }
+
+static inline u8 *skb_tail_pointer(const struct sk_buff *skb)
+{
+    return skb->data + skb->len;
+}
+
 struct sk_buff_head {
     struct sk_buff *next;
     struct sk_buff *prev;
