@@ -120,6 +120,10 @@ static inline int device_rename(void *dev, const char *newname) {
 #define CONFIG_MAC80211_RC_DEFAULT "minstrel_ht"
 #endif
 
+#define CONFIG_MAC80211_STA_HASH_MAX_SIZE 1024
+#define for_each_possible_cpu(cpu) for(int cpu = 0; cpu < 1; cpu++)
+#define alloc_percpu_gfp(type, gfp) ((type *)0)
+
 #ifndef S_IRUGO
 #define S_IRUGO 0
 #endif

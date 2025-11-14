@@ -6,6 +6,11 @@
 #define skb_queue_walk_safe(queue, skb, tmp) while (0)
 #endif
 
+#ifndef skb_list_walk_safe
+#define skb_list_walk_safe(skb, head, tmp) \
+    for ((skb) = (head); (skb) != NULL; (skb) = (skb)->next)
+#endif
+
 #define skb_queue_walk(queue, skb) for ((skb) = NULL; (skb) != NULL; (skb) = NULL)
 
 #ifndef SKBTX_WIFI_STATUS
@@ -81,12 +86,21 @@ struct sk_buff {
     int portid;
     unsigned int pkt_type;
      int ip_summed;
+     void (*destructor)(struct sk_buff *skb);  /* function pointer stub */
+    int wifi_acked_valid;
+    int wifi_acked;
+    struct skb_shared_info *shinfo;
+     int encapsulation;
+     unsigned int truesize;
+     struct sk_buff *next;
 };
 
 struct skb_shared_info {
     unsigned int nr_frags;
     skb_frag_t frags[16]; /* arbitrary small number */
      unsigned int tx_flags;
+     struct sk_buff *frag_list;
+      unsigned int gso_size;
 };
 
 static inline struct skb_shared_info *skb_shinfo(struct sk_buff *skb)

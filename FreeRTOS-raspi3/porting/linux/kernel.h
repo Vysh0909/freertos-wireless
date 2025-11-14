@@ -32,6 +32,38 @@
 #define USEC_PER_SEC 1000000
 #endif
 
+#ifndef NETDEV_TX_OK
+#define NETDEV_TX_OK 0
+#endif
+
+#ifndef ETH_P_ARP
+#define ETH_P_ARP 0x0806
+#endif
+
+#ifndef ETH_P_8021Q
+#define ETH_P_8021Q 0x8100
+#endif
+
+#ifndef DIV_ROUND_UP
+#define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
+#endif
+
+#ifndef DEFINE_STATIC_KEY_FALSE
+#define DEFINE_STATIC_KEY_FALSE(x)  /* empty stub */
+#endif
+
+#ifndef NET_SKB_PAD
+#define NET_SKB_PAD 0
+#endif
+
+#ifndef PACKET_OTHERHOST
+#define PACKET_OTHERHOST 1
+#endif
+
+#ifndef CHECKSUM_UNNECESSARY
+#define CHECKSUM_UNNECESSARY 0
+#endif
+
 
 /* ---- Struct Group Stub ---- */
 /*
@@ -39,6 +71,7 @@
  * sub-structure and optionally provides an anonymous struct for direct access.
  * For user-space porting, a simple inline struct works fine.
  */
+
 #ifndef __struct_group
 #define __struct_group(TAG, NAME, ATTRS, MEMBERS...) \
     struct TAG { MEMBERS } NAME;
@@ -48,6 +81,7 @@
 #ifndef static_assert
 #define static_assert _Static_assert
 #endif
+
 
 /* ---- get_unaligned_le16/le32 helpers ---- */
 static inline uint16_t get_unaligned_le16(const void *p)
@@ -103,20 +137,16 @@ struct rhlist_head { int dummy; };
 struct ewma_signal { int dummy; };
 struct ewma_avg_signal { int dummy; };
 struct hlist_head { int dummy; };
-struct fq_tin { 
-	int backlog_packets; 
-	unsigned long flows;
-    unsigned long overlimit;
-    unsigned long collisions;
-    unsigned long tx_bytes;
-    unsigned long tx_packets;
-    unsigned long backlog_bytes;
-};
 struct idr { int dummy; };
 struct ewma_beacon_signal { int dummy; };
 
 /* --- New kernel struct stubs --- */
 struct spinlock { int dummy; }; 
+struct fq_flow {
+    unsigned long backlog;
+    struct sk_buff *queue;
+};
+
 struct fq { 
 	struct spinlock lock;
     int backlog_packets;
@@ -131,8 +161,19 @@ struct fq {
     unsigned int quantum;
     unsigned int tx_bytes;
     unsigned int tx_packets;
+    struct fq_flow *flows;
+    unsigned int num_flows;
 };
-
+struct fq_tin {
+        int backlog_packets;
+        unsigned long flows;
+    unsigned long overlimit;
+    unsigned long collisions;
+    unsigned long tx_bytes;
+    unsigned long tx_packets;
+    unsigned long backlog_bytes;
+     struct fq_flow default_flow;
+};
 struct netdev_hw_addr_list { int count; };
 struct rhltable { int dummy; };
 struct arc4_ctx { int dummy; };

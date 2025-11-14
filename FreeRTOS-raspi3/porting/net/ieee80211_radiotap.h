@@ -24,7 +24,6 @@
  * struct ieee80211_radiotap_header - base radiotap header
  */
 struct ieee80211_radiotap_header {
-	__struct_group(ieee80211_radiotap_header_fixed, hdr, __packed,
 		/**
 		 * @it_version: radiotap version, always 0
 		 */
@@ -44,7 +43,6 @@ struct ieee80211_radiotap_header {
 		 * @it_present: (first) present word
 		 */
 		__le32 it_present;
-	);
 
 	/**
 	 * @it_optional: all remaining presence bitmaps
@@ -52,8 +50,8 @@ struct ieee80211_radiotap_header {
 	__le32 it_optional[];
 } __packed;
 
-static_assert(offsetof(struct ieee80211_radiotap_header, it_optional) == sizeof(struct ieee80211_radiotap_header_fixed),
-	      "struct member likely outside of __struct_group()");
+//static_assert(offsetof(struct ieee80211_radiotap_header, it_optional) == sizeof(struct ieee80211_radiotap_header_fixed),
+//	      "struct member likely outside of __struct_group()");
 
 /* version is always 0 */
 #define PKTHDR_RADIOTAP_VERSION	0
@@ -593,7 +591,7 @@ static inline u16 ieee80211_get_radiotap_len(const char *data)
 {
 	const struct ieee80211_radiotap_header *hdr = (const void *)data;
 
-	return get_unaligned_le16(&hdr->hdr.it_len);
+	return get_unaligned_le16(&hdr->it_len);
 }
 
 #endif /* __RADIOTAP_H */

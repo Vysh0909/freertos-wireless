@@ -10,6 +10,7 @@ struct rhashtable_params {
     int key_offset;
     int head_offset;
     void *hashfn;
+     unsigned long max_size;
 };
 
 /* Minimal stub for rhashtable */
