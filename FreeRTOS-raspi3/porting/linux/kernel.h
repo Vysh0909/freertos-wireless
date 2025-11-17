@@ -3,6 +3,7 @@
 
 /* Auto-generated stub header: kernel.h */
 
+#include <stdarg.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <assert.h>
@@ -246,5 +247,9 @@ static inline bool static_key_false(struct static_key_stub *key)
     return false;
 }
 
+struct va_format {
+    const char *fmt;
+    va_list *va;
+};
 
 #endif /* __KERNEL_H__ */
