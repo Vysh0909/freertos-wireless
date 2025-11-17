@@ -65,6 +65,15 @@
 #define CHECKSUM_UNNECESSARY 0
 #endif
 
+#ifndef KERN_DEBUG
+#define KERN_DEBUG ""
+#endif
+
+#ifndef printk
+#include <stdio.h>
+#define printk printf
+#endif
+
 
 /* ---- Struct Group Stub ---- */
 /*
