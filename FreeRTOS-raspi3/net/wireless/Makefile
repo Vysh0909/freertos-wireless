@@ -16,6 +16,8 @@ CFLAGS += -Wno-implicit-function-declaration \
 	  -Wno-tautological-compare \
 	  -Wno-discarded-qualifiers \
 	  -Wno-missing-braces
+
+CFLAGS += -DCONFIG_CFG80211
 # --- Source files ---
 SRC := \
 	core.c sysfs.c radiotap.c util.c reg.c scan.c mlme.c ibss.c sme.c \

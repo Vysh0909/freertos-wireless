@@ -2,6 +2,9 @@
 #define __SKBUFF_H__
 
 /* Auto-generated stub header: skbuff.h */
+
+#include "types.h"
+
 #ifndef skb_queue_walk_safe
 #define skb_queue_walk_safe(queue, skb, tmp) while (0)
 #endif

@@ -18,6 +18,9 @@ CFLAGS += -Wno-implicit-function-declaration \
           -Wno-missing-braces \
 	  -Wno-unused-parameter \
 	  -Wno-return-type
+
+CFLAGS += -fcommon
+
 BUILDPATH = build
 INCLUDEPATH1 ?= FreeRTOS/Source/include
 INCLUDEPATH2 ?= FreeRTOS/Source/portable/GCC/ARM_CA53_64_RaspberryPi3
@@ -53,6 +56,7 @@ OBJS += sample/sample.o
 
 OBJS += build/newlib_stubs.o
 OBJS += build/linux_stubs.o
+#OBJS += build/linux_stubs_mac80211.o
 
 WIRELESS_OBJS := \
     net/wireless/core.o \
@@ -76,8 +80,65 @@ WIRELESS_OBJS := \
     net/wireless/wext-compat.o \
     net/wireless/nl80211.o
 
+MAC80211_OBJS := \
+    net/mac80211/aead_api.o \
+    net/mac80211/aes_cmac.o \
+    net/mac80211/aes_gmac.o \
+    net/mac80211/airtime.o \
+    net/mac80211/agg-rx.o \
+    net/mac80211/agg-tx.o \
+    net/mac80211/chan.o \
+    net/mac80211/cfg.o \
+    net/mac80211/debugfs.o \
+    net/mac80211/debugfs_key.o \
+    net/mac80211/debugfs_netdev.o \
+    net/mac80211/debugfs_sta.o \
+    net/mac80211/driver-ops.o \
+    net/mac80211/eht.o \
+    net/mac80211/ethtool.o \
+    net/mac80211/fils_aead.o \
+    net/mac80211/he.o \
+    net/mac80211/ht.o \
+    net/mac80211/ibss.o \
+    net/mac80211/iface.o \
+    net/mac80211/key.o \
+    net/mac80211/led.o \
+    net/mac80211/link.o \
+    net/mac80211/main.o \
+    net/mac80211/mesh.o \
+    net/mac80211/mesh_hwmp.o \
+    net/mac80211/mesh_pathtbl.o \
+    net/mac80211/mesh_plink.o \
+    net/mac80211/mesh_ps.o \
+    net/mac80211/mesh_sync.o \
+    net/mac80211/michael.o \
+    net/mac80211/mlme.o \
+    net/mac80211/ocb.o \
+    net/mac80211/offchannel.o \
+    net/mac80211/parse.o \
+    net/mac80211/pm.o \
+    net/mac80211/rate.o \
+    net/mac80211/rc80211_minstrel_ht.o \
+    net/mac80211/rc80211_minstrel_ht_debugfs.o \
+    net/mac80211/s1g.o \
+    net/mac80211/scan.o \
+    net/mac80211/spectmgmt.o \
+    net/mac80211/sta_info.o \
+    net/mac80211/status.o \
+    net/mac80211/rx.o \
+    net/mac80211/tdls.o \
+    net/mac80211/tkip.o \
+    net/mac80211/trace.o \
+    net/mac80211/tx.o \
+    net/mac80211/util.o \
+    net/mac80211/vht.o \
+    net/mac80211/wep.o \
+    net/mac80211/wme.o \
+    net/mac80211/wpa.o \
+    net/mac80211/wbrf.o
+
 # Main Makefile: Keep this rule and make it a .PHONY target
-.PHONY: all clean run runasm wireless_module
+.PHONY: all clean run runasm wireless_module mac80211_module
 all: kernel8.elf
 
 # Ensure the wireless module target is defined before the linking step
@@ -86,8 +147,14 @@ wireless_module:
 	# Explicitly pass the CROSS-compiler prefix down to the sub-make
 	$(MAKE) -C net/wireless CC=$(CROSS)-gcc
 
-kernel8.elf : raspberrypi3.ld $(OBJS) wireless_module
-	$(CROSS)-gcc -Wl,--build-id=none -std=gnu11 -T raspberrypi3.ld -o $@ -ffreestanding -O2 -nostdlib $(OBJS) $(WIRELESS_OBJS) -lc -lgcc
+mac80211_module:
+	@echo "==> Building net/mac80211 module"
+	# Explicitly pass the CROSS-compiler prefix down to the sub-make
+	$(MAKE) -C net/mac80211 CC=$(CROSS)-gcc
+
+
+kernel8.elf : raspberrypi3.ld $(OBJS) wireless_module mac80211_module
+	$(CROSS)-gcc -Wl,--build-id=none -std=gnu11 -T raspberrypi3.ld -o $@ -ffreestanding -O2 -nostdlib $(OBJS) $(WIRELESS_OBJS) $(MAC80211_OBJS) -lc -lgcc
 	$(CROSS)-objdump -D kernel8.elf > kernel8.list
 
 build/%.o : Demo/%.S $(BUILDPATH)
@@ -121,10 +188,6 @@ sample/sample.o :
 	@echo "==> Building sample module"
 	$(MAKE) -C sample
 
-#net/wireless/%o : net/wireless/%.c
-#	@echo "==> Building net/wireless module"
-#	$(MAKE) -C net/wireless
-
 $(BUILDPATH):
 	@if [ ! -d $(BUILDPATH) ]; then \
 	  echo " mkdir $(BUILDPATH)"; mkdir $(BUILDPATH); \
@@ -136,6 +199,7 @@ clean :
 	rm -f *.list
 	$(MAKE) -C sample clean
 	$(MAKE) -C net/wireless clean
+	$(MAKE) -C net/mac80211 clean
 
 run :
 	$(MAKE) kernel8.elf
