@@ -49,9 +49,10 @@
 #define DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
 #endif
 
-#ifndef DEFINE_STATIC_KEY_FALSE
-#define DEFINE_STATIC_KEY_FALSE(x)  /* empty stub */
+/*#ifndef DEFINE_STATIC_KEY_FALSE
+#define DEFINE_STATIC_KEY_FALSE(x)
 #endif
+*/
 
 #ifndef NET_SKB_PAD
 #define NET_SKB_PAD 0
@@ -247,8 +248,21 @@ struct static_key_stub {
     int enabled;
 };
 
+/*#define DECLARE_STATIC_KEY_FALSE(name) \
+    struct { struct static_key_stub key; } name = { { 0 } }*/
+
+struct static_key_false {
+    struct static_key_stub key;
+};
+
 #define DECLARE_STATIC_KEY_FALSE(name) \
-    struct { struct static_key_stub key; } name = { { 0 } }
+    extern struct static_key_false name
+
+/* Define macro (exactly one .c file should produce this) */
+#define DEFINE_STATIC_KEY_FALSE(name) \
+    struct static_key_false name = { { 0 } }
+
+
 
 static inline bool static_key_false(struct static_key_stub *key)
 {

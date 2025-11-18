@@ -11,7 +11,6 @@
 #ifndef IEEE80211_I_H
 #define IEEE80211_I_H
 
-#include "../../porting/linux/kernel.h"
 #include <linux/kernel.h>
 #include <linux/device.h>
 #include <linux/if_ether.h>
@@ -1341,8 +1340,8 @@ enum mac80211_scan_state {
 	SCAN_ABORT,
 };
 
-//DECLARE_STATIC_KEY_FALSE(aql_disable);
-extern struct static_key_false aql_disable;
+DECLARE_STATIC_KEY_FALSE(aql_disable);
+//extern struct static_key_false aql_disable;
 
 struct ieee80211_local {
 	/* embed the driver visible part.
