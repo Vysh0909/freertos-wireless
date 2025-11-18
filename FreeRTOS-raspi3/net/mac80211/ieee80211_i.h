@@ -11,6 +11,7 @@
 #ifndef IEEE80211_I_H
 #define IEEE80211_I_H
 
+#include "../../porting/linux/kernel.h"
 #include <linux/kernel.h>
 #include <linux/device.h>
 #include <linux/if_ether.h>
@@ -502,7 +503,8 @@ struct ieee80211_adv_ttlm_info {
 	bool active; /* whether the advertised mapping is active or not */
 };
 
-DECLARE_EWMA(beacon_signal, 4, 4)
+//DECLARE_EWMA(beacon_signal, 4, 4)
+extern struct ewma beacon_signal;
 
 struct ieee80211_if_managed {
 	struct timer_list timer;
@@ -1339,7 +1341,8 @@ enum mac80211_scan_state {
 	SCAN_ABORT,
 };
 
-DECLARE_STATIC_KEY_FALSE(aql_disable);
+//DECLARE_STATIC_KEY_FALSE(aql_disable);
+extern struct static_key_false aql_disable;
 
 struct ieee80211_local {
 	/* embed the driver visible part.

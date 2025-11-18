@@ -123,7 +123,8 @@ enum ieee80211_sta_info_flags {
 #define HT_AGG_STATE_STOP_CB		7
 #define HT_AGG_STATE_SENT_ADDBA		8
 
-DECLARE_EWMA(avg_signal, 10, 8)
+//DECLARE_EWMA(avg_signal, 10, 8)
+extern struct ewma avg_signal;
 enum ieee80211_agg_stop_reason {
 	AGG_STOP_DECLINED,
 	AGG_STOP_LOCAL_REQUEST,
@@ -361,8 +362,10 @@ struct ieee80211_fast_rx {
 };
 
 /* we use only values in the range 0-100, so pick a large precision */
-DECLARE_EWMA(mesh_fail_avg, 20, 8)
-DECLARE_EWMA(mesh_tx_rate_avg, 8, 16)
+//DECLARE_EWMA(mesh_fail_avg, 20, 8)
+//DECLARE_EWMA(mesh_tx_rate_avg, 8, 16)
+extern struct ewma mesh_fail_avg;
+extern struct ewma mesh_tx_rate_avg;
 
 /**
  * struct mesh_sta - mesh STA information
@@ -421,7 +424,8 @@ struct mesh_sta {
 	struct ewma_mesh_tx_rate_avg tx_rate_avg;
 };
 
-DECLARE_EWMA(signal, 10, 8)
+//DECLARE_EWMA(signal, 10, 8)
+extern struct ewma ewma_signal;
 
 struct ieee80211_sta_rx_stats {
 	unsigned long packets;
